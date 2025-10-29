@@ -10,7 +10,7 @@ export default function About() {
         <title>About DWAI | Deaf Women Aloud Initiative</title>
         <meta
           name="description"
-          content="Deaf Women Aloud Initiative (DWAI) empowers Deaf women and girls in Nigeria through advocacy, education, technology, and leadership development."
+          content="Deaf Women Aloud Initiative (DWAI) is an non-government organization founded to amplify the voice of Deaf Women and girls in Nigeria. We are registered with the Corporate Affairs Commission (CAC) and our goals are to reduce the exploitation of Deaf Women, eradicate discrimination, advance social inclusion, and promote the sexual and reproductive health rights of this vulnerable group."
         />
       </Head>
 
@@ -46,13 +46,11 @@ export default function About() {
           <div>
             <h2 className="text-3xl font-bold text-purple-800 mb-4">Who We Are</h2>
             <p className="text-gray-700 leading-relaxed text-lg">
-              <strong>Deaf Women Aloud Initiative (DWAI)</strong> is a Deaf-led, women-centered NGO
-              dedicated to amplifying the voices of Deaf women and girls in Nigeria. We drive social change through advocacy, digital literacy, mentorship, and leadership programs
-              — inspiring Deaf women to rise above stereotypes and create impact in their communities.
-            </p>
-            <p className="mt-4 text-gray-700 leading-relaxed text-lg">
-              Founded by passionate Deaf women, DWAI continues to shape a more inclusive society
-              where Deaf women’s perspectives are not just heard, but celebrated.
+              <strong>Deaf Women Aloud Initiative (DWAI)</strong> Deaf Women Aloud Initiative (DWAI) is an non-government organization founded to amplify the voice of Deaf Women and girls in Nigeria. We are registered with the Corporate Affairs Commission (CAC) and our goals are to reduce the exploitation of Deaf Women, eradicate discrimination, advance social inclusion, and promote the sexual and reproductive health rights of this vulnerable group. 
+
+              At DWAI aim to increase public Awareness and access to health information and services on sensitive issues affecting Deaf Women and girls, in the area of assault, gender based violence, stigmatization, and discrimination. 
+
+              Additionally, We seek to bring together pertinent parties to share ideas in advancing the issues and rights of Deaf Women and girls in the society.
             </p>
           </div>
           <div className="relative w-full h-80 md:h-full rounded-2xl overflow-hidden shadow-lg">
@@ -75,14 +73,14 @@ export default function About() {
             <div className="bg-white rounded-xl p-8 shadow-md hover:shadow-lg transition">
               <h4 className="text-2xl font-semibold text-purple-700 mb-4">Our Vision</h4>
               <p className="text-gray-700 leading-relaxed">
-                A world where every Deaf woman and girl lives with dignity, freedom, and equal opportunity — empowered to reach her full potential.
+                A society where sexual and reproductive health and rights (SRHR) information and services are accessible to Deaf Women and girls, without any form of barriers or exclusion.
+
               </p>
             </div>
             <div className="bg-white rounded-xl p-8 shadow-md hover:shadow-lg transition">
               <h4 className="text-2xl font-semibold text-purple-700 mb-4">Our Mission</h4>
               <p className="text-gray-700 leading-relaxed">
-                To empower Deaf women and girls through education, advocacy, mentorship, and access to technology,
-                while promoting inclusion and leadership in every sector of society.
+                To empower Deaf Women and girls to access sexual and reproductive health and rights ( SRHR ) services, for the promotion of an inclusive society.
               </p>
             </div>
           </div>

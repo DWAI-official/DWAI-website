@@ -33,7 +33,7 @@ export default function AboutSection() {
           className="relative w-full h-96 md:h-[500px] rounded-3xl overflow-hidden shadow-2xl group"
         >
           <Image
-            src="/assets/images/dwai_picture.jpeg"
+            src="/assets/images/outreach_team.jpg"
             alt="Deaf women leadership and empowerment event"
             fill
             className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
@@ -69,21 +69,9 @@ export default function AboutSection() {
           </div>
 
           <p className="text-gray-700 leading-relaxed text-lg mb-6">
-            <strong>Deaf Women Aloud Initiative (DWAI)</strong> is a Deaf-led,
-            women-centered NGO amplifying the voices of Deaf women and girls
-            across Nigeria. We foster empowerment through{" "}
-            <span className="text-purple-700 font-semibold">
-              advocacy, mentorship, leadership, and digital literacy.
-            </span>{" "}
-            Our mission is to inspire Deaf women to rise beyond barriers and
-            create lasting social change.
-          </p>
+            <strong>Deaf Women Aloud Initiative (DWAI)</strong> is an non-government organization founded to amplify the voice of Deaf Women and girls in Nigeria. We are registered with the Corporate Affairs Commission (CAC) and our goals are to reduce the exploitation of Deaf Women, eradicate discrimination, advance social inclusion, and promote the sexual and reproductive health rights of this vulnerable group. 
+            At DWAI aim to increase public Awareness and access to health information and services on sensitive issues affecting Deaf Women and girls, in the area of assault, gender based violence, stigmatization, and discrimination. Additionally, We seek to bring together pertinent parties to share ideas in advancing the issues and rights of Deaf Women and girls in the society.
 
-          <p className="text-gray-700 leading-relaxed text-lg mb-8">
-            Founded by passionate Deaf women, DWAI builds a world where Deaf
-            perspectives are celebrated — a society where every Deaf woman’s
-            contribution matters, and her voice (signed or unsaid) is seen,
-            valued, and felt.
           </p>
 
           {/* Quick Stats Icons */}

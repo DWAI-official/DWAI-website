@@ -22,8 +22,8 @@ export default function Gallery() {
     },
     {
       type: "video",
-      src: "/videos/dwai-awareness.mp4",
-      caption: "Sign language awareness campaign — promoting Deaf women’s rights.",
+      src: "https://web.facebook.com/share/v/16Qc3MoRs3/",
+      caption: " Sexual and Reproductive Health and Rights (SRHR)",
     },
     {
       type: "image",
@@ -39,8 +39,13 @@ export default function Gallery() {
     },
     {
       type: "video",
-      src: "/videos/dwai-interview.mp4",
+      src: "https://web.facebook.com/share/v/1F9np99Nzf/",
       caption: "Interview with Deaf women leaders sharing their stories of resilience.",
+    },
+    {
+      type: "video",
+      src: "https://web.facebook.com/share/v/1A1hct3sx7/",
+      caption: "Month of International Women’s Day",
     },
   ];
 

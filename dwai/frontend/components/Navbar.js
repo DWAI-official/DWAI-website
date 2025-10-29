@@ -63,12 +63,12 @@ export default function Navbar() {
                 </Link>
               </motion.div>
             ))}
-            <Link
+            {/* <Link
               href="/sign-language"
               className="bg-purple-700 text-white px-4 py-2 rounded-full hover:bg-purple-800 focus-visible:ring-2 focus-visible:ring-purple-500 font-semibold transition-all duration-300 shadow-md hover:shadow-lg"
             >
               Sign Language
-            </Link>
+            </Link> */}
           </div>
 
           {/* 📱 Mobile Menu Toggle */}
@@ -113,13 +113,13 @@ export default function Navbar() {
                 </Link>
               </motion.div>
             ))}
-            <Link
+            {/* <Link
               href="/sign-language"
               className="block bg-purple-700 text-white text-center py-2 rounded-full font-semibold hover:bg-purple-800 focus-visible:ring-2 focus-visible:ring-purple-500 transition"
               onClick={() => setIsOpen(false)}
             >
               Sign Language
-            </Link>
+            </Link> */}
           </motion.div>
         )}
       </AnimatePresence>

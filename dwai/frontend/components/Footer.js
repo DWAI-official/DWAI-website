@@ -3,25 +3,31 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { MdFacebook } from "react-icons/md";
-import { CiInstagram, CiLinkedin } from "react-icons/ci";
+import { CiInstagram, CiLinkedin, } from "react-icons/ci";
 import { FaWhatsapp } from "react-icons/fa";
 import { MdCall } from "react-icons/md";
+import { FaSquareXTwitter } from "react-icons/fa6";
 import Image from "next/image"
 export default function Footer() {
   const socialLinks = [
     {
       icon: MdFacebook,
-      href: "https://facebook.com/dwai",
+      href: "https://www.facebook.com/share/18s37jbQ2H/",
       label: "DWAI Facebook",
     },
     {
       icon: CiInstagram,
-      href: "https://instagram.com/dwai",
+      href: " https://www.instagram.com/dwainigeria?igsh=MTN0NTNyYzNxcnQycA==",
       label: "DWAI Instagram",
     },
     {
+      icon: FaSquareXTwitter,
+      href: " https://x.com/dwai_nig?t=fi9hVI9NHuQ_3mHbZPBnbA&s=09",
+      label: "DWAI Twitter/X",
+    },
+    {
       icon: CiLinkedin,
-      href: "https://linkedin.com/company/dwai",
+      href: "https://www.linkedin.com/in/deaf-women-aloud-initiative-2781132b2?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       label: "DWAI LinkedIn",
     },
   ];
@@ -49,10 +55,10 @@ export default function Footer() {
             className="flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 rounded-md"
           >
             <Image
-              src="/assets/images/dwai_logo2.png"
+              src="/assets/images/dwai_logo.png"
               alt="DWAI Logo"
-              width={100}
-              height={100}
+              width={150}
+              height={150}
               className="rounded-full"
             />
             {/* <span className="ml-3 text-2xl font-extrabold text-purple-700 tracking-tight">
@@ -61,9 +67,7 @@ export default function Footer() {
           </Link>
 
           <p className="text-sm md:text-base leading-relaxed text-purple-100">
-            Empowering Deaf women and girls across Nigeria to access education,
-            leadership, and justice — free from discrimination.  
-            Together, we amplify Deaf women’s voices and transform communities 💜
+           <strong>Deaf Women Aloud Initiative (DWAI)</strong> is an non-government organization founded to amplify the voice of Deaf Women and girls in Nigeria. We are registered with the Corporate Affairs Commission (CAC) and our goals are to reduce the exploitation of Deaf Women, eradicate discrimination, advance social inclusion, and promote the sexual and reproductive health rights of this vulnerable group. 💜
           </p>
         </motion.div>
 

@@ -13,7 +13,7 @@ export default function Hero() {
       heading: "Empowering Deaf Women to Lead & Inspire 💜",
       subheading: "Advocacy. Education. Inclusion. DWAI is a movement for equality.",
       bgImage:
-        "/assets/images/dwai_picture.jpeg",
+        "/assets/images/outreach_team.jpg",
       primaryBtn: { text: "Join Our Mission", href: "/contact" },
       secondaryBtn: { text: "Learn More", href: "/about" },
     },
@@ -23,7 +23,7 @@ export default function Hero() {
       subheading:
         "Through mentorship, leadership training, and community advocacy.",
       bgImage:
-        "/assets/images/dwai_picture.jpeg",
+        "/assets/images/dwai_picture1.jpg",
       primaryBtn: { text: "Explore Programs", href: "/programs" },
       secondaryBtn: { text: "Support Us", href: "/donate" },
     },
@@ -33,7 +33,7 @@ export default function Hero() {
       subheading:
         "We champion digital access and representation across Nigeria and beyond.",
       bgImage:
-        "/assets/images/dwai_picture.jpeg",
+        "/assets/images/outreach4.jpg",
       primaryBtn: { text: "Get Involved", href: "/contact" },
       secondaryBtn: { text: "View Gallery", href: "/gallery" },
     },
@@ -60,7 +60,7 @@ export default function Hero() {
     <section
       role="region"
       aria-label="DWAI Hero Carousel"
-      className="relative w-full h-[90vh] overflow-hidden text-white"
+      className="relative  w-full h-[90vh] overflow-hidden text-white"
     >
       <AnimatePresence mode="wait">
         <motion.div
@@ -78,9 +78,9 @@ export default function Hero() {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-purple-900/70"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-purple-900/70"></div>
 
-          <div className="relative z-10 flex flex-col items-center justify-center text-center h-full px-6">
+          <div className="relative pt-80 z-10 flex flex-col items-center justify-center text-center h-full px-6">
             <motion.h1
               className="text-4xl md:text-6xl font-extrabold mb-4 leading-tight drop-shadow-lg"
               initial={{ y: 20, opacity: 0 }}
