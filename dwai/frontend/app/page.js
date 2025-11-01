@@ -11,7 +11,8 @@ import AboutSection from "@/components/AboutSection";
 import TestimonialSection from "@/components/TestimonialSection";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import ParntersSection from "@/components/ParnterSection";
+import PartnersSection from "@/components/PartnersSection";
+import GlossaryPDF from "@/components/GlossaryDownloadSection";
 
 
 export default async function Home() {
@@ -39,13 +40,14 @@ export default async function Home() {
         bgImage={"/assets/images/dwai_picture.jpeg"}
         reverse={true}
       />
+      <GlossaryPDF />
       <ImpactSection />
 
       <ProjectCard />
       
       <GallerySection />
-      
-      {/* <ParntersSection /> */}
+
+      <PartnersSection />
 
       <TestimonialSection />
 
