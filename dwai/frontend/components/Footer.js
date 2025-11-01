@@ -36,7 +36,7 @@ export default function Footer() {
 
   return (
     <footer
-      className="relative bg-gradient-to-br from-purple-800 via-purple-700 to-pink-700 text-white overflow-hidden mt-24"
+      className="relative bg-gradient-to-br from-purple-800 via-purple-700 to-pink-700 text-white overflow-hidden mt-14"
       role="contentinfo"
     >
       {/* ✨ Floating Light Glow */}

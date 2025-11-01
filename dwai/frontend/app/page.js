@@ -30,14 +30,14 @@ export default async function Home() {
       <AboutSection />
       <FeatureSection
         heading="Our Mission"
-        text="to empower Deaf women and girls to access sexual and reproductive health, and rights (SRHR) services, for the promotion of an inclusive society."
+        text="To empower Deaf Women and girls to access sexual and reproductive health and rights ( SRHR ) services, for the promotion of an inclusive society."
         bgImage={"/assets/images/dwai_picture.jpeg"}
       />
       <FeatureSection
         heading="Our Vision"
-        text="to create a society where sexual and reproductive health and rights (SRHR) information and services are accessible to Deaf women and girls without any form of barrier or exclusion."
+        text="A society where sexual and reproductive health and rights (SRHR) information and services are accessible to Deaf Women and girls, without any form of barriers or exclusion."
         bgImage={"/assets/images/dwai_picture.jpeg"}
-        reverse
+        reverse={true}
       />
       <ImpactSection />
 

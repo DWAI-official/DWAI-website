@@ -80,7 +80,7 @@ export default function Hero() {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-purple-900/70"></div>
 
-          <div className="relative pt-80 z-10 flex flex-col items-center justify-center text-center h-full px-6">
+          <div className="relative pt-40 z-10 flex flex-col items-center justify-center text-center h-full px-6">
             <motion.h1
               className="text-4xl md:text-6xl font-extrabold mb-4 leading-tight drop-shadow-lg"
               initial={{ y: 20, opacity: 0 }}
