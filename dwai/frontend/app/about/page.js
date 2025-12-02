@@ -5,7 +5,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { getTeams, getStrapiMedia } from "@/lib/strapi";
+import { getTeams, getStrapiMedia } from "../lib/strapi";
 import { FaHandsHelping, FaGraduationCap, FaHeartbeat } from "react-icons/fa";
 
 export default function About() {
