@@ -36,7 +36,7 @@ export default function Footer() {
 
   return (
     <footer
-      className="relative bg-gradient-to-br from-purple-800 via-purple-700 to-pink-700 text-white overflow-hidden mt-14"
+      className="relative bg-gradient-to-br from-purple-800 via-purple-700 to-pink-700 text-white overflow-hidden yt-14"
       role="contentinfo"
     >
       {/* ✨ Floating Light Glow */}
@@ -108,7 +108,7 @@ export default function Footer() {
             Contact Us
           </h4>
           <address className="not-italic text-purple-100 text-sm leading-relaxed">
-            B5, Suite U04 & U05, P&D Plaza,  
+            P&D Plaza,  
             Beside Best Buyer Supermarket, Kuje, Abuja-FCT  
           </address>
           <p className="mt-2 text-sm">

@@ -1,31 +1,37 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-
-const partners = [
-  { name: "AAD", logo: "/assets/images/AAD.jpeg" },
-  { name: "Chanani Hill", logo: "/assets/images/chananhill.jpeg" },
-  { name: "DJP", logo: "/assets/images/DJP.png" },
-  { name: "DRF", logo: "/assets/images/DRF.png" },
-  { name: "DWAN", logo: "/assets/images/DWAN.jpeg" },
-  { name: "JONAPWD", logo: "/assets/images/JONAPWD.png" },
-  { name: "FMHSW", logo: "/assets/images/Ministry.jpeg" },
-  { name: "NNAD", logo: "/assets/images/NNAD.jpeg" },
-  { name: "MSI", logo: "/assets/images/MSI.png" },
-  { name: "MFA", logo: "/assets/images/MFA.png" },
-  { name: "UNFPA", logo: "/assets/images/UNFPA.jpeg" },
-  { name: "HIVOS", logo: "/assets/images/HIVOS.png" },
-  { name: "Education as a Vaccine", logo: "/assets/images/EV.png" },
-];
+import { getPartners, getStrapiMedia } from "../lib/strapi";
 
 export default function PartnersSection() {
+  const [partners, setPartners] = useState([]);
+  const [flatImages, setFlatImages] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const data = await getPartners();
+      setPartners(data);
+
+      // Flatten image arrays (same logic as Gallery)
+      const flatten = data.flatMap((item) =>
+        item.logo?.map((img) => ({
+          url: getStrapiMedia(img.url),
+          alt: img.alt || item.name || "Partner Logo",
+        })) || []
+      );
+
+      setFlatImages(flatten);
+    }
+
+    fetchData();
+  }, []);
+
   return (
     <section className="relative bg-gradient-to-br from-purple-50 via-white to-pink-50 py-20 overflow-hidden">
-      {/* Floating background accents */}
-      <div className="absolute top-10 left-10 w-32 h-32 bg-purple-200/30 rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-10 right-10 w-40 h-40 bg-pink-200/30 rounded-full blur-3xl animate-pulse"></div>
 
+      {/* Header */}
       <div className="max-w-7xl mx-auto text-center px-4 relative z-10">
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
@@ -46,39 +52,47 @@ export default function PartnersSection() {
           accessibility, and inclusive innovation.
         </motion.p>
 
-        {/* Infinite Scrolling Partner Logos */}
+        {/* Scrolling Logos */}
         <div className="relative w-full overflow-hidden">
           <motion.div
-            className="flex gap-10 animate-scroll-x whitespace-nowrap"
-            aria-label="Scrolling list of partner logos"
+            className="flex gap-12 animate-scroll-x whitespace-nowrap"
+            aria-label="Scrolling partner logos"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 1 }}
           >
-            {[...partners, ...partners].map((partner, index) => (
-              <motion.div
-                key={index}
-                whileHover={{ scale: 1.05 }}
-                className="flex flex-col items-center justify-center w-44 shrink-0 text-center cursor-pointer transition-transform duration-300"
-              >
-                <div className="relative h-20 w-36 mb-3 drop-shadow-md rounded-md overflow-hidden bg-white p-2">
-                  <Image
-                    src={partner.logo}
-                    alt={`${partner.name} logo`}
-                    fill
-                    className="object-contain transition-transform duration-500 hover:scale-105"
-                  />
-                </div>
-                <p className="text-sm text-gray-800 font-medium">{partner.name}</p>
-              </motion.div>
-            ))}
+            {partners.flatMap((partner) =>
+              partner.logo?.map((img) => {
+                const imageUrl = getStrapiMedia(img.url);
+
+                return (
+                  <motion.div
+                    key={img.id}
+                    whileHover={{ scale: 1.05 }}
+                    className="flex flex-col items-center justify-center w-44 shrink-0 text-center cursor-pointer"
+                  >
+                    {/* Logo Box */}
+                    <div className="relative h-20 w-36 mb-3 shadow-md rounded-md overflow-hidden bg-white p-2">
+                      <Image
+                        src={imageUrl}
+                        alt={img.alt || partner.name}
+                        fill
+                        className="object-contain transition-transform duration-500 hover:scale-105"
+                        unoptimized
+                      />
+                    </div>
+
+                    {/* Partner Name */}
+                    <p className="text-sm text-gray-900 font-semibold">
+                      {partner.name}
+                    </p>
+                  </motion.div>
+                );
+              })
+            )}
           </motion.div>
         </div>
       </div>
-
-      {/* Gradient edges for visual comfort */}
-      <div className="absolute top-0 left-0 w-24 h-full bg-gradient-to-r from-white to-transparent pointer-events-none" />
-      <div className="absolute top-0 right-0 w-24 h-full bg-gradient-to-l from-white to-transparent pointer-events-none" />
     </section>
   );
 }

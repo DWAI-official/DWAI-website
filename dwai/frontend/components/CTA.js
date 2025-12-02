@@ -12,7 +12,7 @@ export default function CTA({
 }) {
   return (
     <section
-      className={`relative py-20 px-6 bg-gradient-to-br ${accentColor} text-white overflow-hidden`}
+      className={`relative px-6 bg-gradient-to-br ${accentColor} text-white overflow-hidden`}
       aria-labelledby="cta-heading"
     >
       {/* Floating glow elements for background depth */}

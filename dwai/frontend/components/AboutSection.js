@@ -33,7 +33,7 @@ export default function AboutSection() {
           className="relative w-full h-96 md:h-[500px] rounded-3xl overflow-hidden shadow-2xl group"
         >
           <Image
-            src="/assets/images/outreach_team.jpg"
+            src="/assets/images/vaccine_4.jpg"
             alt="Deaf women leadership and empowerment event"
             fill
             className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"

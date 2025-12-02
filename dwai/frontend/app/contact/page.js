@@ -1,7 +1,6 @@
 "use client"
 import Head from "next/head";
 import { motion } from "framer-motion";
-import Image from "next/image";
 import {MdFacebook} from "react-icons/md"
 import {CiInstagram} from "react-icons/ci"
 import {CiLinkedin} from "react-icons/ci"
@@ -134,17 +133,17 @@ export default function Contact() {
             </p>
 
             <div>
-                      <h4 className="font-semibold text-white mb-3">Contact</h4>
-                      <p className="text-sm">B5, Suite U04 & U04, P&D Plaza Beside Best Buyer Supermarket, Kuje, Abuja-FCT</p>
-                      <p className="text-sm mt-1">Email: deafwomenaloudinitiatives@gmail.com</p>
+                      <h4 className="font-semibold text-purple-800 mb-3">Contact</h4>
+                      <p className="text-sm text-black">B5, Suite U04 & U04, P&D Plaza Beside Best Buyer Supermarket, Kuje, Abuja-FCT</p>
+                      <p className="text-sm mt-1 text-black">Email: deafwomenaloudinitiatives@gmail.com</p>
                       <div></div>
-                      <div className="flex mt-4 space-x-4">
+                      <div className="flex mt-4 space-x-4 text-purple-800">
                         <FaWhatsapp className="mt-1 inline-block" /> <span className="ml-2"> +234 8037500671</span> | <span className="ml-2">+234 8185056488</span> 
                       </div>
-                      <div className="flex mt-4 space-x-4">
+                      <div className="flex mt-4 space-x-4  text-purple-800">
                         <MdCall className="mt-1 inline-block" /> <span className="ml-2"> +234 8114229969</span>
                       </div>
-                      <div className="flex mt-4 space-x-4">
+                      <div className="flex mt-4 space-x-4  text-purple-800">
                         <a href="https://facebook.com/dwai" aria-label="DWAI Facebook" className="hover:text-purple-400 focus-visible:ring-2 focus-visible:ring-purple-400 rounded-full p-1">
                           <MdFacebook />
                         </a>

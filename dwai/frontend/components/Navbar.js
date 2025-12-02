@@ -13,8 +13,9 @@ export default function Navbar() {
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
-    { name: "Programs", href: "/programs" },
-    { name: "Gallery", href: "/gallery" },
+    // { name: "Programs", href: "/programs" },
+    // { name: "Gallery", href: "/gallery" },
+    // { name: "Service", href: "/service" },
     { name: "Contact", href: "/contact" },
   ];
 
@@ -28,7 +29,7 @@ export default function Navbar() {
       aria-label="Main Navigation"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16 items-center">
+        <div className="flex justify-between h-20 items-center">
           {/* 🌸 Logo Section */}
           <Link
             href="/"
@@ -57,18 +58,18 @@ export default function Navbar() {
               >
                 <Link
                   href={link.href}
-                  className="text-gray-700 hover:text-purple-700 font-medium transition duration-300 focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:rounded-md"
+                  className="text-gray-700 uppercase hover:text-purple-700 font-medium transition duration-300 focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:rounded-md"
                 >
                   {link.name}
                 </Link>
               </motion.div>
             ))}
-            {/* <Link
-              href="/sign-language"
+            <Link
+              href="https://decisive-confidence-d7cd061097.strapiapp.com/admin"
               className="bg-purple-700 text-white px-4 py-2 rounded-full hover:bg-purple-800 focus-visible:ring-2 focus-visible:ring-purple-500 font-semibold transition-all duration-300 shadow-md hover:shadow-lg"
             >
-              Sign Language
-            </Link> */}
+              Admin
+            </Link>
           </div>
 
           {/* 📱 Mobile Menu Toggle */}
@@ -95,7 +96,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-white/90 backdrop-blur-md border-t border-purple-100 px-4 py-4 space-y-3 shadow-lg"
+            className="md:hidden bg-white/90 backdrop-blur-md border-t flex flex-col justify-center items-center border-purple-100 px-4 py-4 space-y-3 shadow-lg"
           >
             {navLinks.map((link, i) => (
               <motion.div
@@ -106,20 +107,20 @@ export default function Navbar() {
               >
                 <Link
                   href={link.href}
-                  className="block text-gray-800 font-medium hover:text-purple-700 focus-visible:ring-2 focus-visible:ring-purple-500 transition"
+                  className="block uppercase text-gray-800 font-medium hover:text-purple-700 focus-visible:ring-2 focus-visible:ring-purple-500 transition"
                   onClick={() => setIsOpen(false)}
                 >
                   {link.name}
                 </Link>
+                <hr className="my-2 border-t border-purple-400 w-100" />
               </motion.div>
             ))}
-            {/* <Link
-              href="/sign-language"
-              className="block bg-purple-700 text-white text-center py-2 rounded-full font-semibold hover:bg-purple-800 focus-visible:ring-2 focus-visible:ring-purple-500 transition"
-              onClick={() => setIsOpen(false)}
+            <Link
+              href="https://decisive-confidence-d7cd061097.strapiapp.com/admin"
+              className="bg-purple-700 text-white px-4 py-2 rounded-full hover:bg-purple-800 focus-visible:ring-2 focus-visible:ring-purple-500 font-semibold transition-all duration-300 shadow-md hover:shadow-lg"
             >
-              Sign Language
-            </Link> */}
+              Admin
+            </Link>
           </motion.div>
         )}
       </AnimatePresence>

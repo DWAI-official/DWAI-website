@@ -1,47 +1,18 @@
-// pages/programs.js
 "use client"
 import Head from "next/head";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import {fetchStrapiData} from "@/lib/strapi";
 
-export default function Programs() {
-  const programs = [
-    {
-      title: "Leadership & Empowerment",
-      description:
-        "We equip Deaf women and girls with leadership, advocacy, and mentorship skills — helping them raise their voices and influence positive change in their communities.",
-      image:
-        "/assets/images/dwai_picture.jpeg",
-    },
-    {
-      title: "Digital Inclusion & Skills Training",
-      description:
-        "DWAI promotes digital literacy among Deaf women, bridging the gender and accessibility gap in technology through hands-on training and mentorship programs.",
-      image:
-        "/assets/images/dwai_picture.jpeg",
-    },
-    {
-      title: "Gender Equality & Human Rights",
-      description:
-        "We advocate for the rights of Deaf women and girls, ensuring they are represented in decision-making, education, and employment without discrimination.",
-      image:
-        "/assets/images/dwai_picture.jpeg",
-    },
-    {
-      title: "Health & Well-being",
-      description:
-        "Our programs focus on mental health awareness, reproductive health education, and support networks for Deaf women to live healthy, confident lives.",
-      image:
-        "/assets/images/dwai_picture.jpeg",
-    },
-    {
-      title: "Community Engagement & Advocacy",
-      description:
-        "DWAI creates inclusive platforms for policy dialogue, public awareness, and social campaigns that center Deaf women’s voices in national conversations.",
-      image:
-        "/assets/images/dwai_picture.jpeg",
-    },
-  ];
+
+export default async function Programs() {
+    const programs = await fetchStrapiData("programs");
+
+  console.log("Programs d:", programs);
+  const programImageUrl =programs?.programImage?.programs?.attributes?.url
+      ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${programs.programImage.programs.attributes.url}`
+      : "/assets/images/outreach_team.jpg";
+
 
   const timeline = [
     { year: "2018", title: "DWAI Founded", desc: "Deaf women came together to build a movement for equality, empowerment, and inclusion." },
@@ -120,7 +91,9 @@ export default function Programs() {
         </div>
 
         <div className="max-w-6xl mx-auto px-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
-          {programs.map((program, index) => (
+          {[...programs].map((program, index) => (
+
+            // const {Title, slug, description, image} = program.attributes;
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 30 }}
@@ -129,18 +102,18 @@ export default function Programs() {
               className="bg-white rounded-2xl shadow-md hover:shadow-xl overflow-hidden transition-all duration-300"
             >
               <Image
-                src={program.image}
-                alt={program.title}
+                src={programImageUrl}
+                alt={program.Title}
                 width={400}
                 height={300}
                 className="w-full h-56 object-cover"
               />
               <div className="p-6">
                 <h3 className="text-xl font-semibold text-purple-800 mb-3">
-                  {program.title}
+                  {program.Title}
                 </h3>
                 <p className="text-gray-700 leading-relaxed">
-                  {program.description}
+                  {program.Description}
                 </p>
               </div>
             </motion.div>
@@ -156,7 +129,7 @@ export default function Programs() {
           </h2>
 
           <div className="relative border-l-4 border-purple-700 ml-6">
-            {timeline.map((item, index) => (
+            {timeline?.map((item, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, x: -50 }}
