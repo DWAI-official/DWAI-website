@@ -7,8 +7,8 @@ import ImpactSection from "../components/ImpactSection";
 import ProjectCard from "../components/ProjectCard";
 import GallerySection from "../components/GallerySection";
 import PartnersSection from "../components/PartnersSection";
-import TestimonialSection from "../components/TestimonialSection";
-import CTA from "../components/CTA";
+// import TestimonialSection from "../components/TestimonialSection";
+// import CTA from "../components/CTA";
 
 import { fetchStrapiData, getPartners } from "../lib/strapi";
 

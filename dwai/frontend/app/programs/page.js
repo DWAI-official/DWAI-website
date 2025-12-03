@@ -2,7 +2,7 @@
 import Head from "next/head";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import {fetchStrapiData} from "../lib/strapi";
+import {fetchStrapiData} from "../../lib/strapi";
 
 
 export default async function Programs() {

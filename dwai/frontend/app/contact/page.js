@@ -143,7 +143,7 @@ export default function Contact() {
                       <div className="flex mt-4 space-x-4  text-purple-800">
                         <MdCall className="mt-1 inline-block" /> <span className="ml-2"> +234 8114229969</span>
                       </div>
-                      <div className="flex mt-4 space-x-4  text-purple-800">
+                      <div className="flex mt-4 sfpace-x-4  text-purple-800">
                         <a href="https://facebook.com/dwai" aria-label="DWAI Facebook" className="hover:text-purple-400 focus-visible:ring-2 focus-visible:ring-purple-400 rounded-full p-1">
                           <MdFacebook />
                         </a>
