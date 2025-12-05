@@ -1,12 +1,12 @@
 // 📌 Use only your live Strapi Cloud URL
-export const STRAPI_URL = "https://decisive-confidence-d7cd061097.strapiapp.com";
+export const NEXT_PUBLIC_STRAPI_URL = "https://decisive-confidence-d7cd061097.strapiapp.com";
 
 /**
  * 🔵 Universal Strapi Fetcher
  */
 export async function fetchStrapiData(endpoint) {
   const url = `${STRAPI_URL}/api/${endpoint}?populate=*`;
-  console.log("Fetching from Strapi:", url);
+  // console.log("Fetching from Strapi:", url);
 
   try {
     const res = await fetch(url, {
