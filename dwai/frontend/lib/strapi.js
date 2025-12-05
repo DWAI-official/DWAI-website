@@ -10,9 +10,8 @@ export async function fetchStrapiData(endpoint) {
 
   try {
     const res = await fetch(url, {
-      // ❗ Vercel-compatible caching
       next: { revalidate: 60 },
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json" }
     });
 
     if (!res.ok) throw new Error(`Failed to fetch ${endpoint}`);
@@ -26,11 +25,27 @@ export async function fetchStrapiData(endpoint) {
 }
 
 /**
- * 🔵 Convert relative Strapi URL → absolute
+ * Convert Strapi relative URL → absolute URL
  */
 export function getStrapiMedia(url) {
   if (!url) return null;
   return url.startsWith("http") ? url : `${STRAPI_URL}${url}`;
+}
+
+/**
+ * Normalize Strapi media fields
+ */
+function normalizeImage(imageField) {
+  const images = imageField?.data || imageField || [];
+
+  return Array.isArray(images)
+    ? images.map((img) => ({
+        id: img.id,
+        url: getStrapiMedia(img.url),
+        alt: img.alternativeText || "Image",
+        caption: img.caption || ""
+      }))
+    : [];
 }
 
 /**
@@ -39,7 +54,7 @@ export function getStrapiMedia(url) {
 export async function getGallery() {
   try {
     const res = await fetch(`${STRAPI_URL}/api/galleries?populate=image`, {
-      next: { revalidate: 60 },
+      next: { revalidate: 60 }
     });
 
     const json = await res.json();
@@ -49,15 +64,7 @@ export async function getGallery() {
       id: item.id,
       caption: item.caption || "",
       type: item.type || "",
-      image:
-        item.image?.map((img) => ({
-          id: img.id,
-          url: getStrapiMedia(img.url),
-          alt: img.alternativeText || "Gallery Image",
-          caption: img.caption || "",
-          width: img.width,
-          height: img.height,
-        })) || [],
+      image: normalizeImage(item.image)
     }));
   } catch (error) {
     console.error("Gallery fetch error:", error);
@@ -71,7 +78,7 @@ export async function getGallery() {
 export async function getPartners() {
   try {
     const res = await fetch(`${STRAPI_URL}/api/partners?populate=*`, {
-      next: { revalidate: 60 },
+      next: { revalidate: 60 }
     });
 
     const json = await res.json();
@@ -80,13 +87,7 @@ export async function getPartners() {
     return items.map((partner) => ({
       id: partner.id,
       name: partner.Title || partner.name || "Unnamed Partner",
-      logo:
-        partner.logo?.map((img) => ({
-          id: img.id,
-          url: getStrapiMedia(img.url),
-          alt: img.alternativeText || partner.name,
-          caption: img.caption || "",
-        })) || [],
+      logo: normalizeImage(partner.logo)
     }));
   } catch (error) {
     console.error("Partners fetch error:", error);
@@ -100,7 +101,7 @@ export async function getPartners() {
 export async function getTeams() {
   try {
     const res = await fetch(`${STRAPI_URL}/api/teams?populate=image`, {
-      next: { revalidate: 60 },
+      next: { revalidate: 60 }
     });
 
     const json = await res.json();
@@ -110,12 +111,7 @@ export async function getTeams() {
       id: item.id,
       name: item.title || item.Name,
       position: item.role || "Team Member",
-      image:
-        item.image?.map((img) => ({
-          id: img.id,
-          url: getStrapiMedia(img.url),
-          alt: img.alternativeText || item.name,
-        })) || [],
+      image: normalizeImage(item.image)
     }));
   } catch (error) {
     console.error("Teams fetch error:", error);
@@ -129,7 +125,7 @@ export async function getTeams() {
 export async function getPrograms() {
   try {
     const res = await fetch(`${STRAPI_URL}/api/programs?populate=image`, {
-      next: { revalidate: 60 },
+      next: { revalidate: 60 }
     });
 
     const json = await res.json();
@@ -139,15 +135,8 @@ export async function getPrograms() {
       id: program.id,
       Title: program.Title || "Untitled Program",
       Description: program.Description || "",
-      Date: program.Date || null,
       slug: program.slug || String(program.id),
-      image:
-        program.image?.map((img) => ({
-          id: img.id,
-          url: getStrapiMedia(img.url),
-          alt: img.alternativeText || program.Title,
-          caption: img.caption || "",
-        })) || [],
+      image: normalizeImage(program.image)
     }));
   } catch (error) {
     console.error("Programs fetch error:", error);
