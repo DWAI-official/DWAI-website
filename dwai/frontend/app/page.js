@@ -20,6 +20,20 @@ export default async function Home() {
   const galleries = await fetchStrapiData("galleries");
   const partners = await getPartners();
 
+ 
+
+const sampleImages = [
+  { url: "/assets/images/DWAI_lafia.jpg", alt: "DWAI Training" },
+  { url: "/assets/images/pad.jpg", alt: "Outreach Program" },
+  { url: "/assets/images/pad_7.jpg", alt: "Team" },
+  { url: "/assets/images/IDSL.jpg", alt: "Team" },
+  { url: "/assets/images/vaccine_4.jpg", alt: "Team" },
+  { url: "/assets/images/dwai_picture1.jpg", alt: "Team" },
+  { url: "/assets/images/girl_day.jpg", alt: "Team" },
+  { url: "/assets/images/outreach_team.jpg", alt: "Team" },
+];
+
+
   return (
     <main className="overflow-hidden">
       <Hero data={hero} />
@@ -38,7 +52,9 @@ export default async function Home() {
       <GlossaryPDF />
       <ImpactSection />
       <ProjectCard />
-      <GallerySection data={galleries} />
+      <GallerySection 
+      images={sampleImages} 
+      />
       <PartnersSection data={partners} />
       {/* <TestimonialSection /> */}
       {/* <CTA

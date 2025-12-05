@@ -7,7 +7,7 @@ const stats = [
   { number: 10, label: "States Reached", icon: Globe, suffix: "+" },
   { number: 2000, label: "Deaf Women Trained", icon: Users, suffix: "+" },
   { number: 20, label: "Community Projects", icon: Sparkles, suffix: "+" },
-  { number: 15, label: "Partnerships Formed", icon: Heart, suffix: "+" },
+  { number: 6, label: "Partnerships Formed", icon: Heart, suffix: "+" },
 ];
 
 export default function ImpactSection() {

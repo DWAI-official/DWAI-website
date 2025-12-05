@@ -14,7 +14,7 @@ export default function Navbar() {
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
     // { name: "Programs", href: "/programs" },
-    // { name: "Gallery", href: "/gallery" },
+    { name: "Gallery", href: "/gallery" },
     // { name: "Service", href: "/service" },
     { name: "Contact", href: "/contact" },
   ];
@@ -64,12 +64,12 @@ export default function Navbar() {
                 </Link>
               </motion.div>
             ))}
-            <Link
+            {/* <Link
               href="https://decisive-confidence-d7cd061097.strapiapp.com/admin"
               className="bg-purple-700 text-white px-4 py-2 rounded-full hover:bg-purple-800 focus-visible:ring-2 focus-visible:ring-purple-500 font-semibold transition-all duration-300 shadow-md hover:shadow-lg"
             >
               Admin
-            </Link>
+            </Link> */}
           </div>
 
           {/* 📱 Mobile Menu Toggle */}
@@ -115,12 +115,12 @@ export default function Navbar() {
                 <hr className="my-2 border-t border-purple-400 w-100" />
               </motion.div>
             ))}
-            <Link
+            {/* <Link
               href="https://decisive-confidence-d7cd061097.strapiapp.com/admin"
               className="bg-purple-700 text-white px-4 py-2 rounded-full hover:bg-purple-800 focus-visible:ring-2 focus-visible:ring-purple-500 font-semibold transition-all duration-300 shadow-md hover:shadow-lg"
             >
               Admin
-            </Link>
+            </Link> */}
           </motion.div>
         )}
       </AnimatePresence>
