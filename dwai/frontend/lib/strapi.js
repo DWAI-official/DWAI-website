@@ -1,7 +1,5 @@
 // 📌 Use only your live Strapi Cloud URL
-export const STRAPI_URL =
-  process.env.NEXT_PUBLIC_STRAPI_URL ||
-  "https://decisive-confidence-d7cd061097.strapiapp.com";
+export const STRAPI_URL = "https://decisive-confidence-d7cd061097.strapiapp.com";
 
 /**
  * 🔵 Universal Strapi Fetcher
