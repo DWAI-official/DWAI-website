@@ -6,6 +6,7 @@ import {CiInstagram} from "react-icons/ci"
 import {CiLinkedin} from "react-icons/ci"
 import {FaWhatsapp} from "react-icons/fa"
 import {MdCall} from "react-icons/md"
+import Image from "next/image";
 
 export default function Contact() {
   return (
@@ -19,21 +20,17 @@ export default function Contact() {
       </Head>
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-purple-800 to-pink-700 text-white py-20 text-center overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/assets/images/dwai_picture.jpeg')] bg-cover bg-center opacity-20"></div>
-        <motion.div
-          className="relative z-10 max-w-3xl mx-auto px-6"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-        >
-          <h1 className="text-5xl font-extrabold mb-4">Get in Touch </h1>
-          <p className="text-lg text-gray-100 leading-relaxed">
-            Whether you’re a Deaf woman seeking support, a partner who believes in inclusion,
-            or someone inspired by our mission — we’d love to hear from you.
-          </p>
-        </motion.div>
-      </section>
+        <section className="relative h-[80vh] flex items-center justify-center bg-purple-900 text-white text-center overflow-hidden">
+        <Image src="/assets/images/dwai_picture1.jpg" alt="Deaf women together smiling" fill className="object-cover opacity-40" />              <div className="relative z-10 max-w-3xl px-6">
+                <motion.h1 className="text-5xl md:text-6xl font-extrabold leading-tight drop-shadow-lg" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }}>
+                  Contact <span className="text-pink-300">Page</span>
+                </motion.h1>
+                <motion.p className="mt-6 text-lg text-gray-100" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3, duration: 1 }}>
+                  Whether you’re a Deaf woman seeking support, a partner who believes in inclusion,
+            or someone inspired by our mission — we’d love to hear from you
+                </motion.p>
+              </div>
+          </section>
 
       {/* Contact Section */}
       <section className="py-4 bg-gray-50 px-6 md:px-16">

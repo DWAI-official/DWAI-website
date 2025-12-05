@@ -311,10 +311,10 @@ export default function AboutPage() {
 
       {/* Hero Section */}
       <section className="relative h-[80vh] flex items-center justify-center bg-purple-900 text-white text-center overflow-hidden">
-        <Image src="/assets/images/hellen_2.jpg" alt="Deaf women together smiling" fill className="object-cover opacity-40" />
+        <Image src="/assets/images/dwai_picture1.jpg" alt="Deaf women together smiling" fill className="object-cover opacity-40" />
         <div className="relative z-10 max-w-3xl px-6">
           <motion.h1 className="text-5xl md:text-6xl font-extrabold leading-tight drop-shadow-lg" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }}>
-            Empowering <span className="text-pink-300">Deaf Women</span> to Lead, Learn, and Inspire
+            About <span className="text-pink-300">Us Page</span>
           </motion.h1>
           <motion.p className="mt-6 text-lg text-gray-100" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3, duration: 1 }}>
             DWAI ensures no Deaf woman is left behind — through advocacy, education, and inclusion.

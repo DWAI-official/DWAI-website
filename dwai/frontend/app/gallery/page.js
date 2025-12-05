@@ -148,26 +148,17 @@ export default function GalleryPage() {
     <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 pb-20">
 
       {/* HERO SECTION — PREMIUM GRADIENT */}
-      <section className="relative h-[45vh] flex items-center justify-center text-white overflow-hidden bg-gradient-to-br from-purple-700 via-pink-600 to-red-500">
-        <motion.div
-          className="absolute w-[500px] h-[500px] bg-white/20 blur-3xl rounded-full -top-40 -left-40 opacity-40 animate-pulse"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.3 }}
-        ></motion.div>
-
-        <motion.div
-          className="absolute w-[350px] h-[350px] bg-orange-300/30 blur-3xl rounded-full -bottom-20 -right-20 opacity-40 animate-ping"
-        ></motion.div>
-
-        <motion.h1
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          className="text-4xl md:text-6xl font-extrabold drop-shadow-xl z-10"
-        >
-          DWAI Gallery
-        </motion.h1>
-      </section>
+      <section className="relative h-[80vh] flex items-center justify-center bg-purple-900 text-white text-center overflow-hidden">
+              <Image src="/assets/images/dwai_picture1.jpg" alt="Deaf women together smiling" fill className="object-cover opacity-40" />
+              <div className="relative z-10 max-w-3xl px-6">
+                <motion.h1 className="text-5xl md:text-6xl font-extrabold leading-tight drop-shadow-lg" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }}>
+                  Gallery <span className="text-pink-300"> Page</span>
+                </motion.h1>
+                {/* <motion.p className="mt-6 text-lg text-gray-100" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3, duration: 1 }}>
+                  DWAI ensures no Deaf woman is left behind — through advocacy, education, and inclusion.
+                </motion.p> */}
+              </div>
+            </section>
 
       {/* FILTERS */}
       <div className="flex flex-wrap justify-center gap-3 mt-10 px-4">
