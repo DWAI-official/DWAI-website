@@ -4,8 +4,7 @@
 // import { motion, AnimatePresence } from "framer-motion";
 // import Image from "next/image";
 
-
-// export default function Gallery({data}) {
+// export default function Gallery() {
 //   const [selectedMedia, setSelectedMedia] = useState(null);
 
 //     const galleryImageUrl =
@@ -13,47 +12,47 @@
 //       ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${data.galleryImage.data.attributes.url}`
 //       : "/assets/images/outreach_team.jpg";
 
-  // const galleryItems = [
-  //   {
-  //     type: "image",
-  //     src: "/assets/images/dwai_picture.jpeg",
-  //     alt: "DWAI tech bootcamp participants smiling together",
-  //     caption: "Tech for Deaf Women Bootcamp 2022 — empowering women in digital literacy.",
-  //   },
-  //   {
-  //     type: "image",
-  //     src: "/assets/images/dwai_picture.jpeg",
-  //     alt: "DWAI leadership forum panel discussion",
-  //     caption: "Digital Inclusion & Leadership Forum 2024 in Abuja.",
-  //   },
-  //   {
-  //     type: "video",
-  //     src: "https://web.facebook.com/share/v/16Qc3MoRs3/",
-  //     caption: " Sexual and Reproductive Health and Rights (SRHR)",
-  //   },
-  //   {
-  //     type: "image",
-  //     src: "/assets/images/dwai_picture.jpeg",
-  //     alt: "Deaf women holding advocacy placards",
-  //     caption: "Advocacy outreach in schools and communities, 2019.",
-  //   },
-  //   {
-  //     type: "image",
-  //     src: "/assets/images/dwai_picture.jpeg",
-  //     alt: "DWAI volunteers distributing COVID awareness materials",
-  //     caption: "COVID-19 Deaf awareness response program 2020.",
-  //   },
-  //   {
-  //     type: "video",
-  //     src: "https://web.facebook.com/share/v/1F9np99Nzf/",
-  //     caption: "Interview with Deaf women leaders sharing their stories of resilience.",
-  //   },
-  //   {
-  //     type: "video",
-  //     src: "https://web.facebook.com/share/v/1A1hct3sx7/",
-  //     caption: "Month of International Women’s Day",
-  //   },
-  // ];
+//   const galleryItems = [
+//     {
+//       type: "image",
+//       src: "/assets/images/dwai_picture.jpeg",
+//       alt: "DWAI tech bootcamp participants smiling together",
+//       caption: "Tech for Deaf Women Bootcamp 2022 — empowering women in digital literacy.",
+//     },
+//     {
+//       type: "image",
+//       src: "/assets/images/dwai_picture.jpeg",
+//       alt: "DWAI leadership forum panel discussion",
+//       caption: "Digital Inclusion & Leadership Forum 2024 in Abuja.",
+//     },
+//     {
+//       type: "video",
+//       src: "https://web.facebook.com/share/v/16Qc3MoRs3/",
+//       caption: " Sexual and Reproductive Health and Rights (SRHR)",
+//     },
+//     {
+//       type: "image",
+//       src: "/assets/images/dwai_picture.jpeg",
+//       alt: "Deaf women holding advocacy placards",
+//       caption: "Advocacy outreach in schools and communities, 2019.",
+//     },
+//     {
+//       type: "image",
+//       src: "/assets/images/dwai_picture.jpeg",
+//       alt: "DWAI volunteers distributing COVID awareness materials",
+//       caption: "COVID-19 Deaf awareness response program 2020.",
+//     },
+//     {
+//       type: "video",
+//       src: "https://web.facebook.com/share/v/1F9np99Nzf/",
+//       caption: "Interview with Deaf women leaders sharing their stories of resilience.",
+//     },
+//     {
+//       type: "video",
+//       src: "https://web.facebook.com/share/v/1A1hct3sx7/",
+//       caption: "Month of International Women’s Day",
+//     },
+//   ];
 
 //   return (
 //     <>
