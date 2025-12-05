@@ -236,7 +236,7 @@ export default function About() {
                   <div className="relative border-4 border-purple-800 w-40 h-40 rounded-full mx-auto   overflow-hidden ">
                     <Image
                       src={imageUrl}
-                      alt={img?.alt || member?.title}
+                      alt={member.title}
                       fill
                       className="object-cover"
                       unoptimized
