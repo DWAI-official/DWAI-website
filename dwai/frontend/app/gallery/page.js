@@ -1,4 +1,4 @@
-import { getGallery } from "@/lib/strapi";
+import { getGallery } from "../../lib/strapi";
 import GalleryClient from "./GalleryClient";
 
 export default async function GalleryPage() {
