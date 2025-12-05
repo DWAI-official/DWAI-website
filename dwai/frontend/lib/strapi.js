@@ -5,7 +5,7 @@ export const NEXT_PUBLIC_STRAPI_URL = "https://decisive-confidence-d7cd061097.st
  * 🔵 Universal Strapi Fetcher
  */
 export async function fetchStrapiData(endpoint) {
-  const url = `${STRAPI_URL}/api/${endpoint}?populate=*`;
+  const url = `${NEXT_PUBLIC_STRAPI_URL}/api/${endpoint}?populate=*`;
   // console.log("Fetching from Strapi:", url);
 
   try {
@@ -29,7 +29,7 @@ export async function fetchStrapiData(endpoint) {
  */
 export function getStrapiMedia(url) {
   if (!url) return null;
-  return url.startsWith("http") ? url : `${STRAPI_URL}${url}`;
+  return url.startsWith("http") ? url : `${NEXT_PUBLIC_STRAPI_URL}${url}`;
 }
 
 /**
@@ -53,7 +53,7 @@ function normalizeImage(imageField) {
  */
 export async function getGallery() {
   try {
-    const res = await fetch(`${STRAPI_URL}/api/galleries?populate=image`, {
+    const res = await fetch(`${NEXT_PUBLIC_STRAPI_URL}/api/galleries?populate=image`, {
       next: { revalidate: 60 }
     });
 
@@ -77,7 +77,7 @@ export async function getGallery() {
  */
 export async function getPartners() {
   try {
-    const res = await fetch(`${STRAPI_URL}/api/partners?populate=*`, {
+    const res = await fetch(`${NEXT_PUBLIC_STRAPI_URL}/api/partners?populate=*`, {
       next: { revalidate: 60 }
     });
 
@@ -100,7 +100,7 @@ export async function getPartners() {
  */
 export async function getTeams() {
   try {
-    const res = await fetch(`${STRAPI_URL}/api/teams?populate=image`, {
+    const res = await fetch(`${NEXT_PUBLIC_STRAPI_URL}/api/teams?populate=image`, {
       next: { revalidate: 60 }
     });
 
@@ -124,7 +124,7 @@ export async function getTeams() {
  */
 export async function getPrograms() {
   try {
-    const res = await fetch(`${STRAPI_URL}/api/programs?populate=image`, {
+    const res = await fetch(`${NEXT_PUBLIC_STRAPI_URL}/api/programs?populate=image`, {
       next: { revalidate: 60 }
     });
 
