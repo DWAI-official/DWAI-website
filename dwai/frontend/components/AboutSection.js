@@ -68,7 +68,7 @@ export default function AboutSection() {
             </h2>
           </div>
 
-          <p className="text-gray-700 leading-relaxed text-lg mb-6">
+          <p className="text-gray-700 leading-relaxed text-lg mb-6 text-justify">
             <strong>Deaf Women Aloud Initiative (DWAI)</strong> is an non-government organization founded to amplify the voice of Deaf Women and girls in Nigeria. We are registered with the Corporate Affairs Commission (CAC) and our goals are to reduce the exploitation of Deaf Women, eradicate discrimination, advance social inclusion, and promote the sexual and reproductive health rights of this vulnerable group. 
             At DWAI aim to increase public Awareness and access to health information and services on sensitive issues affecting Deaf Women and girls, in the area of assault, gender based violence, stigmatization, and discrimination. Additionally, We seek to bring together pertinent parties to share ideas in advancing the issues and rights of Deaf Women and girls in the society.
 

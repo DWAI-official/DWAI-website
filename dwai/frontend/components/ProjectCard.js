@@ -188,7 +188,7 @@ export default function ProgramsSection() {
       <div className="relative z-10 text-center mb-14">
         <motion.h2
           id="programs-heading"
-          className="text-4xl md:text-5xl font-extrabold text-purple-800 mb-4"
+          className="text-4xl md:text-5xl font-extrabold text-purple-500 mb-4"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

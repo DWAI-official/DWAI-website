@@ -185,7 +185,7 @@
 
 "use client";
 
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
@@ -195,92 +195,157 @@ import { X, ChevronLeft, ChevronRight } from "lucide-react";
  * Props:
  *   images = [ { url, alt } ]
  */
-export default function Gallery({ images = [] }) {
-  const [index, setIndex] = useState(null);
 
-  const nextImage = () => setIndex((prev) => (prev + 1) % images.length);
-  const prevImage = () => setIndex((prev) => (prev - 1 + images.length) % images.length);
 
+const SAMPLE_GALLERY = [
+  {
+    src: "/assets/images/dwai_picture1.jpg",
+    alt: "DWAI Bootcamp participants smiling",
+    caption: "Tech for Deaf Women Bootcamp 2022",
+  },
+  {
+    src: "/assets/images/dwai_picture2.jpg",
+    alt: "Leadership forum panel discussion",
+    caption: "Digital Inclusion & Leadership Forum 2024",
+  },
+  {
+    src: "/assets/images/dwai_picture3.jpg",
+    alt: "Deaf women holding advocacy placards",
+    caption: "Advocacy outreach 2019",
+  },
+  {
+    src: "/assets/images/dwai_picture4.jpg",
+    alt: "Volunteers distributing COVID awareness materials",
+    caption: "COVID-19 Awareness Program 2020",
+  },
+  {
+    src: "/assets/images/dwai_picture5.jpg",
+    alt: "Girls celebrating SRHR workshop",
+    caption: "SRHR Workshop 2023",
+  },
+];
+export default function Gallery({ galleryData = SAMPLE_GALLERY }) {
+  const [selectedIndex, setSelectedIndex] = useState(null);
+  const [autoPlay, setAutoPlay] = useState(true);
+  
+    // Auto-play carousel in lightbox
+    useEffect(() => {
+      if (autoPlay && selectedIndex !== null) {
+        const timer = setInterval(() => {
+          setSelectedIndex((prev) => (prev + 1) % galleryData.length);
+        }, 4000);
+        return () => clearInterval(timer);
+      }
+    }, [autoPlay, selectedIndex, galleryData.length]);
+  
   return (
     <section className="relative py-16 px-6">
       {/* Decorative Gradient Orbs */}
-      <div className="absolute top-20 left-10 w-40 h-40 bg-purple-900/40 blur-3xl rounded-full -z-10"></div>
+      <div className="absolute w-40 h-40 bg-purple-900/40 blur-3xl rounded-full -z-10"></div>
       <div className="absolute bottom-10 right-10 w-60 h-60 bg-purple-300/40 blur-3xl rounded-full -z-10"></div>
-
-      {/* Gallery Masonry Grid */}
-      <div className="columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4 max-w-6xl mx-auto">
-        {images.map((img, i) => (
-          <motion.div
-            key={i}
-            whileHover={{ scale: 1.03 }}
-            transition={{ type: "spring", stiffness: 200 }}
-            className="relative overflow-hidden rounded-2xl shadow-lg cursor-pointer group"
-            onClick={() => setIndex(i)}
-          >
-            {/* Soft hover overlay */}
-            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300"></div>
-
-            {/* Zoom effect */}
-            <Image
-              src={img.url}
-              alt={img.alt || "gallery"}
-              width={600}
-              height={500}
-              className="w-full rounded-2xl object-cover transition-transform duration-700 group-hover:scale-110"
-              unoptimized
-            />
-          </motion.div>
-        ))}
+      <div className="relative z-10 text-center max-w-3xl mx-auto px-4">
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="text-4xl md:text-5xl font-extrabold text-purple-500 my-10"
+        >
+          Our Gallery
+        </motion.h2>
       </div>
+      {/* Gallery Masonry Grid */}
+      <section id="gallery">
+              <div className="max-w-6xl mx-auto px-6">
+                <motion.h2
+                  className="text-3xl md:text-4xl font-bold text-purple-800 text-center mb-12"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8 }}
+                >
+                  Moments that Inspire
+                </motion.h2>
+      
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                  {galleryData.map((item, index) => (
+                    <motion.div
+                      key={index}
+                      className="relative group rounded-xl overflow-hidden shadow-lg cursor-pointer"
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.8, delay: index * 0.1 }}
+                      onClick={() => setSelectedIndex(index)}
+                    >
+                      <Image
+                        src={item.src}
+                        alt={item.alt}
+                        width={400}
+                        height={300}
+                        className="object-cover w-full h-64 group-hover:scale-110 transition-transform duration-500"
+                      />
+                      <motion.div
+                        className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition duration-500"
+                      >
+                        <p className="text-white font-semibold text-center px-3">{item.caption}</p>
+                      </motion.div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </section>
+
 
       {/* Lightbox Modal */}
       <AnimatePresence>
-        {index !== null && (
+        {selectedIndex !== null && (
           <motion.div
-            className="fixed inset-0 bg-white/20 backdrop-blur-sm flex items-center justify-center z-[999]"
+            className="fixed inset-0 bg-black/90 backdrop-blur-sm flex items-center justify-center z-50 p-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Gallery lightbox"
           >
-
-            {/* Lightbox Container */}
             <motion.div
-              className="relative w-full max-w-4xl mx-3"
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.8, opacity: 0 }}
+              className="relative max-w-5xl w-full mx-auto"
+              initial={{ scale: 0.9 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.9 }}
+              transition={{ duration: 0.3 }}
             >
-              {/* Close Button */}
-              <button
-                onClick={() => setIndex(null)}
-                className="absolute -top-12 right-0 bg-purple-700 text-white p-2 rounded-full shadow-xl hover:scale-110 transition"
-              >
-                <X />
-              </button>
-
-              {/* Image */}
               <Image
-                src={images[index].url}
-                alt={images[index].alt}
-                width={1000}
-                height={800}
-                className="rounded-2xl object-contain w-full max-h-[80vh] shadow-2xl"
-                unoptimized
+                src={galleryData[selectedIndex].src}
+                alt={galleryData[selectedIndex].alt}
+                width={900}
+                height={600}
+                className="w-full max-h-[80vh] object-contain rounded-xl shadow-lg"
               />
 
-              {/* Navigation Buttons */}
+              {/* Caption */}
+              <p className="text-white text-center mt-4">{galleryData[selectedIndex].caption}</p>
+
+              {/* Close */}
               <button
-                onClick={prevImage}
-                className="absolute left-3 top-1/2 -translate-y-1/2 bg-purple-700/70 backdrop-blur-xl p-3 rounded-full shadow  hover:bg-white text-purple-700 transition"
+                onClick={() => setSelectedIndex(null)}
+                className="absolute top-4 right-4 bg-white text-black w-8 h-8 rounded-full flex items-center justify-center focus-visible:ring-2 focus-visible:ring-white"
               >
-                <ChevronLeft className="w-6 h-6 text-white" />
+                <X className="w-5 h-5" />
               </button>
 
+              {/* Prev */}
               <button
-                onClick={nextImage}
-                className="absolute right-3 top-1/2 -translate-y-1/2 bg-purple-700/70 backdrop-blur-xl p-3 rounded-full shadow hover:text-purple-700 hover:bg-white transition"
+                onClick={() => setSelectedIndex((selectedIndex - 1 + galleryData.length) % galleryData.length)}
+                className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 text-white p-3 rounded-full hover:bg-black/70"
               >
-                <ChevronRight className="w-6 h-6 text-white" />
+                <ChevronLeft className="w-6 h-6" />
+              </button>
+
+              {/* Next */}
+              <button
+                onClick={() => setSelectedIndex((selectedIndex + 1) % galleryData.length)}
+                className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 text-white p-3 rounded-full hover:bg-black/70"
+              >
+                <ChevronRight className="w-6 h-6" />
               </button>
             </motion.div>
           </motion.div>

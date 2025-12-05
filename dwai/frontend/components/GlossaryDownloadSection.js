@@ -44,10 +44,10 @@ export default function GlossaryDownloadSection() {
         >
           <h2
             id="glossary-heading"
-            className="text-4xl md:text-5xl font-extrabold text-purple-800 leading-tight mb-6 tracking-tight"
+            className="text-4xl md:text-5xl font-extrabold text-purple-600 leading-tight mb-6 tracking-tight"
           >
             SRHR Glossary  
-            <span className="text-purple-600 block">
+            <span className="text-purple-500 block">
               for Deaf Empowerment
             </span>
           </h2>
