@@ -48,7 +48,7 @@ export default function GlossaryDownloadSection() {
           >
             SRHR Glossary  
             <span className="text-purple-500 block">
-              for Deaf Empowerment
+              for Deaf Women and Girls Access to Health Information
             </span>
           </h2>
 

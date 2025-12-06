@@ -69,8 +69,8 @@ import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
 // Sample Hero & Gallery
 const SAMPLE_HERO = {
-  Title: "Empowering Deaf Women to Lead & Inspire",
-  subtitle: "Join DWAI in amplifying Deaf women’s voices through education, advocacy, and inclusion.",
+  Title: "Empowering Deaf Women Through Sexual and Reproductive Health Education",
+  subtitle: "Join DWAI in our mission to educate, advocate, and empower Deaf",
   heroImage: "/assets/images/outreach_team.jpg",
 };
 

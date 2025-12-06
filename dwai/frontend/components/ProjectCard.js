@@ -166,7 +166,7 @@ const programs = [
     link: "/programs/technology",
   },
   {
-    title: "DWAN partned with NNAD to celebrate the International Week of Deaf People 2025",
+    title: "DWAI partnered with NNAD to celebrate the International Week of Deaf People 2025",
     desc: "During the International Week of Deaf People, the Deaf Women Aloud Initiative stood side by side with the Nigeria National Association of the Deaf, stakeholders and the wider Deaf community in a historic rally demanding the official recognition of Nigerian Sign Language (NSL).",
     img: "/assets/images/IDSL.jpg",
     icon: Megaphone,

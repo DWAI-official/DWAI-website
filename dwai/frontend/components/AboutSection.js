@@ -45,8 +45,8 @@ export default function AboutSection() {
             transition={{ duration: 0.6 }}
           >
             <div className="text-white">
-              <h3 className="text-2xl font-semibold mb-1">Deaf Leadership in Action</h3>
-              <p className="text-sm opacity-90">Empowering voices through visibility and technology</p>
+              <h3 className="text-2xl font-semibold mb-1">DWAI Team</h3>
+              <p className="text-sm opacity-90">Empowering voices through Sexual Reproductive and Human Rights</p>
             </div>
           </motion.div>
         </motion.div>

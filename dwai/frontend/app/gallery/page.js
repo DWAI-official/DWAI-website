@@ -25,45 +25,79 @@ const SAMPLE_GALLERY = [
   {
     type: "image",
     category: "image",
-    url: "/assets/images/DWAI_lafia.jpg",
+    url: "/assets/images/program_1.jpg",
     caption: "DWAI Outreach Program – Empowering Deaf Women",
   },
   {
     type: "image",
     category: "image",
-    url: "/assets/images/DRAC1.jpg",
+    url: "/assets/images/program_2.jpg",
     caption: "DWAI Outreach Program – Empowering Deaf Women",
   },
     {
     type: "image",
     category: "image",
-    url: "/assets/images/DRAC2.jpg",
+    url: "/assets/images/program_3.jpg",
     caption: "DWAI Outreach Program – Empowering Deaf Women",
   },
     {
     type: "image",
     category: "image",
-    url: "/assets/images/dwai_picture1.jpg",
+    url: "/assets/images/program_4.jpg",
     caption: "DWAI Outreach Program – Empowering Deaf Women",
   },
     {
     type: "image",
     category: "image",
-    url: "/assets/images/girl_day.jpg",
+    url: "/assets/images/program_5.jpg",
     caption: "DWAI Outreach Program – Empowering Deaf Women",
   },
     {
     type: "image",
     category: "image",
-    url: "/assets/images/IDSL.jpg",
+    url: "/assets/images/program_6.jpg",
     caption: "DWAI Celebrates International Day of Sign Language 2025",
   },
   {
     type: "image",
     category: "events",
-    url: "/assets/images/pad.jpg",
+    url: "/assets/images/program_7.jpg",
     caption: "Women's Leadership Forum 2024",
   },
+    {
+    type: "image",
+    category: "events",
+    url: "/assets/images/program_8.jpg",
+    caption: "Women's Leadership Forum 2024",
+  },
+
+    {
+    type: "image",
+    category: "events",
+    url: "/assets/images/program_9.jpg",
+    caption: "Women's Leadership Forum 2024",
+  },
+
+    {
+    type: "image",
+    category: "events",
+    url: "/assets/images/program_10.jpg",
+    caption: "Women's Leadership Forum 2024",
+  },
+
+    {
+    type: "image",
+    category: "events",
+    url: "/assets/images/program_11.jpg",
+    caption: "Women's Leadership Forum 2024",
+  },
+  //   {
+  //   type: "image",
+  //   category: "events",
+  //   url: "/assets/images/program_12.jpg",
+  //   caption: "Women's Leadership Forum 2024",
+  // },
+
   // {
   //   type: "video",
   //   category: "srhr",
@@ -212,9 +246,9 @@ export default function GalleryPage() {
             )}
 
             {/* Caption Overlay */}
-            <div className="absolute bottom-0 left-0 right-0 bg-black/50 opacity-0 group-hover:opacity-100 text-white text-sm p-2 text-center transition">
+            {/* <div className="absolute bottom-0 left-0 right-0 bg-black/50 opacity-0 group-hover:opacity-100 text-white text-sm p-2 text-center transition">
               {item.caption}
-            </div>
+            </div> */}
           </motion.div>
         ))}
       </div>

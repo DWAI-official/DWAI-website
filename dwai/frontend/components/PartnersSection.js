@@ -127,12 +127,12 @@ const SAMPLE_PARTNERS = [
   },
   {
     id: 5,
-    name: "FMH Ministry of Health Nigeria",
+    name: "Ministry of Health Nigeria (FMoH)",
     logos: ["/assets/images/Ministry.jpeg"],
   },
   {
     id: 6,
-    name: "US Embassy Nigeria",
+    name: "US Embassy",
     logos: ["/assets/images/US.png"],
   },
 

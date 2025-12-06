@@ -293,10 +293,16 @@ import { FaQuoteLeft } from "react-icons/fa";
 
 // Sample Team Data
 const SAMPLE_TEAM = [
-  { id: 1, name: "Mrs.Hellen Beyioke Alase", position: "Founder & CEO", image: "/assets/images/hellen.jpg" },
-  { id: 2, name: "Joseph", position: "M & E Officer & Sign Language Interpreter", image: "/assets/joseph.jpg" },
-  { id: 3, name: "Douglas Izuchukwu", position: "Communication Officer", image: "/assets/images/douglas.jpg" },
-  { id: 4, name: "Ruth Taiwo Ozomah ", position: "Sign Language Interpreter", image: "/assets/ruth.jpg" },
+  { id: 1, name: "Mrs.Hellen Beyioke Alase", position: "Founder & CEO", image: "/assets/teams/hellen.jpg" },
+  { id: 2, name: "Joseph", position: "M & E Officer", image: "/assets/teams/joseph.jpg" },
+  { id: 3, name: "Douglas Izuchukwu", position: "Communication Officer", image: "/assets/teams/douglas.jpg" },
+  { id: 4, name: "Patience Etim", position: "Head of programs", image: "/assets/teams/patience.jpg" },
+  { id: 5, name: "Ruth Taiwo Ozomah ", position: "Assistant Program Officer", image: "/assets/teams/ruth.jpg" },
+  { id: 6, name: "Jadon Paul", position: "Program Manager", image: "/assets/teams/jadon.jpg" },
+  { id: 7, name: "Ekpereamaka Obasi", position: "Head of Human Resource", image: "/assets/teams/Obasi.jpg" },
+  { id: 8, name: "Jane Ameh", position: "Assistant Finance Officer", image: "/assets/teams/jane.jpg" },
+    { id: 9, name: "Dinatu Yahaya", position: "Procurement Officer", image: "/assets/teams/dinatu.jpg" },
+
 ];
 
 // Sample Mission & Vision

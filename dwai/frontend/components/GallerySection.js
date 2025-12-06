@@ -46,7 +46,7 @@
 
 //       {/* Background */}
 //       <motion.div
-//         className="absolute inset-0 bg-[url('/assets/images/pattern-bg.svg')] opacity-5"
+//         className="absolute inset-0 bg-[url('/assets/images/program_1g')] opacity-5"
 //         initial={{ opacity: 0 }}
 //         whileInView={{ opacity: 0.05 }}
 //         transition={{ duration: 1 }}
@@ -199,27 +199,27 @@ import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
 const SAMPLE_GALLERY = [
   {
-    src: "/assets/images/dwai_picture1.jpg",
+    src: "/assets/images/program_1.jpg",
     alt: "DWAI Bootcamp participants smiling",
     caption: "Tech for Deaf Women Bootcamp 2022",
   },
   {
-    src: "/assets/images/dwai_picture2.jpg",
+    src: "/assets/images/program_2.jpg",
     alt: "Leadership forum panel discussion",
     caption: "Digital Inclusion & Leadership Forum 2024",
   },
   {
-    src: "/assets/images/dwai_picture3.jpg",
+    src: "/assets/images/program_3.jpg",
     alt: "Deaf women holding advocacy placards",
     caption: "Advocacy outreach 2019",
   },
   {
-    src: "/assets/images/dwai_picture4.jpg",
+    src: "/assets/images/program_4.jpg",
     alt: "Volunteers distributing COVID awareness materials",
     caption: "COVID-19 Awareness Program 2020",
   },
   {
-    src: "/assets/images/dwai_picture5.jpg",
+    src: "/assets/images/program_5.jpg",
     alt: "Girls celebrating SRHR workshop",
     caption: "SRHR Workshop 2023",
   },
@@ -285,7 +285,7 @@ export default function Gallery({ galleryData = SAMPLE_GALLERY }) {
                       <motion.div
                         className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition duration-500"
                       >
-                        <p className="text-white font-semibold text-center px-3">{item.caption}</p>
+                        {/* <p className="text-white font-semibold text-center px-3">{item.caption}</p> */}
                       </motion.div>
                     </motion.div>
                   ))}
@@ -322,7 +322,7 @@ export default function Gallery({ galleryData = SAMPLE_GALLERY }) {
               />
 
               {/* Caption */}
-              <p className="text-white text-center mt-4">{galleryData[selectedIndex].caption}</p>
+              {/* <p className="text-white text-center mt-4">{galleryData[selectedIndex].caption}</p> */}
 
               {/* Close */}
               <button
