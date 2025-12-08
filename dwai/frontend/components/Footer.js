@@ -67,7 +67,7 @@ export default function Footer() {
           </Link>
 
           <p className="text-sm md:text-base leading-relaxed text-purple-100">
-           <strong>Deaf Women Aloud Initiative (DWAI)</strong> is an non-government organization founded to amplify the voice of Deaf Women and girls in Nigeria. We are registered with the Corporate Affairs Commission (CAC) and our goals are to reduce the exploitation of Deaf Women, eradicate discrimination, advance social inclusion, and promote the sexual and reproductive health rights of this vulnerable group. 💜
+           <strong>Deaf Women Aloud Initiative (DWAI)</strong> is an non-government organization founded to amplify the voice of Deaf Women and girls in Nigeria. We are registered with the Corporate Affairs Commission (CAC) and our goals are to reduce the exploitation of Deaf Women, eradicate discrimination, advance social inclusion, and promote the sexual and reproductive health rights of this vulnerable group.
           </p>
         </motion.div>
 
@@ -117,7 +117,7 @@ export default function Footer() {
               href="mailto:deafwomenaloudinitiatives@gmail.com"
               className="hover:text-pink-300 focus-visible:ring-2 focus-visible:ring-pink-300 rounded-sm"
             >
-              deafwomenaloudinitiatives@gmail.com
+              deafwomenaloudinitiative@gmail.com
             </a>
           </p>
 
@@ -164,7 +164,7 @@ export default function Footer() {
             href="https://acclusivo.vercel.app"
             className="underline hover:text-pink-300 focus-visible:ring-2 focus-visible:ring-pink-300 rounded-sm"
           >
-            Acclusivo
+            Victor Oricha
           </Link>
         </p>
       </div>

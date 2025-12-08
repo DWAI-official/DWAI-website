@@ -59,7 +59,7 @@ export default function AboutSection() {
           viewport={{ once: true }}
         >
           <div className="flex items-center gap-3 mb-4">
-            <Heart className="text-pink-600 w-8 h-8 animate-pulse" aria-hidden="true" />
+            {/* <Heart className="text-pink-600 w-8 h-8 animate-pulse" aria-hidden="true" /> */}
             <h2
               id="about-heading"
               className="text-4xl md:text-5xl font-bold text-purple-800"
@@ -78,7 +78,7 @@ export default function AboutSection() {
           <div className="grid grid-cols-3 gap-6 mb-10">
             {[
               { icon: <Users className="w-6 h-6 text-purple-700" />, label: "Community-Driven" },
-              { icon: <VolumeX className="w-6 h-6 text-pink-600" />, label: "Deaf-Led" },
+              { icon: <VolumeX className="w-6 h-6 text-pink-600" />, label: "Women-Led" },
               { icon: <Sparkles className="w-6 h-6 text-yellow-500" />, label: "Impact-Focused" },
             ].map((item, i) => (
               <motion.div

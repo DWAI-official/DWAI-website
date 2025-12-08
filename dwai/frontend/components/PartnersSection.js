@@ -181,7 +181,7 @@ export default function PartnersSection() {
       </div>
 
       {/* Parallax Logo Rows */}
-      <div className="mt-16 space-y-10 relative z-10">
+      <div className="mt-16 flex justify-center items-center flex-col space-y-10 relative z-10">
 
         {/* Row 1 — Scroll Right */}
         <motion.div

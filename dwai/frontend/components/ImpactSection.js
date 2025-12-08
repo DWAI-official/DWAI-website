@@ -79,7 +79,7 @@ export default function ImpactSection() {
           transition={{ delay: 0.8 }}
         >
           Together, we’re not just making numbers — we’re building opportunities, changing lives, 
-          and amplifying Deaf voices across Nigeria 💜
+          and amplifying Deaf voices across Nigeria
         </motion.p>
       </div>
     </section>
