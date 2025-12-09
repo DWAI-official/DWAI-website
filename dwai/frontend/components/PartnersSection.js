@@ -108,32 +108,32 @@ const SAMPLE_PARTNERS = [
   {
     id: 1,
     name: "Disabiliy Rights Fund (DRF)",
-    logos: ["/assets/images/DRF.png"],
+    logos: ["/assets/partners/DRF.png"],
   },
   {
     id: 2,
     name: "AID Foundation",
-    logos: ["/assets/images/AID.jpg"],
+    logos: ["/assets/partners/AID.jpg"],
   },
   {
     id: 3,
     name: "HIVOS",
-    logos: ["/assets/images/HIVOS.png"],
+    logos: ["/assets/partners/HIVOS.png"],
   },
   {
     id: 4,
     name: "Education as a Vaccine (EVA)",
-    logos: ["/assets/images/EV.png"],
+    logos: ["/assets/partners/EV.png"],
   },
   {
     id: 5,
     name: "Ministry of Health Nigeria (FMoH)",
-    logos: ["/assets/images/Ministry.jpeg"],
+    logos: ["/assets/partners/Ministry.jpeg"],
   },
   {
     id: 6,
     name: "US Embassy",
-    logos: ["/assets/images/US.png"],
+    logos: ["/assets/partners/US.png"],
   },
 
 ];
