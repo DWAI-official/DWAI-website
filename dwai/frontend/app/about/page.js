@@ -293,8 +293,8 @@ import { FaQuoteLeft } from "react-icons/fa";
 
 // Sample Team Data
 const SAMPLE_TEAM = [
-  { id: 1, name: "Mrs.Hellen Beyioke Alase", position: "Founder & CEO", image: "/assets/teams/hellen.jpg" },
-  { id: 2, name: "Joseph", position: "M & E Officer", image: "/assets/teams/joseph.jpg" },
+  { id: 1, name: "Hellen Anurika Beyioku-Alase", position: "Founder & CEO", image: "/assets/teams/hellen.jpg" },
+  { id: 2, name: "Collins Joseph", position: "M & E Officer", image: "/assets/teams/joseph.jpg" },
   { id: 3, name: "Douglas Izuchukwu", position: "Communication Officer", image: "/assets/teams/douglas.jpg" },
   { id: 4, name: "Patience Etim", position: "Head of programs", image: "/assets/teams/patience.jpg" },
   { id: 5, name: "Ruth Taiwo Ozomah ", position: "Assistant Program Officer", image: "/assets/teams/ruth.jpg" },
@@ -332,7 +332,7 @@ export default function AboutPage() {
       {/* What is DWAI? */}
       <section className="py-20 px-6 md:px-16 bg-pink-200">
         <motion.div className="max-w-5xl mx-auto text-center" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-          <h2 className="text-4xl font-bold text-purple-800 mb-6">What is DWAI?</h2>
+          <h2 className="text-4xl font-bold text-purple-800 mb-6">Who Are We?</h2>
           <p className="text-gray-700 text-lg leading-relaxed text-justify">
            Deaf Women Aloud Initiative (DWAI) is a women-led, disability-inclusive organization committed to advancing the rights, visibility, and well-being of deaf women and girls across Nigeria. Founded on the belief that every deaf woman deserves dignity, safety, and equal opportunity, DWAI works to eliminate the barriers that limit the participation of deaf women in social, economic, and civic life.
 
