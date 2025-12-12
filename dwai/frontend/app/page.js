@@ -8,10 +8,10 @@ import ProjectCard from "../components/ProjectCard";
 import GallerySection from "../components/GallerySection";
 import PartnersSection from "../components/PartnersSection";
 // import TestimonialSection from "../components/TestimonialSection";
+import DonationSection from "../components/DonationSection";
 // import CTA from "../components/CTA";
 
 import { fetchStrapiData, getPartners } from "../lib/strapi";
-
 export default async function Home() {
   const homepageData = await fetchStrapiData("homepage");
   const hero = homepageData;
@@ -62,6 +62,7 @@ const sampleImages = [
         description="Your support can transform lives. Partner with us to empower Deaf women and girls in Nigeria."
         buttonText="Donate Now"
       /> */}
+      <DonationSection />
     </main>
   );
 }

@@ -69,7 +69,7 @@ import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
 // Sample Hero & Gallery
 const SAMPLE_HERO = {
-  Title: "Empowering Deaf Women Through Sexual and Reproductive Health Education",
+  Title: "Empowering Deaf Women Through",
   subtitle: "Join DWAI in our mission to educate, advocate, and empower Deaf",
   heroImage: "/assets/images/outreach_team.jpg",
 };
@@ -91,12 +91,12 @@ export default function PremiumGallery({ heroData = SAMPLE_HERO }) {
         {/* Hero Text */}
         <div className="absolute inset-0 flex mt-32 flex-col items-center justify-center text-center px-6 z-10">
           <motion.h1
-            className="text-4xl md:text-6xl font-extrabold mb-4 drop-shadow-lg"
+            className="text-4xl md:text-7xl font-extrabold mb-4 drop-shadow-lg"
             initial={{ y: 60, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 1 }}
           >
-            {heroData.Title}
+            {heroData.Title} <span className="text-pink-400">Sexual Reproductive Health Rights</span>
           </motion.h1>
           <motion.p
             className="text-lg md:text-2xl mb-8 max-w-3xl leading-relaxed"
