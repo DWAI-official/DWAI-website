@@ -49,21 +49,23 @@ export default function Navbar() {
           </Link>
 
           {/* 💻 Desktop Navigation */}
-          <div className="hidden md:flex space-x-8 items-center">
+          <ul className="hidden md:flex space-x-8 items-center">
             {navLinks.map((link, i) => (
-              <motion.div
+              <motion.li
                 key={link.name}
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
               >
+
+                
                 <Link
                   href={link.href}
                   className="text-gray-700 uppercase hover:text-purple-700 font-medium transition duration-300 focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:rounded-md"
                 >
                   {link.name}
                 </Link>
-              </motion.div>
+              </motion.li>
             ))}
             {/* <Link
               href="https://decisive-confidence-d7cd061097.strapiapp.com/admin"
@@ -71,7 +73,7 @@ export default function Navbar() {
             >
               Admin
             </Link> */}
-          </div>
+          </ul>
 
           {/* 📱 Mobile Menu Toggle */}
           <button
