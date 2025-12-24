@@ -361,7 +361,7 @@ export default function GalleryPage() {
       {/* =========================
          FEATURED VIDEO
          ========================= */}
-      <section className="max-w-7xl mx-auto px-6 mt-16">
+      {/* <section className="max-w-7xl mx-auto px-6 mt-16">
         <div className="grid md:grid-cols-2 gap-10 items-center">
           <video
             src="/assets/videos/dwai_feature.mp4"
@@ -381,7 +381,7 @@ export default function GalleryPage() {
             </p>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* =========================
          FILTER BUTTONS
@@ -436,14 +436,14 @@ export default function GalleryPage() {
             )}
 
             {/* Category Badge */}
-            <div className="absolute top-3 left-3 bg-purple-700/90 text-white text-xs px-3 py-1 rounded-full">
+            {/* <div className="absolute top-3 left-3 bg-purple-700/90 text-white text-xs px-3 py-1 rounded-full">
               {item.category.toUpperCase()}
-            </div>
+            </div> */}
 
             {/* Caption Overlay */}
-            <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 to-transparent p-4 text-sm text-white opacity-0 group-hover:opacity-100 transition">
+            {/* <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 to-transparent p-4 text-sm text-white opacity-0 group-hover:opacity-100 transition">
               {item.caption}
-            </div>
+            </div> */}
 
             {/* Video Icon */}
             {item.type === "video" && (
