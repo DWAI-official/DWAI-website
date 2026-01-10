@@ -161,7 +161,7 @@ export default function Footer() {
           reserved.
         </p>
         <p className="text-xs mt-1">
-          Designed for accessibility & inclusion • Built with by{" "} 
+          Designed for accessibility & inclusion • Built by{" "} 
           <Link
             href="https://acclusivo.vercel.app"
             className="underline hover:text-pink-300 focus-visible:ring-2 focus-visible:ring-pink-300 rounded-sm"

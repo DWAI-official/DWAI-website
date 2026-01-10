@@ -2,6 +2,7 @@
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import "./globals.css";
+import ScrollUp from "../components/ScrollUp";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -37,6 +38,7 @@ export default function RootLayout({ children }) {
        <Navbar />
         <main className="pt-20 min-h-screen">{children}</main>
         <Footer />
+        <ScrollUp />
       </body>
     </html>
   );
