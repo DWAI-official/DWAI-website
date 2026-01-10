@@ -8,6 +8,8 @@ import { FaWhatsapp } from "react-icons/fa";
 import { MdCall } from "react-icons/md";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import Image from "next/image"
+import PrivacyPopup from "./PrivacyPopUp";
+
 export default function Footer() {
   const socialLinks = [
     {
@@ -168,6 +170,9 @@ export default function Footer() {
           </Link>
         </p>
       </div>
+
+      {/* Privacy Popup */}
+      <PrivacyPopup />
     </footer>
   );
 }
