@@ -139,12 +139,7 @@ const SAMPLE_PARTNERS = [
 ];
 
 export default function PartnersSection() {
-  const [partners, setPartners] = useState([]);
-
-  useEffect(() => {
-    // Load sample data for now
-    setPartners(SAMPLE_PARTNERS);
-  }, []);
+  const [partners, setPartners] = useState(SAMPLE_PARTNERS);
 
   // Create two rows for parallax scrolling
   const row1 = partners.slice(0, Math.ceil(partners.length / 2));

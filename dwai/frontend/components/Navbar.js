@@ -21,11 +21,8 @@ export default function Navbar() {
   ];
 
   return (
-    <motion.nav
+    <nav
       className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-white/80 border-b border-purple-100 shadow-sm"
-      initial={{ y: -80 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
       role="navigation"
       aria-label="Main Navigation"
     >
@@ -127,6 +124,6 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.nav>
+    </nav>
   );
 }

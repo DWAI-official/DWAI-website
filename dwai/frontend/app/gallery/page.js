@@ -244,14 +244,6 @@ const SAMPLE_GALLERY = [
     url: "/assets/programs/digit_37.jpg",
     caption: "Community outreach empowering Deaf women",
   },
-
-
-  // {
-  //   type: "video",
-  //   category: "events",
-  //   url: "/assets/videos/dwai_event_highlight.mp4",
-  //   caption: "Women’s Leadership Forum – Silent Highlights",
-  // },
   {
     type: "image",
     category: "education",
@@ -264,12 +256,18 @@ const SAMPLE_GALLERY = [
     url: "/assets/images/program_7.jpg",
     caption: "Digital Literacy Bootcamp for Deaf Girls",
   },
-  // {
-  //   type: "video",
-  //   category: "advocacy",
-  //   url: "/assets/videos/srhr_awareness.mp4",
-  //   caption: "SRHR Awareness in Sign Language",
-  // },
+  {
+    type: "video",
+    category: "advocacy",
+    url: "https://www.youtube.com/embed/PUbshF8sh1I",
+    caption: "Digital Rights and Safety",
+  },
+  {
+    type: "video",
+    category: "events",
+    url: "https://www.youtube.com/embed/UjS_il_wATA",
+    caption: "Digital Rights & Safety Workshop Highlights",
+  },
 ];
 
 /* =========================
@@ -282,16 +280,11 @@ const FILTERS = [
 ];
 
 export default function GalleryPage() {
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState(SAMPLE_GALLERY);
   const [filter, setFilter] = useState("all");
   const [visibleCount, setVisibleCount] = useState(8);
   const [lightboxIndex, setLightboxIndex] = useState(null);
   const observerRef = useRef(null);
-
-  /* Load sample data */
-  useEffect(() => {
-    setItems(SAMPLE_GALLERY);
-  }, []);
 
   /* Infinite Scroll */
   useEffect(() => {
@@ -322,6 +315,16 @@ export default function GalleryPage() {
     setLightboxIndex((i) => (i + 1) % filtered.length);
   const prevItem = () =>
     setLightboxIndex((i) => (i - 1 + filtered.length) % filtered.length);
+
+  // Helper to extract YouTube ID and get thumbnail
+  const getYouTubeThumbnail = (url) => {
+    const match = url.match(/\/embed\/([a-zA-Z0-9_-]+)/);
+    return match ? `https://img.youtube.com/vi/${match[1]}/hqdefault.jpg` : "";
+  };
+
+  const getAutoplayUrl = (url) => {
+    return url.includes("?") ? `${url}&autoplay=1` : `${url}?autoplay=1`;
+  };
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 pb-20">
@@ -425,13 +428,12 @@ export default function GalleryPage() {
                 className="w-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
             ) : (
-              <video
-                src={item.url}
-                muted
-                autoPlay
-                loop
-                playsInline
-                className="w-full object-cover"
+              <Image
+                src={getYouTubeThumbnail(item.url)}
+                alt={item.caption}
+                width={600}
+                height={500}
+                className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
               />
             )}
 
@@ -484,11 +486,10 @@ export default function GalleryPage() {
                   className="w-full max-h-[80vh] object-contain rounded-xl"
                 />
               ) : (
-                <video
-                  src={filtered[lightboxIndex].url}
-                  controls
-                  autoPlay
-                  className="w-full max-h-[80vh] object-contain rounded-xl"
+                <iframe
+                  src={getAutoplayUrl(filtered[lightboxIndex].url)}
+                  className="w-full h-[60vh] md:h-[70vh] rounded-xl"
+                  allowFullScreen
                 />
               )}
 

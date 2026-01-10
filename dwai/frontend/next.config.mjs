@@ -1,3 +1,5 @@
+import { hostname } from 'os';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   /* config options here */
@@ -8,6 +10,10 @@ const nextConfig = {
         protocol: "http",
         hostname: "decisive-confidence-d7cd061097.strapiapp.com",
         pathname: "/uploads/**",
+      },
+      {
+        hostname: "img.youtube.com",
+        pathname: "/vi/**",
       },
 
     ],

@@ -6,18 +6,42 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight, Play } from "lucide-react";
 
 const SAMPLE_GALLERY = [
+   {
+    year: "2019",
+    type: "image",
+    src: "/assets/programs/digit_3.jpg",
+    caption: "Advocacy outreach for Deaf women rights",
+  },
   {
     year: "2019",
     type: "image",
-    src: "/assets/images/program_3.jpg",
+    src: "/assets/programs/digit_4.jpg",
     caption: "Advocacy outreach for Deaf women rights",
   },
-  // {
-  //   year: "2020",
-  //   type: "video",
-  //   src: "/assets/videos/covid-awareness.mp4",
-  //   caption: "COVID-19 Deaf Awareness Campaign",
-  // },
+  {
+    year: "2019",
+    type: "image",
+    src: "/assets/programs/digit_5.jpg",
+    caption: "Advocacy outreach for Deaf women rights",
+  },
+  {
+    year: "2025",
+    type: "video",
+    src: "https://www.youtube.com/embed/PUbshF8sh1I",
+    caption: "Digital Rights and Safety",
+  },
+  {
+    year: "2024",
+    type: "image",
+    src: "/assets/images/program_2.jpg",
+    caption: "Digital Rights & Safety Workshop",
+  },
+  {
+    year: "2024",
+    type: "video",
+    src: "https://www.youtube.com/embed/UjS_il_wATA",
+    caption: "Digital Rights & Safety Workshop Highlights",
+  },
   {
     year: "2019",
     type: "image",
@@ -169,18 +193,7 @@ const SAMPLE_GALLERY = [
     src: "/assets/images/program_25.jpg",
     caption: "Tech for Deaf Women Bootcamp",
   },
-  // {
-  //   year: "2023",
-  //   type: "video",
-  //   src: "/assets/videos/srhr-training.mp4",
-  //   caption: "SRHR Training in Sign Language",
-  // },
-  {
-    year: "2024",
-    type: "image",
-    src: "/assets/images/program_2.jpg",
-    caption: "Digital Rights & Safety Workshop",
-  },
+
 ];
 
 

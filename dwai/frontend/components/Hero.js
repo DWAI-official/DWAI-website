@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { ShieldCheck, Lock, Globe } from "lucide-react";
+import Link from "next/link";
 
 const SAMPLE_HERO = {
   title: "Digital Rights & Online Safety",
@@ -37,14 +38,16 @@ export default function PremiumHeroLevel3({ heroData = SAMPLE_HERO }) {
           </p>
 
           {/* CTA */}
-          <motion.a
-            href="#about"
+          <motion.div
+            href="/about"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="inline-flex items-center gap-3 bg-white text-purple-800 px-8 py-4 rounded-full font-semibold shadow-xl hover:bg-pink-100 transition"
           >
-            Explore the Training
-          </motion.a>
+            <Link href="/about">
+              Learn More About Our Work
+            </Link>
+          </motion.div>
 
           {/* TRUST ICONS */}
           <div className="mt-10 flex gap-8 text-purple-100">
