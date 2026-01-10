@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import "./globals.css";
 import ScrollUp from "../components/ScrollUp";
+import AccessibilityWidget from "../components/AccessibilityWidget";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -38,6 +39,7 @@ export default function RootLayout({ children }) {
         <Navbar />
         {/* Main Content Region */}
         <main id="main-content" className="pt-20 min-h-screen">{children}</main>
+        <AccessibilityWidget />
         <Footer />
         <ScrollUp />
       </body>
