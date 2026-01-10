@@ -28,12 +28,12 @@ export default function PremiumHeroLevel3({ heroData = SAMPLE_HERO }) {
             DWAI Training Program
           </span>
 
-          <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-6">
+          <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-6 tracking-tight">
             {heroData.title} <br />
-            <span className="text-pink-300">{heroData.highlight}</span>
+            <span className="text-pink-200">{heroData.highlight}</span>
           </h1>
 
-          <p className="text-lg md:text-xl text-purple-100 max-w-xl mb-10 leading-relaxed">
+          <p className="text-lg md:text-xl text-purple-50 max-w-xl mb-10 leading-relaxed font-medium">
             {heroData.subtitle}
           </p>
 
@@ -42,7 +42,7 @@ export default function PremiumHeroLevel3({ heroData = SAMPLE_HERO }) {
             href="/about"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center gap-3 bg-white text-purple-800 px-8 py-4 rounded-full font-semibold shadow-xl hover:bg-pink-100 transition"
+            className="inline-flex items-center gap-3 bg-white text-purple-900 px-8 py-4 rounded-full font-bold shadow-xl hover:bg-pink-50 focus-visible:ring-4 focus-visible:ring-pink-400 transition"
           >
             <Link href="/about">
               Learn More About Our Work
@@ -50,17 +50,17 @@ export default function PremiumHeroLevel3({ heroData = SAMPLE_HERO }) {
           </motion.div>
 
           {/* TRUST ICONS */}
-          <div className="mt-10 flex gap-8 text-purple-100">
+          <div className="mt-10 flex flex-wrap gap-8 text-purple-50 font-medium">
             <div className="flex items-center gap-2">
-              <ShieldCheck className="w-6 h-6 text-pink-300" />
+              <ShieldCheck className="w-6 h-6 text-pink-200" aria-hidden="true" />
               <span className="text-sm">Digital Protection</span>
             </div>
             <div className="flex items-center gap-2">
-              <Lock className="w-6 h-6 text-pink-300" />
+              <Lock className="w-6 h-6 text-pink-200" aria-hidden="true" />
               <span className="text-sm">Online Safety</span>
             </div>
             <div className="flex items-center gap-2">
-              <Globe className="w-6 h-6 text-pink-300" />
+              <Globe className="w-6 h-6 text-pink-200" aria-hidden="true" />
               <span className="text-sm">Digital Rights</span>
             </div>
           </div>

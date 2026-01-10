@@ -16,8 +16,8 @@ export default function FeatureSection({
       aria-labelledby={`${heading.toLowerCase().replace(/\s/g, "-")}-heading`}
     >
       {/* Decorative floating circles for a soft vibe */}
-      <div className="absolute top-0 left-0 w-24 h-24 bg-purple-300/30 rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-0 right-0 w-32 h-32 bg-pink-300/30 rounded-full blur-3xl animate-pulse"></div>
+      <div className="absolute top-0 left-0 w-24 h-24 bg-purple-300/30 rounded-full blur-3xl animate-pulse" aria-hidden="true"></div>
+      <div className="absolute bottom-0 right-0 w-32 h-32 bg-pink-300/30 rounded-full blur-3xl animate-pulse" aria-hidden="true"></div>
 
       <div
         className={`max-w-7xl mx-auto grid md:grid-cols-2 gap-10 items-center ${
@@ -33,7 +33,7 @@ export default function FeatureSection({
         >
           <h2
             id={`${heading.toLowerCase().replace(/\s/g, "-")}-heading`}
-            className="text-4xl md:text-5xl font-extrabold text-purple-800 mb-4 leading-tight"
+            className="text-4xl md:text-5xl font-extrabold text-purple-900 mb-4 leading-tight tracking-tight"
           >
             {heading}
           </h2>

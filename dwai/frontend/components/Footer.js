@@ -68,7 +68,7 @@ export default function Footer() {
             </span> */}
           </Link>
 
-          <p className="text-sm md:text-base leading-relaxed text-purple-100">
+          <p className="text-sm md:text-base leading-relaxed text-purple-50 font-medium">
            <strong>Deaf Women Aloud Initiative (DWAI)</strong> is an non-government organization founded to amplify the voice of Deaf Women and girls in Nigeria. We are registered with the Corporate Affairs Commission (CAC) and our goals are to reduce the exploitation of Deaf Women, eradicate discrimination, advance social inclusion, and promote the sexual and reproductive health rights of this vulnerable group.
           </p>
         </motion.div>
@@ -79,7 +79,7 @@ export default function Footer() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <h4 className="text-xl font-semibold mb-4 text-pink-100">
+          <h4 className="text-xl font-bold mb-4 text-white">
             Quick Links
           </h4>
           <ul className="space-y-2">
@@ -91,7 +91,7 @@ export default function Footer() {
               >
                 <Link
                   href={`/${link.toLowerCase()}`}
-                  className="text-purple-50 hover:text-pink-300 focus-visible:ring-2 focus-visible:ring-pink-300 rounded-sm transition"
+                  className="text-purple-50 hover:text-pink-200 focus-visible:ring-2 focus-visible:ring-pink-300 rounded-sm transition inline-block"
                 >
                   {link}
                 </Link>
@@ -106,10 +106,10 @@ export default function Footer() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <h4 className="text-xl font-semibold mb-4 text-pink-100">
+          <h4 className="text-xl font-bold mb-4 text-white">
             Contact Us
           </h4>
-          <address className="not-italic text-purple-100 text-sm leading-relaxed">
+          <address className="not-italic text-purple-50 text-sm leading-relaxed font-medium">
             P&D Plaza,  
             Beside Best Buyer Supermarket, Kuje, Abuja-FCT  
           </address>
@@ -117,19 +117,19 @@ export default function Footer() {
             <span className="font-semibold">Email:</span>{" "}
             <a
               href="mailto:deafwomenaloudinitiatives@gmail.com"
-              className="hover:text-pink-300 focus-visible:ring-2 focus-visible:ring-pink-300 rounded-sm"
+              className="hover:text-pink-200 focus-visible:ring-2 focus-visible:ring-pink-300 rounded-sm underline decoration-pink-300/50 underline-offset-4"
             >
               deafwomenaloudinitiative@gmail.com
             </a>
           </p>
 
           <div className="mt-4 space-y-2 text-sm">
-            <div className="flex items-center gap-2">
-              <FaWhatsapp className="text-green-400" />{" "}
+            <div className="flex items-center gap-2 font-medium">
+              <FaWhatsapp className="text-green-300 text-lg" aria-hidden="true" />{" "}
               <span>+234 803 750 0671 | +234 818 505 6488</span>
             </div>
-            <div className="flex items-center gap-2">
-              <MdCall className="text-yellow-300" />{" "}
+            <div className="flex items-center gap-2 font-medium">
+              <MdCall className="text-yellow-200 text-lg" aria-hidden="true" />{" "}
               <span>+234 811 422 9969</span>
             </div>
           </div>
@@ -143,7 +143,7 @@ export default function Footer() {
                 aria-label={label}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 bg-white/10 rounded-full hover:bg-white/20 focus-visible:ring-2 focus-visible:ring-pink-300 transition"
+                className="p-3 bg-white/10 rounded-full hover:bg-white/20 focus-visible:ring-2 focus-visible:ring-pink-300 transition"
                 whileHover={{ scale: 1.15, rotate: 5 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -155,7 +155,7 @@ export default function Footer() {
       </div>
 
       {/* 💫 Footer Bottom */}
-      <div className="relative border-t border-purple-300/40 py-4 text-center text-sm text-purple-100 backdrop-blur-sm">
+      <div className="relative border-t border-purple-300/30 py-6 text-center text-sm text-purple-100 backdrop-blur-sm">
         <p>
           © {new Date().getFullYear()} Deaf Women Aloud Initiative. All rights
           reserved.
@@ -164,7 +164,7 @@ export default function Footer() {
           Designed for accessibility & inclusion • Built by{" "} 
           <Link
             href="https://acclusivo.vercel.app"
-            className="underline hover:text-pink-300 focus-visible:ring-2 focus-visible:ring-pink-300 rounded-sm"
+            className="underline hover:text-pink-200 focus-visible:ring-2 focus-visible:ring-pink-300 rounded-sm font-semibold"
           >
             Victor Oricha
           </Link>

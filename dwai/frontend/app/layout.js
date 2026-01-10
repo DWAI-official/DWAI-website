@@ -1,18 +1,14 @@
-// import { Geist, Geist_Mono } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import "./globals.css";
 import ScrollUp from "../components/ScrollUp";
 
-// const geistSans = Geist({
-//   variable: "--font-geist-sans",
-//   subsets: ["latin"],
-// });
-
-// const geistMono = Geist_Mono({
-//   variable: "--font-geist-mono",
-//   subsets: ["latin"],
-// });
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-jakarta",
+});
 
 export const metadata = {
   title: "Deaf Women Aloud Initiative (DWAI)",
@@ -32,11 +28,16 @@ export default function RootLayout({ children }) {
         <link rel="apple-touch-icon" href="/dwai_logo2.png" />
       </head>
       <body
-        className={`
-          antialiased`}
+        className={`${jakarta.className} antialiased text-gray-900 bg-gray-50`}
       >
-       <Navbar />
-        <main className="pt-20 min-h-screen">{children}</main>
+        {/* Accessibility: Skip to main content for keyboard users */}
+        <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-white text-purple-900 px-6 py-3 rounded-lg z-[100] font-bold shadow-xl ring-4 ring-purple-500 transition-all">
+          Skip to main content
+        </a>
+
+        <Navbar />
+        {/* Main Content Region */}
+        <main id="main-content" className="pt-20 min-h-screen">{children}</main>
         <Footer />
         <ScrollUp />
       </body>

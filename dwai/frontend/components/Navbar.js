@@ -58,7 +58,7 @@ export default function Navbar() {
                 
                 <Link
                   href={link.href}
-                  className="text-gray-700 uppercase hover:text-purple-700 font-medium transition duration-300 focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:rounded-md"
+                  className="text-gray-700 uppercase hover:text-purple-700 font-bold text-sm tracking-wide transition duration-300 focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2 rounded-md px-2 py-1"
                 >
                   {link.name}
                 </Link>
@@ -75,7 +75,7 @@ export default function Navbar() {
           {/* 📱 Mobile Menu Toggle */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 rounded-md text-gray-700 hover:bg-purple-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 transition"
+            className="md:hidden p-2 rounded-md text-gray-700 hover:bg-purple-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2 transition"
             aria-label="Toggle menu"
             aria-expanded={isOpen}
           >
