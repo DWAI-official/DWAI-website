@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { TbMenuDeep } from "react-icons/tb";
 import { MdCancel } from "react-icons/md";
 import Image from "next/image";
+// import LanguageSwitcher from "./LanguageSwitcher";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -64,12 +65,10 @@ export default function Navbar() {
                 </Link>
               </motion.li>
             ))}
-            {/* <Link
-              href="https://decisive-confidence-d7cd061097.strapiapp.com/admin"
-              className="bg-purple-700 text-white px-4 py-2 rounded-full hover:bg-purple-800 focus-visible:ring-2 focus-visible:ring-purple-500 font-semibold transition-all duration-300 shadow-md hover:shadow-lg"
-            >
-              Admin
-            </Link> */}
+            {/* Language Switcher */}
+            {/* <li className="ml-2 pl-4 border-l border-purple-200">
+              <LanguageSwitcher />
+            </li> */}
           </ul>
 
           {/* 📱 Mobile Menu Toggle */}
@@ -115,12 +114,10 @@ export default function Navbar() {
                 <hr className="my-2 border-t border-purple-400 w-100" />
               </motion.div>
             ))}
-            {/* <Link
-              href="https://decisive-confidence-d7cd061097.strapiapp.com/admin"
-              className="bg-purple-700 text-white px-4 py-2 rounded-full hover:bg-purple-800 focus-visible:ring-2 focus-visible:ring-purple-500 font-semibold transition-all duration-300 shadow-md hover:shadow-lg"
-            >
-              Admin
-            </Link> */}
+            
+            {/* <div className="pt-2 w-full flex justify-center">
+              <LanguageSwitcher />
+            </div> */}
           </motion.div>
         )}
       </AnimatePresence>

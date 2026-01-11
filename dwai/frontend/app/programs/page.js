@@ -1,9 +1,11 @@
-"use client"
-import Head from "next/head";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import {fetchStrapiData} from "../../lib/strapi";
 
+export const metadata = {
+  title: "Programs | Deaf Women Aloud Initiative (DWAI)",
+  description: "Explore DWAI’s programs empowering Deaf women and girls through sexual reproductive and human rights education, and advocacy for inclusion in Nigeria.",
+};
 
 export default async function Programs() {
     const programs = await fetchStrapiData("programs");
@@ -27,14 +29,6 @@ export default async function Programs() {
 
   return (
     <>
-      <Head>
-        <title>Programs | Deaf Women Aloud Initiative (DWAI)</title>
-        <meta
-          name="description"
-          content="Explore DWAI’s programs empowering Deaf women and girls through leadership, digital inclusion, gender equality, and advocacy."
-        />
-      </Head>
-
       {/* Hero Section with Video/Photo Banner */}
       <section className="relative h-[85vh] flex items-center justify-center text-white text-center overflow-hidden">
         {/* Video Background (replace with DWAI video if available) */}

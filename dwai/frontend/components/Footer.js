@@ -34,7 +34,11 @@ export default function Footer() {
     },
   ];
 
-  const quickLinks = ["About", "Programs", "Gallery", "Donate", "Contact"];
+  const quickLinks = [
+    { label: "About", href: "/about" },
+    { label: "Gallery", href: "/gallery" },
+    { label: "Contact", href: "/contact" },
+  ];
 
   return (
     <footer
@@ -83,17 +87,17 @@ export default function Footer() {
             Quick Links
           </h4>
           <ul className="space-y-2">
-            {quickLinks.map((link, i) => (
+            {quickLinks.map((link) => (
               <motion.li
-                key={link}
+                key={link.label}
                 whileHover={{ x: 6 }}
                 transition={{ type: "spring", stiffness: 200 }}
               >
                 <Link
-                  href={`/${link.toLowerCase()}`}
+                  href={`/${link.href}`}
                   className="text-purple-50 hover:text-pink-200 focus-visible:ring-2 focus-visible:ring-pink-300 rounded-sm transition inline-block"
                 >
-                  {link}
+                  {link.label}
                 </Link>
               </motion.li>
             ))}
@@ -138,7 +142,7 @@ export default function Footer() {
           <div className="flex mt-5 space-x-5">
             {socialLinks.map(({ icon: Icon, href, label }, i) => (
               <motion.a
-                key={label}
+                key={i}
                 href={href}
                 aria-label={label}
                 target="_blank"

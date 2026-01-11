@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import "./globals.css";
 import ScrollUp from "../components/ScrollUp";
 import AccessibilityWidget from "../components/AccessibilityWidget";
+import { LanguageProvider } from "../context/LanguageContext";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -31,17 +32,19 @@ export default function RootLayout({ children }) {
       <body
         className={`${jakarta.className} antialiased text-gray-900 bg-gray-50`}
       >
-        {/* Accessibility: Skip to main content for keyboard users */}
-        <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-white text-purple-900 px-6 py-3 rounded-lg z-[100] font-bold shadow-xl ring-4 ring-purple-500 transition-all">
-          Skip to main content
-        </a>
+        <LanguageProvider>
+          {/* Accessibility: Skip to main content for keyboard users */}
+          <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-white text-purple-900 px-6 py-3 rounded-lg z-[100] font-bold shadow-xl ring-4 ring-purple-500 transition-all">
+            Skip to main content
+          </a>
 
-        <Navbar />
-        {/* Main Content Region */}
-        <main id="main-content" className="pt-20 min-h-screen">{children}</main>
-        <AccessibilityWidget />
-        <Footer />
-        <ScrollUp />
+          <Navbar />
+          {/* Main Content Region */}
+          <main id="main-content" className="pt-20 min-h-screen">{children}</main>
+          <AccessibilityWidget />
+          <Footer />
+          <ScrollUp />
+        </LanguageProvider>
       </body>
     </html>
   );
