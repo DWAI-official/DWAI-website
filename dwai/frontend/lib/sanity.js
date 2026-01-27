@@ -5,8 +5,8 @@ const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET;
 const apiVersion = "2023-05-03";
 
 export const client = createClient({
-  projectId,
-  dataset,
+  projectId: projectId || "pxprm93j",
+  dataset: dataset || "production",
   apiVersion, // https://www.sanity.io/docs/api-versioning
   useCdn: false, // if you want to ensure fresh data
 });

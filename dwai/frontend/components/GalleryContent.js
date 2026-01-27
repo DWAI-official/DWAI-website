@@ -96,16 +96,22 @@ export default function GalleryContent({ galleries = [] }) {
   const prevItem = () =>
     setLightboxIndex((i) => (i - 1 + filtered.length) % filtered.length);
 
-  // Helper to extract YouTube ID and get thumbnail
-  const getYouTubeThumbnail = (url) => {
-    if (!url) return "";
-    const match = url.match(/\/embed\/([a-zA-Z0-9_-]+)/);
-    return match ? `https://img.youtube.com/vi/${match[1]}/hqdefault.jpg` : "";
+  // Helper to extract YouTube ID
+  const getYouTubeId = (url) => {
+    if (!url) return null;
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+    const match = url.match(regExp);
+    return (match && match[2].length === 11) ? match[2] : null;
   };
 
-  const getAutoplayUrl = (url) => {
-    if (!url) return "";
-    return url.includes("?") ? `${url}&autoplay=1` : `${url}?autoplay=1`;
+  const getYouTubeThumbnail = (url) => {
+    const id = getYouTubeId(url);
+    return id ? `https://img.youtube.com/vi/${id}/hqdefault.jpg` : "";
+  };
+
+  const getEmbedUrl = (url) => {
+    const id = getYouTubeId(url);
+    return id ? `https://www.youtube.com/embed/${id}?autoplay=1` : url;
   };
 
   return (
@@ -236,7 +242,7 @@ export default function GalleryContent({ galleries = [] }) {
                 />
               ) : (
                 <iframe
-                  src={getAutoplayUrl(filtered[lightboxIndex].url)}
+                  src={getEmbedUrl(filtered[lightboxIndex].url)}
                   className="w-full h-[60vh] md:h-[70vh] rounded-xl"
                   allowFullScreen
                 />
