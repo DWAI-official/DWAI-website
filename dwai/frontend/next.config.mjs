@@ -15,6 +15,11 @@ const nextConfig = {
         hostname: "img.youtube.com",
         pathname: "/vi/**",
       },
+      {
+        protocol: 'https',
+        hostname:'cdn.sanity.io',
+        pathname: '/images/**',
+      }
 
     ],
     

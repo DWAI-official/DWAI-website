@@ -6,38 +6,15 @@ import { Sparkles, CalendarDays } from "lucide-react";
 /* =========================
    RECENT PROGRAM (FEATURED)
    ========================= */
-const recentProgram = {
-  title: "Digital Rights & Online Safety Training for Deaf Women",
-  date: "December 13, 2025",
-  desc: "DWAI recently conducted a focused training on Digital Rights and Online Safety, equipping Deaf women with practical knowledge to stay safe, informed, and confident in digital spaces. The session emphasized privacy, cyber safety, and responsible online participation using sign language–accessible facilitation.",
-  img: "/assets/images/digit_35.jpg",
-};
 
-/* =========================
-   OTHER PROGRAMS
-   ========================= */
-const programs = [
-  {
-    title:
-      "Menstrual Health Support at Government Special School, Lafia",
-    desc: "DWAI, in partnership with ChananHill, addressed menstrual health challenges faced by girls with disabilities through education, dignity kits, and safe conversations.",
-    img: "/assets/images/DWAI_lafia.jpg",
-  },
-  {
-    title:
-      "International Day of the Girl Child – “The Girl I Am, The Change I Lead”",
-    desc: "An empowering celebration where Deaf girls shared stories of strength, learned leadership skills, and connected with inspiring women role models.",
-    img: "/assets/images/girl_day.jpg",
-  },
-  {
-    title:
-      "International Week of Deaf People 2025 – NSL Advocacy Rally",
-    desc: "DWAI partnered with NNAD and the Deaf community to advocate for official recognition of Nigerian Sign Language through a historic rally.",
-    img: "/assets/images/IDSL.jpg",
-  },
-];
+export default function ProgramsSection({ data = [] }) {
+  // Sort by date if available, otherwise use order from Sanity
+  // Assuming data[0] is the most recent
+  const recentProgram = data[0];
+  const otherPrograms = data.slice(1, 4); // Take next 3
 
-export default function ProgramsSection() {
+  if (!recentProgram) return null;
+
   return (
     <section
       className="relative py-28 px-6 md:px-16 overflow-hidden 
@@ -86,7 +63,7 @@ export default function ProgramsSection() {
         {/* Image */}
         <div className="relative overflow-hidden rounded-2xl">
           <Image
-            src={recentProgram.img}
+            src={recentProgram.mainImageUrl || "/assets/images/digit_35.jpg"}
             alt={recentProgram.title}
             width={600}
             height={400}
@@ -101,7 +78,9 @@ export default function ProgramsSection() {
         <div>
           <div className="flex items-center gap-2 text-purple-700 mb-3">
             <CalendarDays className="w-5 h-5" />
-            <span className="text-sm font-medium">{recentProgram.date}</span>
+            <span className="text-sm font-medium">
+              {recentProgram.publishedAt ? new Date(recentProgram.publishedAt).toLocaleDateString() : "Recent"}
+            </span>
           </div>
 
           <h3 className="text-3xl font-bold text-purple-800 mb-4">
@@ -109,14 +88,14 @@ export default function ProgramsSection() {
           </h3>
 
           <p className="text-gray-700 leading-relaxed">
-            {recentProgram.desc}
+            {recentProgram.summary}
           </p>
         </div>
       </motion.div>
 
       {/* ================= OTHER PROGRAM CARDS ================= */}
       <div className="relative z-10 grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
-        {programs.map((program, i) => (
+        {otherPrograms.map((program, i) => (
           <motion.div
             key={i}
             className="group bg-white/70 backdrop-blur-md 
@@ -131,7 +110,7 @@ export default function ProgramsSection() {
             {/* Image */}
             <div className="overflow-hidden">
               <Image
-                src={program.img}
+                src={program.mainImageUrl}
                 alt={program.title}
                 width={500}
                 height={300}
@@ -146,7 +125,7 @@ export default function ProgramsSection() {
               </h3>
 
               <p className="text-gray-700 text-sm leading-relaxed line-clamp-3">
-                {program.desc}
+                {program.summary}
               </p>
             </div>
           </motion.div>

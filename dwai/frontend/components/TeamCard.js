@@ -18,7 +18,7 @@ export default function TeamSection({ data }) {
       <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-10 max-w-6xl mx-auto">
         {data?.map((member) => (
           <motion.div
-            key={member.id}
+            key={member._id}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -28,8 +28,8 @@ export default function TeamSection({ data }) {
             {/* Team Image Placeholder */}
             <div className="relative w-40 h-40 mx-auto mb-4 rounded-full overflow-hidden bg-gray-200 flex items-center justify-center">
               <Image
-                src="/assets/images/team_placeholder.png"
-                alt={member.title}
+                src={member.image || "/assets/images/team_placeholder.png"}
+                alt={member.name}
                 fill
                 className="object-cover"
               />
@@ -37,7 +37,7 @@ export default function TeamSection({ data }) {
 
             {/* Name */}
             <h3 className="text-xl font-bold text-purple-800">
-              {member.title}
+              {member.name}
             </h3>
 
             {/* Role */}

@@ -103,47 +103,13 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-// SAMPLE STATIC DATA — replace with Strapi later
-const SAMPLE_PARTNERS = [
-  {
-    id: 1,
-    name: "Disabiliy Rights Fund (DRF)",
-    logos: ["/assets/partners/DRF.png"],
-  },
-  {
-    id: 2,
-    name: "AID Foundation",
-    logos: ["/assets/partners/AID.jpg"],
-  },
-  {
-    id: 3,
-    name: "HIVOS",
-    logos: ["/assets/partners/HIVOS.png"],
-  },
-  {
-    id: 4,
-    name: "Education as a Vaccine (EVA)",
-    logos: ["/assets/partners/EV.png"],
-  },
-  {
-    id: 5,
-    name: "Ministry of Health Nigeria (FMoH)",
-    logos: ["/assets/partners/Ministry.jpeg"],
-  },
-  {
-    id: 6,
-    name: "US Embassy",
-    logos: ["/assets/partners/US.png"],
-  },
-
-];
-
-export default function PartnersSection() {
-  const [partners, setPartners] = useState(SAMPLE_PARTNERS);
+export default function PartnersSection({ data = [] }) {
+  const [partners, setPartners] = useState(data);
 
   // Create two rows for parallax scrolling
-  const row1 = partners.slice(0, Math.ceil(partners.length / 2));
-  const row2 = partners.slice(Math.ceil(partners.length / 2));
+  const safePartners = partners || [];
+  const row1 = safePartners.slice(0, Math.ceil(safePartners.length / 2));
+  const row2 = safePartners.slice(Math.ceil(safePartners.length / 2));
 
   return (
     <section className="relative py-24 bg-gradient-to-br from-purple-500 to-pink-500 dark:from-gray-900 dark:to-gray-800 overflow-hidden">
@@ -186,9 +152,7 @@ export default function PartnersSection() {
           transition={{ duration: 1 }}
         >
           {row1.map((partner) =>
-            partner.logos.map((logo, idx) => (
-              <LogoCard key={`${partner.id}-${idx}`} name={partner.name} src={logo} />
-            ))
+             <LogoCard key={partner._id} name={partner.name} src={partner.logoUrl} />
           )}
         </motion.div>
 
@@ -200,9 +164,7 @@ export default function PartnersSection() {
           transition={{ duration: 1 }}
         >
           {row2.map((partner) =>
-            partner.logos.map((logo, idx) => (
-              <LogoCard key={`${partner.id}-${idx}`} name={partner.name} src={logo} />
-            ))
+             <LogoCard key={partner._id} name={partner.name} src={partner.logoUrl} />
           )}
         </motion.div>
 

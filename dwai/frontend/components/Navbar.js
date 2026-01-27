@@ -21,6 +21,8 @@ export default function Navbar() {
     { name: "Contact", href: "/contact" },
   ];
 
+  const ADMIN_URL = "https://dwai.sanity.studio";
+
   return (
     <nav
       className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-white/80 border-b border-purple-100 shadow-sm"
@@ -65,6 +67,20 @@ export default function Navbar() {
                 </Link>
               </motion.li>
             ))}
+            {/* Admin Button */}
+            <motion.li
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: navLinks.length * 0.1 }}
+            >
+              <Link
+                href={ADMIN_URL}
+                target="_blank"
+                className="bg-purple-700 text-white hover:bg-purple-800 px-5 py-2 rounded-full font-bold text-sm shadow-md transition-all"
+              >
+                Admin
+              </Link>
+            </motion.li>
             {/* Language Switcher */}
             {/* <li className="ml-2 pl-4 border-l border-purple-200">
               <LanguageSwitcher />
@@ -114,6 +130,21 @@ export default function Navbar() {
                 <hr className="my-2 border-t border-purple-400 w-100" />
               </motion.div>
             ))}
+            <motion.div
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: navLinks.length * 0.1 }}
+            >
+              <Link
+                href={ADMIN_URL}
+                target="_blank"
+                className="block uppercase text-purple-700 font-bold hover:text-purple-900 focus-visible:ring-2 focus-visible:ring-purple-500 transition"
+                onClick={() => setIsOpen(false)}
+              >
+                Admin
+              </Link>
+              <hr className="my-2 border-t border-purple-400 w-100" />
+            </motion.div>
             
             {/* <div className="pt-2 w-full flex justify-center">
               <LanguageSwitcher />

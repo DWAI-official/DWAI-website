@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 import "./globals.css";
 import ScrollUp from "../components/ScrollUp";
 import AccessibilityWidget from "../components/AccessibilityWidget";
-import { LanguageProvider } from "../context/LanguageContext";
+// import { LanguageProvider } from "../context/LanguageContext";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -17,22 +17,18 @@ export const metadata = {
   description: "Empowering Deaf women and girls in Nigeria through advocacy, education, and leadership development.",
   keywords: ["DWAI", "Deaf Women", "Inclusion", "Accessibility", "Nigeria", "Deaf Empowerment"],
   icons: {
-    icon: '/dwai_logo2.png', // path to your favicon/logo file
+    icon: '/dwai_logo2.png',
+    apple: '/dwai_logo2.png',
   },
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <head>
-        {/* Optional: add custom favicon for different devices */}
-        <link rel="icon" href="/dwai_logo2.png" sizes="any" />
-        <link rel="apple-touch-icon" href="/dwai_logo2.png" />
-      </head>
       <body
         className={`${jakarta.className} antialiased text-gray-900 bg-gray-50`}
       >
-        <LanguageProvider>
+        {/* <LanguageProvider> */}
           {/* Accessibility: Skip to main content for keyboard users */}
           <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-white text-purple-900 px-6 py-3 rounded-lg z-[100] font-bold shadow-xl ring-4 ring-purple-500 transition-all">
             Skip to main content
@@ -44,7 +40,7 @@ export default function RootLayout({ children }) {
           <AccessibilityWidget />
           <Footer />
           <ScrollUp />
-        </LanguageProvider>
+        {/* </LanguageProvider> */}
       </body>
     </html>
   );

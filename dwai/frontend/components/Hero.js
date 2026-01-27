@@ -5,15 +5,7 @@ import Image from "next/image";
 import { ShieldCheck, Lock, Globe } from "lucide-react";
 import Link from "next/link";
 
-const SAMPLE_HERO = {
-  title: "Digital Rights & Online Safety",
-  highlight: "for Deaf Women",
-  subtitle:
-    "DWAI equips Deaf women and girls with the knowledge, tools, and confidence to stay safe, informed, and protected in digital spaces.",
-  heroImage: "/assets/images/digit_2.jpg",
-};
-
-export default function PremiumHeroLevel3({ heroData = SAMPLE_HERO }) {
+export default function PremiumHeroLevel3({ data }) {
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-purple-900 via-purple-800 to-pink-700 text-white">
       <div className="max-w-7xl mx-auto px-6 md:px-12 py-28 md:py-36 grid md:grid-cols-2 gap-16 items-center">
@@ -29,12 +21,12 @@ export default function PremiumHeroLevel3({ heroData = SAMPLE_HERO }) {
           </span>
 
           <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-6 tracking-tight">
-            {heroData.title} <br />
-            <span className="text-pink-200">{heroData.highlight}</span>
+            {data?.title || "Empowering Deaf Women"} <br />
+            <span className="text-pink-200">{data?.highlight}</span>
           </h1>
 
           <p className="text-lg md:text-xl text-purple-50 max-w-xl mb-10 leading-relaxed font-medium">
-            {heroData.subtitle}
+            {data?.subtitle}
           </p>
 
           {/* CTA */}
@@ -76,7 +68,7 @@ export default function PremiumHeroLevel3({ heroData = SAMPLE_HERO }) {
           {/* Main Image */}
           <div className="relative w-full h-[420px] md:h-[520px] rounded-3xl overflow-hidden shadow-2xl">
             <Image
-              src={heroData.heroImage}
+              src={data?.heroImageUrl || "/assets/images/digit_2.jpg"}
               alt="DWAI Digital Rights Training"
               fill
               priority

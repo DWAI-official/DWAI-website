@@ -5,202 +5,37 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight, Play } from "lucide-react";
 
-const SAMPLE_GALLERY = [
-   {
-    year: "2019",
-    type: "image",
-    src: "/assets/programs/digit_3.jpg",
-    caption: "Advocacy outreach for Deaf women rights",
-  },
-  {
-    year: "2019",
-    type: "image",
-    src: "/assets/programs/digit_4.jpg",
-    caption: "Advocacy outreach for Deaf women rights",
-  },
-  {
-    year: "2019",
-    type: "image",
-    src: "/assets/programs/digit_5.jpg",
-    caption: "Advocacy outreach for Deaf women rights",
-  },
-  {
-    year: "2025",
-    type: "video",
-    src: "https://www.youtube.com/embed/PUbshF8sh1I",
-    caption: "Digital Rights and Safety",
-  },
-  {
-    year: "2024",
-    type: "image",
-    src: "/assets/images/program_2.jpg",
-    caption: "Digital Rights & Safety Workshop",
-  },
-  {
-    year: "2024",
-    type: "video",
-    src: "https://www.youtube.com/embed/UjS_il_wATA",
-    caption: "Digital Rights & Safety Workshop Highlights",
-  },
-  {
-    year: "2019",
-    type: "image",
-    src: "/assets/programs/digit_1.jpg",
-    caption: "Advocacy outreach for Deaf women rights",
-  },
-  //   {
-  //   year: "2019",
-  //   type: "image",
-  //   src: "/assets/programs/digit_2.jpg",
-  //   caption: "Advocacy outreach for Deaf women rights",
-  // },
-    {
-    year: "2019",
-    type: "image",
-    src: "/assets/programs/digit_3.jpg",
-    caption: "Advocacy outreach for Deaf women rights",
-  },
-  {
-    year: "2019",
-    type: "image",
-    src: "/assets/programs/digit_4.jpg",
-    caption: "Advocacy outreach for Deaf women rights",
-  },
-  {
-    year: "2019",
-    type: "image",
-    src: "/assets/programs/digit_5.jpg",
-    caption: "Advocacy outreach for Deaf women rights",
-  },
-  {
-    year: "2019",
-    type: "image",
-    src: "/assets/programs/digit_6.jpg",
-    caption: "Advocacy outreach for Deaf women rights",
-  },
-  {
-    year: "2019",
-    type: "image",
-    src: "/assets/programs/digit_7.jpg",
-    caption: "Advocacy outreach for Deaf women rights",
-  },
-  {
-    year: "2019",
-    type: "image",
-    src: "/assets/programs/digit_8.jpg",
-    caption: "Advocacy outreach for Deaf women rights",
-  },
-  {
-    year: "2019",
-    type: "image",
-    src: "/assets/programs/digit_9.jpg",
-    caption: "Advocacy outreach for Deaf women rights",
-  },
-  {
-    year: "2019",
-    type: "image",
-    src: "/assets/programs/digit_10.jpg",
-    caption: "Advocacy outreach for Deaf women rights",
-  },
-  {
-    year: "2019",
-    type: "image",
-    src: "/assets/programs/digit_11.jpg",
-    caption: "Advocacy outreach for Deaf women rights",
-  },
-  {
-    year: "2019",
-    type: "image",
-    src: "/assets/programs/digit_12.jpg",
-    caption: "Advocacy outreach for Deaf women rights",
-  },
-  {
-    year: "2019",
-    type: "image",
-    src: "/assets/programs/digit_13.jpg",
-    caption: "Advocacy outreach for Deaf women rights",
-  },
-  {
-    year: "2019",
-    type: "image",
-    src: "/assets/programs/digit_14.jpg",
-    caption: "Advocacy outreach for Deaf women rights",
-  },
-  {
-    year: "2019",
-    type: "image",
-    src: "/assets/programs/digit_15.jpg",
-    caption: "Advocacy outreach for Deaf women rights",
-  },
-  {
-    year: "2019",
-    type: "image",
-    src: "/assets/programs/digit_16.jpg",
-    caption: "Advocacy outreach for Deaf women rights",
-  },
-  {
-    year: "2019",
-    type: "image",
-    src: "/assets/programs/digit_17.jpg",
-    caption: "Advocacy outreach for Deaf women rights",
-  },
-  {
-    year: "2019",
-    type: "image",
-    src: "/assets/programs/digit_18.jpg",
-    caption: "Advocacy outreach for Deaf women rights",
-  },
-  {
-    year: "2019",
-    type: "image",
-    src: "/assets/programs/digit_19.jpg",
-    caption: "Advocacy outreach for Deaf women rights",
-  },
-  {
-    year: "2019",
-    type: "image",
-    src: "/assets/programs/digit_20.jpg",
-    caption: "Advocacy outreach for Deaf women rights",
-  },
-  {
-    year: "2019",
-    type: "image",
-    src: "/assets/programs/digit_21.jpg",
-    caption: "Advocacy outreach for Deaf women rights",
-  },
-  {
-    year: "2019",
-    type: "image",
-    src: "/assets/programs/digit_22.jpg",
-    caption: "Advocacy outreach for Deaf women rights",
-  },
-  {
-    year: "2019",
-    type: "image",
-    src: "/assets/programs/digit_23.jpg",
-    caption: "Advocacy outreach for Deaf women rights",
-  },
-  {
-    year: "2019",
-    type: "image",
-    src: "/assets/programs/digit_24.jpg",
-    caption: "Advocacy outreach for Deaf women rights",
-  },
+// Helper to extract YouTube ID
+const getYouTubeId = (url) => {
+  if (!url) return null;
+  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+  const match = url.match(regExp);
+  return (match && match[2].length === 11) ? match[2] : null;
+};
 
-  {
-    year: "2022",
-    type: "image",
-    src: "/assets/images/program_25.jpg",
-    caption: "Tech for Deaf Women Bootcamp",
-  },
-
-];
+// Helper to get Embed URL
+const getEmbedUrl = (url) => {
+  const id = getYouTubeId(url);
+  return id ? `https://www.youtube.com/embed/${id}?autoplay=1` : url;
+};
 
 
-
-export default function PremiumGallery({ galleryData = SAMPLE_GALLERY }) {
+export default function PremiumGallery({ data }) {
+  const { heading, subheading, items = [] } = data || {};
   const [selectedIndex, setSelectedIndex] = useState(null);
   const [filter, setFilter] = useState("all");
+
+  // Map Sanity images to component format
+  const galleryData = items.map(img => ({
+    type: img._type || "image",
+    src: img.url,
+    alt: img.alt || img.caption || "Gallery Media",
+    caption: img.caption || img.alt
+  }));
+
+  if (galleryData.length === 0) {
+    return null;
+  }
 
   const filteredData =
     filter === "all"
@@ -216,10 +51,10 @@ export default function PremiumGallery({ galleryData = SAMPLE_GALLERY }) {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
         >
-          DWAI Gallery
+          {heading || "DWAI Gallery"}
         </motion.h2>
         <p className="text-gray-600 text-lg">
-          Stories of empowerment, advocacy, and digital inclusion.
+          {subheading || "Stories of empowerment, advocacy, and digital inclusion."}
         </p>
       </div>
 
@@ -242,43 +77,45 @@ export default function PremiumGallery({ galleryData = SAMPLE_GALLERY }) {
 
       {/* Grid */}
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {filteredData.slice(0,6).map((item, index) => (
-          <motion.div
-            key={index}
-            className="relative rounded-2xl overflow-hidden shadow-lg cursor-pointer group"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            onClick={() => setSelectedIndex(index)}
-          >
-            {item.type === "image" ? (
-              <Image
-                src={item.src}
-                alt={item.alt || "Gallery Image"}
-                width={500}
-                height={350}
-                className="object-cover w-full h-64 group-hover:scale-110 transition"
-              />
-            ) : (
-              <div className="relative w-full h-64 bg-black">
-                <iframe
-                  src={item.src}
-                  title={item.alt}
-                  className="w-full h-full"
-                  allowFullScreen
-                />
-                <div className="absolute inset-0 flex items-center justify-center bg-black/40">
-                  <Play className="w-12 h-12 text-white" />
-                </div>
-              </div>
-            )}
+        {filteredData.slice(0,6).map((item, index) => {
+          // Generate thumbnail for videos
+          const videoId = item.type === "video" ? getYouTubeId(item.src) : null;
+          const videoThumbnail = videoId ? `https://img.youtube.com/vi/${videoId}/hqdefault.jpg` : null;
 
-            {/* Caption */}
-            {/* <div className="absolute bottom-0 inset-x-0 bg-black/60 text-white text-sm p-3">
-              {item.caption}
-            </div> */}
-          </motion.div>
-        ))}
+          return (
+            <motion.div
+              key={index}
+              className="relative rounded-2xl overflow-hidden shadow-lg cursor-pointer group"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              onClick={() => setSelectedIndex(index)}
+            >
+              {item.type === "image" ? (
+                <Image
+                  src={item.src}
+                  alt={item.alt || "Gallery Image"}
+                  width={500}
+                  height={350}
+                  className="object-cover w-full h-64 group-hover:scale-110 transition"
+                />
+              ) : (
+                <div className="relative w-full h-64 bg-black">
+                  {videoThumbnail ? (
+                    <Image src={videoThumbnail} alt={item.alt} width={500} height={350} className="object-cover w-full h-full opacity-90 group-hover:scale-105 transition duration-500" />
+                  ) : (
+                    <div className="w-full h-full bg-gray-900" />
+                  )}
+                  
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/40 transition">
+                    <Play className="w-12 h-12 text-white drop-shadow-lg" />
+                  </div>
+                </div>
+              )}
+            </motion.div>
+          );
+        })}
+
       </div>
 
       {/* Lightbox */}
@@ -305,7 +142,7 @@ export default function PremiumGallery({ galleryData = SAMPLE_GALLERY }) {
                 />
               ) : (
                 <iframe
-                  src={filteredData[selectedIndex].src}
+                  src={getEmbedUrl(filteredData[selectedIndex].src)}
                   className="w-full h-[70vh] rounded-xl"
                   allowFullScreen
                 />

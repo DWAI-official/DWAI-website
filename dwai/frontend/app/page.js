@@ -10,29 +10,17 @@ import PartnersSection from "../components/PartnersSection";
 // import TestimonialSection from "../components/TestimonialSection";
 import DonationSection from "../components/DonationSection";
 // import CTA from "../components/CTA";
-
-import { fetchStrapiData, getPartners } from "../lib/strapi";
+import { sanityFetch } from "../lib/sanity";
+import { homepageQuery, partnersQuery, homepageGalleryQuery, teamsQuery, programsQuery} from "../lib/queries";
 export default async function Home() {
-  const homepageData = await fetchStrapiData("homepage");
-  const hero = homepageData;
-
-  // const programs = await fetchStrapiData("program");
-  const galleries = await fetchStrapiData("galleries");
-  const partners = await getPartners();
-
- 
-
-const sampleImages = [
-  { url: "/assets/images/DWAI_lafia.jpg", alt: "DWAI Training" },
-  { url: "/assets/images/pad.jpg", alt: "Outreach Program" },
-  { url: "/assets/images/pad_7.jpg", alt: "Team" },
-  { url: "/assets/images/IDSL.jpg", alt: "Team" },
-  { url: "/assets/images/vaccine_4.jpg", alt: "Team" },
-  { url: "/assets/images/dwai_picture1.jpg", alt: "Team" },
-  { url: "/assets/images/girl_day.jpg", alt: "Team" },
-  { url: "/assets/images/outreach_team.jpg", alt: "Team" },
-];
-
+  // Fetch all data in parallel for performance
+  const [hero, partners, gallerySection, teams, programs] = await Promise.all([
+    sanityFetch({ query: homepageQuery }),
+    sanityFetch({ query: partnersQuery }),
+    sanityFetch({ query: homepageGalleryQuery }),
+    sanityFetch({ query: teamsQuery }),
+    sanityFetch({ query: programsQuery }),
+  ]);
 
   return (
     <main className="overflow-hidden">
@@ -51,9 +39,9 @@ const sampleImages = [
       />
       <GlossaryPDF />
       <ImpactSection />
-      <ProjectCard />
+      <ProjectCard data={programs} />
       <GallerySection 
-      images={sampleImages} 
+        data={gallerySection} 
       />
       <PartnersSection data={partners} />
       {/* <TestimonialSection /> */}
