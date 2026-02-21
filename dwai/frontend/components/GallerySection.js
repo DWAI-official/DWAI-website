@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight, Play } from "lucide-react";
+import { useGlobalData } from "../context/GlobalDataContext";
 
 // Helper to extract YouTube ID
 const getYouTubeId = (url) => {
@@ -20,7 +21,8 @@ const getEmbedUrl = (url) => {
 };
 
 
-export default function PremiumGallery({ data }) {
+export default function PremiumGallery() {
+  const { gallerySection: data } = useGlobalData();
   const { heading, subheading, items = [] } = data || {};
   const [selectedIndex, setSelectedIndex] = useState(null);
   const [filter, setFilter] = useState("all");

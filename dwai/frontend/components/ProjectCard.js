@@ -2,12 +2,14 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Sparkles, CalendarDays } from "lucide-react";
+import { useGlobalData } from "../context/GlobalDataContext";
 
 /* =========================
    RECENT PROGRAM (FEATURED)
    ========================= */
 
-export default function ProgramsSection({ data = [] }) {
+export default function ProgramsSection() {
+  const { programs: data = [] } = useGlobalData();
   // Sort by date if available, otherwise use order from Sanity
   // Assuming data[0] is the most recent
   const recentProgram = data[0];

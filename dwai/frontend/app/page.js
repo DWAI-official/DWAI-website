@@ -10,21 +10,10 @@ import PartnersSection from "../components/PartnersSection";
 // import TestimonialSection from "../components/TestimonialSection";
 import DonationSection from "../components/DonationSection";
 // import CTA from "../components/CTA";
-import { sanityFetch } from "../lib/sanity";
-import { homepageQuery, partnersQuery, homepageGalleryQuery, teamsQuery, programsQuery} from "../lib/queries";
-export default async function Home() {
-  // Fetch all data in parallel for performance
-  const [hero, partners, gallerySection, teams, programs] = await Promise.all([
-    sanityFetch({ query: homepageQuery }),
-    sanityFetch({ query: partnersQuery }),
-    sanityFetch({ query: homepageGalleryQuery }),
-    sanityFetch({ query: teamsQuery }),
-    sanityFetch({ query: programsQuery }),
-  ]);
-
+export default function Home() {
   return (
     <main className="overflow-hidden">
-      <Hero data={hero} />
+      <Hero />
       <AboutSection />
       <FeatureSection
         heading="Our Mission"
@@ -39,11 +28,9 @@ export default async function Home() {
       />
       <GlossaryPDF />
       <ImpactSection />
-      <ProjectCard data={programs} />
-      <GallerySection 
-        data={gallerySection} 
-      />
-      <PartnersSection data={partners} />
+      <ProjectCard />
+      <GallerySection />
+      <PartnersSection />
       {/* <TestimonialSection /> */}
       {/* <CTA
         title="Join Us in Making a Difference"

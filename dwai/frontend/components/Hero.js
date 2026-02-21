@@ -4,8 +4,10 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { ShieldCheck, Lock, Globe } from "lucide-react";
 import Link from "next/link";
+import { useGlobalData } from "../context/GlobalDataContext";
 
-export default function PremiumHeroLevel3({ data }) {
+export default function PremiumHeroLevel3() {
+  const { hero: data } = useGlobalData();
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-purple-900 via-purple-800 to-pink-700 text-white">
       <div className="max-w-7xl mx-auto px-6 md:px-12 py-28 md:py-36 grid md:grid-cols-2 gap-16 items-center">

@@ -102,9 +102,11 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useGlobalData } from "../context/GlobalDataContext";
 
-export default function PartnersSection({ data = [] }) {
-  const [partners, setPartners] = useState(data);
+export default function PartnersSection() {
+  const { partners: data } = useGlobalData();
+  const partners = data || [];
 
   // Create two rows for parallax scrolling
   const safePartners = partners || [];
