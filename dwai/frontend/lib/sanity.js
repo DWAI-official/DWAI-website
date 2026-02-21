@@ -7,6 +7,7 @@ const apiVersion = "2023-05-03";
 export const client = createClient({
   projectId: projectId || "pxprm93j",
   dataset: dataset || "production",
+  token: process.env.NEXT_PUBLIC_SANITY_TOKEN,
   apiVersion, // https://www.sanity.io/docs/api-versioning
   useCdn: false, // if you want to ensure fresh data
 });
@@ -15,3 +16,4 @@ export const client = createClient({
 export async function sanityFetch({ query, params = {} }) {
   return client.fetch(query, params);
 }
+

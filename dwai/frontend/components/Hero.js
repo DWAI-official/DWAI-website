@@ -6,7 +6,7 @@ import { ShieldCheck, Lock, Globe } from "lucide-react";
 import Link from "next/link";
 import { useGlobalData } from "../context/GlobalDataContext";
 
-export default function PremiumHeroLevel3() {
+export default function Hero() {
   const { hero: data } = useGlobalData();
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-purple-900 via-purple-800 to-pink-700 text-white">
