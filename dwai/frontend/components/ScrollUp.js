@@ -15,7 +15,9 @@ export default function ScrollUp() {
       const scrollHeight = document.body.scrollHeight;
       const windowHeight = window.innerHeight;
 
-      setIsVisible(scrollY > -2000);
+      // Show button only after scrolling down a bit (e.g., 300px).
+      // The previous value `-2000` would make it visible almost immediately.
+      setIsVisible(scrollY > 300);
       setShowWhatsApp(scrollY + windowHeight >= scrollHeight - 100); // near bottom
     };
 

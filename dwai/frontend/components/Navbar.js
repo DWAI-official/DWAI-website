@@ -68,7 +68,7 @@ export default function Navbar() {
               </motion.li>
             ))}
             {/* Admin Button */}
-            <motion.li
+            {/* <motion.li
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: navLinks.length * 0.1 }}
@@ -80,7 +80,7 @@ export default function Navbar() {
               >
                 Admin
               </Link>
-            </motion.li>
+            </motion.li> */}
             {/* Language Switcher */}
             {/* <li className="ml-2 pl-4 border-l border-purple-200">
               <LanguageSwitcher />
@@ -135,14 +135,14 @@ export default function Navbar() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: navLinks.length * 0.1 }}
             >
-              <Link
+              {/* <Link
                 href={ADMIN_URL}
                 target="_blank"
                 className="block uppercase text-purple-700 font-bold hover:text-purple-900 focus-visible:ring-2 focus-visible:ring-purple-500 transition"
                 onClick={() => setIsOpen(false)}
               >
                 Admin
-              </Link>
+              </Link> */}
               <hr className="my-2 border-t border-purple-400 w-100" />
             </motion.div>
             
