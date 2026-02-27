@@ -3,7 +3,7 @@
 import { draftMode } from 'next/headers'
 import { redirect } from 'next/navigation'
 import { validatePreviewUrl } from '@sanity/preview-url-secret'
-import { client } from '../../lib/client' // Adjust this path to your Sanity client
+import { client } from '../../../lib/sanity' // Adjust this path to your Sanity client
 
 // Create a client with the preview token for validation
 const clientWithToken = client.withConfig({
