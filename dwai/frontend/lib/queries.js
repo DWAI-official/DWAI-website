@@ -93,3 +93,50 @@ export const homepageGalleryQuery = groq`
     }
   }
 `;
+
+export const globalDataQuery = groq`{
+  "hero": *[_type == "homepage"][0]{
+    title,
+    subtitle,
+    highlight,
+    "heroImageUrl": heroImage.asset->url
+  },
+  "partners": *[_type == "partner"]{
+    _id,
+    name,
+    "logoUrl": logo.asset->url
+  },
+  "gallerySection": *[_type == "homepageGallery"][0]{
+    heading,
+    subheading,
+    "items": items[]{
+      _type,
+      _key,
+      _type == "image" => {
+        "url": asset->url,
+        alt,
+        caption
+      },
+      _type == "video" => {
+        url,
+        caption
+      }
+    }
+  },
+  "teams": *[_type == "teamMember"]{
+    _id,
+    name,
+    role,
+    "image": image.asset->url,
+    bio
+  },
+  "programs": *[_type == "program"]{
+    _id,
+    title,
+    "slug": slug.current,
+    publishedAt,
+    summary,
+    "mainImageUrl": mainImage.asset->url,
+    body
+  }
+}`;

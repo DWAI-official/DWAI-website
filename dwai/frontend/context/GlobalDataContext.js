@@ -1,41 +1,36 @@
 "use client";
 
-import { createContext, useContext } from "react";
+
+import { createContext, useContext, useMemo } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { client } from "../lib/sanity";
-import {
-  homepageQuery,
-  partnersQuery,
-  homepageGalleryQuery,
-  teamsQuery,
-  programsQuery,
-} from "../lib/queries";
+import { globalDataQuery } from "../lib/queries";
 
 const GlobalDataContext = createContext(null);
+
+// Export fetcher for Server Prefetching in layout.js
+export const fetchGlobalData = async () => {
+  return client.fetch(globalDataQuery);
+};
 
 export const GlobalDataProvider = ({ children }) => {
   const { data, isLoading, error } = useQuery({
     queryKey: ["globalData"],
-    queryFn: async () => {
-      try {
-        const [hero, partners, gallerySection, teams, programs] = await Promise.all([
-          client.fetch(homepageQuery),
-          client.fetch(partnersQuery),
-          client.fetch(homepageGalleryQuery),
-          client.fetch(teamsQuery),
-          client.fetch(programsQuery),
-        ]);
-        return { hero, partners, gallerySection, teams, programs };
-      } catch (err) {
-        console.error("Error fetching global data:", err);
-        throw err;
-      }
-    },
-    staleTime: 1000 * 60 * 5, // 5 minutes
+    queryFn: fetchGlobalData,
+    staleTime: 1000 * 60 * 60, // 1 hour - Global data rarely changes
+    refetchOnWindowFocus: false,
+    refetchOnMount: false, // Rely on hydration from server
   });
 
+  // Memoize context value to prevent unnecessary re-renders of consumers
+  const value = useMemo(() => ({
+    ...data,
+    isLoading,
+    error
+  }), [data, isLoading, error]);
+
   return (
-    <GlobalDataContext.Provider value={{ ...data, isLoading, error }}>
+    <GlobalDataContext.Provider value={value}>
       {children}
     </GlobalDataContext.Provider>
   );
