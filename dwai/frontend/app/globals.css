@@ -35,6 +35,24 @@ body {
 }
 
 
+
+/* THEME TOKENS */
+@theme {
+  --color-purple: #5B2D8E;
+  --color-purple-dark: #3D1A6B;
+
+  --color-magenta: #C2185B;
+
+  --color-charcoal: #1A1527;
+  --color-muted: #6B6478;
+
+  --color-offwhite: #FAF8FF;
+
+  --font-heading: "Cormorant Garamond", serif;
+  --font-body: "DM Sans", sans-serif;
+}
+
+
 @keyframes scroll-x {
   0% {
     transform: translateX(0);
@@ -43,6 +61,9 @@ body {
     transform: translateX(-50%);
   }
 }
+
+
+
 
 .animate-scroll-x {
   animation: scroll-x 40s linear infinite;

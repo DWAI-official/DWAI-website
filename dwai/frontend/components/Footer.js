@@ -1,182 +1,166 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { MdFacebook } from "react-icons/md";
-import { CiInstagram, CiLinkedin, } from "react-icons/ci";
-import { FaWhatsapp } from "react-icons/fa";
-import { MdCall } from "react-icons/md";
-import { FaSquareXTwitter } from "react-icons/fa6";
-import Image from "next/image"
-import PrivacyPopup from "./PrivacyPopUp";
 
 export default function Footer() {
-  const socialLinks = [
-    {
-      icon: MdFacebook,
-      href: "https://www.facebook.com/share/18s37jbQ2H/",
-      label: "DWAI Facebook",
-    },
-    {
-      icon: CiInstagram,
-      href: " https://www.instagram.com/dwainigeria?igsh=MTN0NTNyYzNxcnQycA==",
-      label: "DWAI Instagram",
-    },
-    {
-      icon: FaSquareXTwitter,
-      href: " https://x.com/dwai_nig?t=fi9hVI9NHuQ_3mHbZPBnbA&s=09",
-      label: "DWAI Twitter/X",
-    },
-    {
-      icon: CiLinkedin,
-      href: "https://www.linkedin.com/in/deaf-women-aloud-initiative-2781132b2?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-      label: "DWAI LinkedIn",
-    },
-  ];
-
-  const quickLinks = [
-    { label: "About", href: "/about" },
-    { label: "Gallery", href: "/gallery" },
-    { label: "Contact", href: "/contact" },
-  ];
-
   return (
-    <footer
-      className="relative bg-gradient-to-br from-purple-800 via-purple-700 to-pink-700 text-white overflow-hidden yt-14"
-      role="contentinfo"
-    >
-      {/* ✨ Floating Light Glow */}
-      <div className="absolute -top-20 left-10 w-72 h-72 bg-pink-400 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse"></div>
-      <div className="absolute bottom-0 right-0 w-80 h-80 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
+    <footer className="relative bg-[#0f0f14] text-white/70 overflow-hidden">
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-16 grid md:grid-cols-3 gap-12">
-        {/* 🦋 About Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <Link
-            href="/"
-            className="flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 rounded-md"
-          >
-            <Image
-              src="/assets/images/dwai_logo.png"
-              alt="DWAI Logo"
-              width={150}
-              height={150}
-              className="rounded-full"
-            />
-            {/* <span className="ml-3 text-2xl font-extrabold text-purple-700 tracking-tight">
-              DWAI
-            </span> */}
-          </Link>
+      {/* Soft glow background */}
+      <div className="absolute -top-32 -right-32 w-[400px] h-[400px] bg-purple-600/20 blur-[120px] rounded-full" />
+      <div className="absolute bottom-0 left-0 w-[450px] h-[450px] bg-pink-600/10 blur-[120px] rounded-full" />
 
-          <p className="text-sm md:text-base leading-relaxed text-purple-50 font-medium">
-           <strong>Deaf Women Aloud Initiative (DWAI)</strong> is an non-government organization founded to amplify the voice of Deaf Women and girls in Nigeria. We are registered with the Corporate Affairs Commission (CAC) and our goals are to reduce the exploitation of Deaf Women, eradicate discrimination, advance social inclusion, and promote the sexual and reproductive health rights of this vulnerable group.
-          </p>
-        </motion.div>
+      <div className="relative max-w-7xl mx-auto px-6 py-20">
 
-        {/* 🔗 Quick Links */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          <h4 className="text-xl font-bold mb-4 text-white">
-            Quick Links
-          </h4>
-          <ul className="space-y-2">
-            {quickLinks.map((link) => (
-              <motion.li
-                key={link.label}
-                whileHover={{ x: 6 }}
-                transition={{ type: "spring", stiffness: 200 }}
-              >
-                <Link
-                  href={`/${link.href}`}
-                  className="text-purple-50 hover:text-pink-200 focus-visible:ring-2 focus-visible:ring-pink-300 rounded-sm transition inline-block"
+        {/* MAIN GRID */}
+        <div className="grid md:grid-cols-4 gap-12">
+
+          {/* BRAND */}
+          <div>
+            <div className="flex items-center gap-3 mb-5">
+              <img
+                src="assets/images/dwai_logo2.png"
+                alt="DWAI Logo"
+                className="w-20 h-20 rounded-full object-cover"
+              />
+              <div>
+                <h3 className="text-pink-400 font-semibold tracking-wide">
+                  DWAI
+                </h3>
+                <p className="text-xs text-white/40 uppercase tracking-widest">
+                  Deaf Women Aloud Initiative
+                </p>
+              </div>
+            </div>
+
+            <p className="text-sm leading-relaxed text-white/50 max-w-xs">
+              A non-government organisation amplifying the voices of Deaf women and girls in Nigeria —
+              advancing inclusion, dignity, and reproductive rights.
+            </p>
+
+            {/* SOCIALS */}
+            <div className="flex gap-3 mt-6">
+              {["f", "in", "𝕏", "li"].map((item, i) => (
+                <a
+                  key={i}
+                  href="#"
+                  className="w-9 h-9 flex items-center justify-center border border-white/10 rounded-md text-white/60 hover:bg-purple-600 hover:text-white hover:border-purple-600 transition"
                 >
-                  {link.label}
-                </Link>
-              </motion.li>
-            ))}
-          </ul>
-        </motion.div>
+                  {item}
+                </a>
+              ))}
+            </div>
+          </div>
 
-        {/* 📞 Contact & Socials */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-        >
-          <h4 className="text-xl font-bold mb-4 text-white">
-            Contact Us
-          </h4>
-          <address className="not-italic text-purple-50 text-sm leading-relaxed font-medium">
-            P&D Plaza,  
-            Beside Best Buyer Supermarket, Kuje, Abuja-FCT  
-          </address>
-          <p className="mt-2 text-sm">
-            <span className="font-semibold">Email:</span>{" "}
+          {/* QUICK LINKS */}
+          <div>
+            <h4 className="text-xs uppercase tracking-[0.25em] text-white/30 mb-5">
+              Quick Links
+            </h4>
+
+            <ul className="space-y-3 text-sm">
+              {[
+                ["Home", "#homepage"],
+                ["About", "#about-page"],
+                ["Gallery", "#gallery-page"],
+                ["Contact", "#contact-page"],
+                ["Donate", "#donate-section"],
+              ].map(([label, href]) => (
+                <li key={label}>
+                  <Link
+                    href={href}
+                    className="hover:text-white transition"
+                  >
+                    {label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* RESOURCES */}
+          <div>
+            <h4 className="text-xs uppercase tracking-[0.25em] text-white/30 mb-5">
+              Resources
+            </h4>
+
+            <ul className="space-y-3 text-sm">
+              <li>
+                <Link href="/assets/files/SRHR.pdf" className="hover:text-white transition">
+                  SRHR Glossary
+                </Link>
+              </li>
+              <li>
+                <Link href="#programs" className="hover:text-white transition">
+                  Our Programs
+                </Link>
+              </li>
+              <li>
+                <Link href="#impact" className="hover:text-white transition">
+                  Impact Report
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* CONTACT */}
+          <div>
+            <h4 className="text-xs uppercase tracking-[0.25em] text-white/30 mb-5">
+              Contact Us
+            </h4>
+
+            <div className="space-y-4 text-sm text-white/60">
+
+              <div className="flex gap-3">
+                <span className="text-purple-400">📍</span>
+                <p>
+                  P&D Plaza, Beside Best Buyer Supermarket,<br />
+                  Kuje, Abuja-FCT
+                </p>
+              </div>
+
+              <div className="flex gap-3">
+                <span className="text-purple-400">✉️</span>
+                <a
+                  href="mailto:deafwomenaloudinitiative@gmail.com"
+                  className="hover:text-white transition"
+                >
+                  deafwomenaloudinitiative@gmail.com
+                </a>
+              </div>
+
+              <div className="flex gap-3">
+                <span className="text-purple-400">📞</span>
+                <p>
+                  +234 803 750 0671<br />
+                  +234 818 505 6488
+                </p>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        {/* DIVIDER */}
+        <div className="border-t border-white/10 mt-16 pt-6 flex flex-col md:flex-row justify-between gap-4 text-xs text-white/40">
+
+          <p>
+            © 2026 Deaf Women Aloud Initiative. All rights reserved · CAC Registered
+          </p>
+
+          <p>
+            Designed for accessibility & inclusion · Built by{" "}
             <a
-              href="mailto:deafwomenaloudinitiatives@gmail.com"
-              className="hover:text-pink-200 focus-visible:ring-2 focus-visible:ring-pink-300 rounded-sm underline decoration-pink-300/50 underline-offset-4"
+              href="https://acclusivo.vercel.app"
+              className="text-white/60 hover:text-white transition"
             >
-              deafwomenaloudinitiative@gmail.com
+              Victor Oricha
             </a>
           </p>
 
-          <div className="mt-4 space-y-2 text-sm">
-            <div className="flex items-center gap-2 font-medium">
-              <FaWhatsapp className="text-green-300 text-lg" aria-hidden="true" />{" "}
-              <span>+234 803 750 0671 | +234 818 505 6488</span>
-            </div>
-            <div className="flex items-center gap-2 font-medium">
-              <MdCall className="text-yellow-200 text-lg" aria-hidden="true" />{" "}
-              <span>+234 811 422 9969</span>
-            </div>
-          </div>
-
-          {/* 🌐 Social Icons */}
-          <div className="flex mt-5 space-x-5">
-            {socialLinks.map(({ icon: Icon, href, label }, i) => (
-              <motion.a
-                key={i}
-                href={href}
-                aria-label={label}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 bg-white/10 rounded-full hover:bg-white/20 focus-visible:ring-2 focus-visible:ring-pink-300 transition"
-                whileHover={{ scale: 1.15, rotate: 5 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Icon className="text-white text-2xl" />
-              </motion.a>
-            ))}
-          </div>
-        </motion.div>
+        </div>
       </div>
-
-      {/* 💫 Footer Bottom */}
-      <div className="relative border-t border-purple-300/30 py-6 text-center text-sm text-purple-100 backdrop-blur-sm">
-        <p>
-          © {new Date().getFullYear()} Deaf Women Aloud Initiative. All rights
-          reserved.
-        </p>
-        <p className="text-xs mt-1">
-          Designed for accessibility & inclusion • Built by{" "} 
-          <Link
-            href="https://acclusivo.vercel.app"
-            className="underline hover:text-pink-200 focus-visible:ring-2 focus-visible:ring-pink-300 rounded-sm font-semibold"
-          >
-            Victor Oricha
-          </Link>
-        </p>
-      </div>
-
-      {/* Privacy Popup */}
-      <PrivacyPopup />
     </footer>
   );
 }

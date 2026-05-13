@@ -1,4 +1,3 @@
-import { Plus_Jakarta_Sans } from "next/font/google";
 import { QueryClient, HydrationBoundary, dehydrate } from "@tanstack/react-query";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -9,12 +8,6 @@ import Providers from "./providers";
 import { fetchGlobalData, GlobalDataProvider } from "../context/GlobalDataContext";
 
 // import { LanguageProvider } from "../context/LanguageContext";
-
-const jakarta = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-jakarta",
-});
 
 export const metadata = {
   title: "Deaf Women Aloud Initiative (DWAI)",
@@ -36,9 +29,7 @@ export default async function RootLayout({ children }) {
 
   return (
     <html lang="en">
-      <body
-        className={`${jakarta.className} antialiased text-gray-900 bg-gray-50`}
-      >
+      <body className="font-sans antialiased text-gray-900 bg-gray-50">
         <Providers>
           <HydrationBoundary state={dehydrate(queryClient)}>
             <GlobalDataProvider>

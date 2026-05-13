@@ -1,105 +1,5 @@
-// "use client";
-
-// import { useState, useEffect } from "react";
-// import { motion } from "framer-motion";
-// import Image from "next/image";
-// import { getPartners, getStrapiMedia } from "../lib/strapi";
-
-// export default function PartnersSection() {
-//   const [partners, setPartners] = useState([]);
-//   const [flatImages, setFlatImages] = useState([]);
-
-//   useEffect(() => {
-//     async function fetchData() {
-//       const data = await getPartners();
-//       setPartners(data);
-
-//       // Flatten image arrays (same logic as Gallery)
-//       const flatten = data.flatMap((item) =>
-//         item.logo?.map((img) => ({
-//           url: getStrapiMedia(img.url),
-//           alt: img.alt || item.name || "Partner Logo",
-//         })) || []
-//       );
-
-//       setFlatImages(flatten);
-//     }
-
-//     fetchData();
-//   }, []);
-
-//   return (
-//     <section className="relative bg-gradient-to-br from-purple-50 via-white to-pink-50 py-20 overflow-hidden">
-
-//       {/* Header */}
-//       <div className="max-w-7xl mx-auto text-center px-4 relative z-10">
-//         <motion.h2
-//           initial={{ opacity: 0, y: 30 }}
-//           whileInView={{ opacity: 1, y: 0 }}
-//           transition={{ duration: 0.7 }}
-//           className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-6"
-//         >
-//           Our Trusted <span className="text-purple-700">Partners</span>
-//         </motion.h2>
-
-//         <motion.p
-//           initial={{ opacity: 0, y: 30 }}
-//           whileInView={{ opacity: 1, y: 0 }}
-//           transition={{ delay: 0.2, duration: 0.7 }}
-//           className="text-gray-700 max-w-2xl mx-auto mb-12 text-lg leading-relaxed"
-//         >
-//           We proudly collaborate with organizations committed to Deaf empowerment,
-//           accessibility, and inclusive innovation.
-//         </motion.p>
-
-//         {/* Scrolling Logos */}
-//         <div className="relative w-full overflow-hidden">
-//           <motion.div
-//             className="flex gap-12 animate-scroll-x whitespace-nowrap"
-//             aria-label="Scrolling partner logos"
-//             initial={{ opacity: 0 }}
-//             whileInView={{ opacity: 1 }}
-//             transition={{ duration: 1 }}
-//           >
-//             {partners.flatMap((partner) =>
-//               partner.logo?.map((img) => {
-//                 const imageUrl = getStrapiMedia(img.url);
-
-//                 return (
-//                   <motion.div
-//                     key={img.id}
-//                     whileHover={{ scale: 1.05 }}
-//                     className="flex flex-col items-center justify-center w-44 shrink-0 text-center cursor-pointer"
-//                   >
-//                     {/* Logo Box */}
-//                     <div className="relative h-20 w-36 mb-3 shadow-md rounded-md overflow-hidden bg-white p-2">
-//                       <Image
-//                         src={imageUrl}
-//                         alt={img.alt || partner.name}
-//                         fill
-//                         className="object-contain transition-transform duration-500 hover:scale-105"
-//                         unoptimized
-//                       />
-//                     </div>
-
-//                     {/* Partner Name */}
-//                     <p className="text-sm text-gray-900 font-semibold">
-//                       {partner.name}
-//                     </p>
-//                   </motion.div>
-//                 );
-//               })
-//             )}
-//           </motion.div>
-//         </div>
-//       </div>
-//     </section>
-//   );
-// }
-
 "use client";
 
-import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useGlobalData } from "../context/GlobalDataContext";
@@ -108,114 +8,114 @@ export default function PartnersSection() {
   const { partners: data } = useGlobalData();
   const partners = data || [];
 
-  // Create two rows for parallax scrolling
-  const safePartners = partners || [];
+  const safePartners = partners;
   const row1 = safePartners.slice(0, Math.ceil(safePartners.length / 2));
   const row2 = safePartners.slice(Math.ceil(safePartners.length / 2));
 
   return (
-    <section className="relative py-24 bg-gradient-to-br from-purple-500 to-pink-500 dark:from-gray-900 dark:to-gray-800 overflow-hidden">
+    <section className="relative py-28 overflow-hidden bg-gradient-to-b from-white via-purple-50/40 to-white">
 
-      {/* Decorative Background Glow */}
+      {/* Luxury ambient background */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute w-72 h-52 bg-purple-300/30  blur-3xl rounded-full -top-16 -left-10 animate-pulse"></div>
-        <div className="absolute w-96 h-96 bg-pink-300/20  blur-3xl rounded-full bottom-0 right-0 animate-ping"></div>
+        <div className="absolute -top-32 left-10 w-[28rem] h-[28rem] bg-purple-200/40 blur-[120px] rounded-full" />
+        <div className="absolute bottom-0 right-10 w-[30rem] h-[30rem] bg-pink-200/30 blur-[120px] rounded-full" />
       </div>
 
       {/* Header */}
-      <div className="relative z-10 text-center max-w-3xl mx-auto px-4">
-        <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          className="text-4xl md:text-5xl font-extrabold text-purple-500"
-        >
+      <div className="relative z-10 text-center max-w-3xl mx-auto px-6">
+        <span className="text-xs tracking-[0.3em] uppercase text-purple-600 font-semibold">
           Our Partners
-        </motion.h2>
+        </span>
 
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.7 }}
-          className="text-purple-200 text-lg mt-4"
-        >
-          Together we advance Deaf empowerment, accessibility, and gender inclusion.
-        </motion.p>
+        <h2 className="mt-4 text-4xl md:text-5xl font-semibold text-gray-900 leading-tight">
+          Building a <span className="text-purple-600 italic">trusted ecosystem</span> for Deaf empowerment
+        </h2>
+
+        <p className="mt-5 text-gray-600 leading-relaxed text-base md:text-lg">
+          We collaborate with organizations committed to accessibility, inclusion,
+          and sustainable impact for Deaf women and girls across Nigeria.
+        </p>
       </div>
 
-      {/* Parallax Logo Rows */}
-      <div className="mt-16 flex justify-center items-center flex-col space-y-10 relative z-10">
+      {/* Premium glass container */}
+      <div className="relative z-10 mt-16 max-w-6xl mx-auto px-6">
+        <div className="rounded-3xl border border-purple-100 bg-white/40 backdrop-blur-xl shadow-xl py-12 px-6 overflow-hidden">
 
-        {/* Row 1 — Scroll Right */}
-        <motion.div
-          className="flex gap-14 whitespace-nowrap animate-marquee"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-        >
-          {row1.map((partner) =>
-             <LogoCard key={partner._id} name={partner.name} src={partner.logoUrl} />
-          )}
-        </motion.div>
+          {/* Row 1 */}
+          <div className="flex gap-12 whitespace-nowrap animate-marquee">
+            {row1.map((partner) => (
+              <LogoCard
+                key={partner._id}
+                name={partner.name}
+                src={partner.logoUrl}
+              />
+            ))}
+          </div>
 
-        {/* Row 2 — Scroll Left (Opposite Direction) */}
-        <motion.div
-          className="flex gap-14 whitespace-nowrap animate-marquee-reverse"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-        >
-          {row2.map((partner) =>
-             <LogoCard key={partner._id} name={partner.name} src={partner.logoUrl} />
-          )}
-        </motion.div>
-
+          {/* Row 2 */}
+          <div className="flex gap-12 mt-10 whitespace-nowrap animate-marquee-reverse">
+            {row2.map((partner) => (
+              <LogoCard
+                key={partner._id}
+                name={partner.name}
+                src={partner.logoUrl}
+              />
+            ))}
+          </div>
+        </div>
       </div>
 
-      {/* CSS Animations */}
+      {/* animations */}
       <style jsx global>{`
         @keyframes marquee {
           0% { transform: translateX(0); }
           100% { transform: translateX(-50%); }
         }
+
         @keyframes marquee-reverse {
           0% { transform: translateX(0); }
           100% { transform: translateX(50%); }
         }
+
         .animate-marquee {
-          animation: marquee 25s linear infinite;
+          animation: marquee 30s linear infinite;
         }
+
         .animate-marquee-reverse {
-          animation: marquee-reverse 25s linear infinite;
+          animation: marquee-reverse 30s linear infinite;
         }
       `}</style>
     </section>
   );
 }
 
-/* Partner Logo Card Component */
+/* =========================
+   PREMIUM LOGO CARD
+   ========================= */
 function LogoCard({ src, name }) {
   return (
     <motion.div
-      whileHover={{ scale: 1.1, rotate: 1 }}
+      whileHover={{ scale: 1.08 }}
       transition={{ type: "spring", stiffness: 200 }}
-      className="flex flex-col items-center w-40 shrink-0"
+      className="flex flex-col items-center w-44 shrink-0 group"
     >
       <div className="
-        relative h-24 w-40 p-3 rounded-xl shadow-xl
-        bg-purple-700/40 dark:bg-gray-900/40
-        backdrop-blur-xl border border-white/30
-        hover:shadow-purple-300/40 dark:hover:shadow-purple-900/40
-        hover:ring-2 ring-purple-500 transition-all
+        relative h-24 w-44 p-4 rounded-2xl
+        bg-white/60 backdrop-blur-md
+        border border-purple-100
+        shadow-sm group-hover:shadow-xl
+        group-hover:shadow-purple-200/40
+        transition-all duration-300
       ">
         <Image
           src={src}
           alt={name}
           fill
-          className="object-contain rounded-lg"
+          className="object-contain p-2"
         />
       </div>
-      <p className="mt-3 text-sm font-semibold text-purple-300  text-center">
+
+      <p className="mt-3 text-xs tracking-wide uppercase text-gray-500 group-hover:text-purple-600 transition">
         {name}
       </p>
     </motion.div>

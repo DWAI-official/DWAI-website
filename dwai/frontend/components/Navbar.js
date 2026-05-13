@@ -2,11 +2,10 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
+import { AnimatePresence, motion } from "framer-motion";
 import { TbMenuDeep } from "react-icons/tb";
 import { MdCancel } from "react-icons/md";
-import Image from "next/image";
-// import LanguageSwitcher from "./LanguageSwitcher";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,141 +13,180 @@ export default function Navbar() {
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
-    // { name: "Programs", href: "/programs" },
     { name: "Gallery", href: "/gallery" },
-        // { name: "donation", href: "/donation" }
-    // { name: "Service", href: "/service" },
     { name: "Contact", href: "/contact" },
   ];
 
-  const ADMIN_URL = "https://dwai.sanity.studio";
-
   return (
-    <nav
-      className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-white/80 border-b border-purple-100 shadow-sm"
-      role="navigation"
-      aria-label="Main Navigation"
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-20 items-center">
-          {/* 🌸 Logo Section */}
-          <Link
-            href="/"
-            className="flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 rounded-md"
-          >
-            <Image
-              src="/assets/images/dwai_logo2.png"
-              alt="DWAI Logo"
-              width={140}
-              height={140}
-              className="rounded-full"
-            />
-            {/* <span className="ml-3 text-2xl font-extrabold text-purple-700 tracking-tight">
-              DWAI
-            </span> */}
-          </Link>
+    <nav className="fixed left-0 top-0 z-50 w-full border-b border-[rgba(91,45,142,0.12)] bg-[rgba(250,248,255,0.92)] backdrop-blur-xl">
+      
+      {/* CONTAINER */}
+      <div className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-6 lg:px-8">
 
-          {/* 💻 Desktop Navigation */}
-          <ul className="hidden md:flex space-x-8 items-center">
-            {navLinks.map((link, i) => (
-              <motion.li
-                key={link.name}
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1 }}
-              >
+        {/* LOGO */}
+        <Link
+          href="/"
+          className="flex items-center gap-3 focus:outline-none"
+        >
+          <Image
+            src="/assets/images/dwai_logo2.png"
+            alt="DWAI Logo"
+            width={100}
+            height={100}
+            className="rounded-full object-cover"
+          />
+        </Link>
 
-                
-                <Link
-                  href={link.href}
-                  className="text-gray-700 uppercase hover:text-purple-700 font-bold text-sm tracking-wide transition duration-300 focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2 rounded-md px-2 py-1"
-                >
-                  {link.name}
-                </Link>
-              </motion.li>
-            ))}
-            {/* Admin Button */}
-            {/* <motion.li
+        {/* DESKTOP NAV */}
+        <ul className="hidden items-center gap-10 md:flex">
+          {navLinks.map((link, i) => (
+            <motion.li
+              key={link.name}
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: navLinks.length * 0.1 }}
+              transition={{ delay: i * 0.08 }}
             >
               <Link
-                href={ADMIN_URL}
-                target="_blank"
-                className="bg-purple-700 text-white hover:bg-purple-800 px-5 py-2 rounded-full font-bold text-sm shadow-md transition-all"
+                href={link.href}
+                className="
+                  border-b border-transparent
+                  pb-1
+                  text-[0.8rem]
+                  font-medium
+                  uppercase
+                  tracking-[0.1em]
+                  text-muted
+                  transition-all
+                  duration-200
+                  hover:border-magenta
+                  hover:text-purple
+                "
               >
-                Admin
+                {link.name}
               </Link>
-            </motion.li> */}
-            {/* Language Switcher */}
-            {/* <li className="ml-2 pl-4 border-l border-purple-200">
-              <LanguageSwitcher />
-            </li> */}
-          </ul>
+            </motion.li>
+          ))}
 
-          {/* 📱 Mobile Menu Toggle */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 rounded-md text-gray-700 hover:bg-purple-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2 transition"
-            aria-label="Toggle menu"
-            aria-expanded={isOpen}
+          {/* CTA BUTTON */}
+          <motion.li
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
           >
-            {isOpen ? (
-              <MdCancel size={26} className="text-purple-700" />
-            ) : (
-              <TbMenuDeep size={26} className="text-purple-700" />
-            )}
-          </button>
-        </div>
+            <Link
+              href="/contact"
+              className="
+                bg-purple
+                px-6
+                py-2.5
+                text-[0.78rem]
+                font-semibold
+                uppercase
+                tracking-[0.1em]
+                text-white
+                transition-all
+                duration-200
+                hover:bg-purple-dark
+              "
+              style={{
+                clipPath:
+                  "polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%)",
+              }}
+            >
+              Join Us
+            </Link>
+          </motion.li>
+        </ul>
+
+        {/* MOBILE BUTTON */}
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="text-purple transition md:hidden"
+          aria-label="Toggle Menu"
+        >
+          {isOpen ? (
+            <MdCancel size={28} />
+          ) : (
+            <TbMenuDeep size={28} />
+          )}
+        </button>
       </div>
 
-      {/* 📱 Animated Mobile Menu */}
+      {/* MOBILE MENU */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -15 }}
+            initial={{ opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -15 }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden bg-white/90 backdrop-blur-md border-t flex flex-col justify-center items-center border-purple-100 px-4 py-4 space-y-3 shadow-lg"
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.25 }}
+            className="
+              border-t
+              border-[rgba(91,45,142,0.12)]
+              bg-[rgba(250,248,255,0.96)]
+              px-6
+              py-6
+              backdrop-blur-xl
+              md:hidden
+            "
           >
-            {navLinks.map((link, i) => (
-              <motion.div
-                key={link.name}
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.1 }}
-              >
-                <Link
-                  href={link.href}
-                  className="block uppercase text-gray-800 font-medium hover:text-purple-700 focus-visible:ring-2 focus-visible:ring-purple-500 transition"
-                  onClick={() => setIsOpen(false)}
+            <div className="flex flex-col gap-5">
+
+              {navLinks.map((link, i) => (
+                <motion.div
+                  key={link.name}
+                  initial={{ opacity: 0, x: -8 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.06 }}
                 >
-                  {link.name}
-                </Link>
-                <hr className="my-2 border-t border-purple-400 w-100" />
-              </motion.div>
-            ))}
-            <motion.div
-              initial={{ opacity: 0, x: -10 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: navLinks.length * 0.1 }}
-            >
-              {/* <Link
-                href={ADMIN_URL}
-                target="_blank"
-                className="block uppercase text-purple-700 font-bold hover:text-purple-900 focus-visible:ring-2 focus-visible:ring-purple-500 transition"
+                  <Link
+                    href={link.href}
+                    onClick={() => setIsOpen(false)}
+                    className="
+                      block
+                      border-b
+                      border-purple/10
+                      pb-3
+                      text-[0.82rem]
+                      font-medium
+                      uppercase
+                      tracking-[0.1em]
+                      text-charcoal
+                      transition
+                      hover:text-purple
+                    "
+                  >
+                    {link.name}
+                  </Link>
+                </motion.div>
+              ))}
+
+              {/* MOBILE CTA */}
+              <Link
+                href="/contact"
                 onClick={() => setIsOpen(false)}
+                className="
+                  mt-2
+                  inline-flex
+                  items-center
+                  justify-center
+                  bg-purple
+                  px-6
+                  py-3
+                  text-[0.8rem]
+                  font-semibold
+                  uppercase
+                  tracking-[0.08em]
+                  text-white
+                "
+                style={{
+                  clipPath:
+                    "polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%)",
+                }}
               >
-                Admin
-              </Link> */}
-              <hr className="my-2 border-t border-purple-400 w-100" />
-            </motion.div>
-            
-            {/* <div className="pt-2 w-full flex justify-center">
-              <LanguageSwitcher />
-            </div> */}
+                Join Us
+              </Link>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

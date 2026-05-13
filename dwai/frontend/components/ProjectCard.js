@@ -1,134 +1,154 @@
 "use client";
+
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Sparkles, CalendarDays } from "lucide-react";
+import { Sparkles, CalendarDays, ArrowRight } from "lucide-react";
+import { useState } from "react";
 import { useGlobalData } from "../context/GlobalDataContext";
+import Link from "next/link";
 
-/* =========================
-   RECENT PROGRAM (FEATURED)
-   ========================= */
+const categories = ["All", "Training", "Advocacy", "Health", "Community"];
 
 export default function ProgramsSection() {
   const { programs: data = [] } = useGlobalData();
-  // Sort by date if available, otherwise use order from Sanity
-  // Assuming data[0] is the most recent
-  const recentProgram = data[0];
-  const otherPrograms = data.slice(1, 4); // Take next 3
+
+  const [active, setActive] = useState("All");
+
+  const filteredPrograms =
+    active === "All"
+      ? data
+      : data.filter((p) => p.category === active);
+
+  const recentProgram = filteredPrograms[0];
+  const otherPrograms = filteredPrograms.slice(1, 4);
 
   if (!recentProgram) return null;
 
   return (
     <section
-      className="relative py-28 px-6 md:px-16 overflow-hidden 
-                 bg-gradient-to-b from-purple-50 via-white to-purple-100"
-      aria-labelledby="programs-heading"
+      id="programs"
+      className="relative py-28 bg-[#f7f5fb] overflow-hidden"
     >
-      {/* Decorative Gradient Orbs */}
-      <div className="absolute -top-32 left-10 w-96 h-96 bg-pink-300 rounded-full blur-3xl opacity-30"></div>
-      <div className="absolute -bottom-32 right-10 w-96 h-96 bg-purple-300 rounded-full blur-3xl opacity-30"></div>
+      {/* luxury background glow */}
+      <div className="absolute -top-40 left-20 w-[500px] h-[500px] bg-purple-200/30 blur-3xl rounded-full" />
+      <div className="absolute -bottom-40 right-20 w-[500px] h-[500px] bg-pink-200/20 blur-3xl rounded-full" />
 
-      {/* ================= HEADER ================= */}
-      <div className="relative z-10 text-center mb-20">
-        <motion.h2
-          id="programs-heading"
-          className="text-4xl md:text-5xl font-extrabold text-purple-600 mb-4"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
+      {/* HEADER */}
+      <div className="relative z-10 text-center max-w-3xl mx-auto mb-10">
+        <h2 className="text-4xl md:text-5xl font-light tracking-tight text-gray-900">
           Our Programs
-        </motion.h2>
-
-        <motion.p
-          className="text-gray-700 text-lg max-w-2xl mx-auto"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
-        >
-          From advocacy to education, DWAI designs inclusive programs that
-          protect rights, amplify voices, and empower Deaf women and girls
-          across Nigeria.
-        </motion.p>
+        </h2>
+        <p className="text-gray-600 mt-4 leading-relaxed">
+          Transformational programs empowering Deaf women through education,
+          advocacy, and community impact.
+        </p>
       </div>
 
-      {/* ================= RECENT PROGRAM ================= */}
+      {/* FILTERS */}
+      <div className="relative z-10 flex flex-wrap justify-center gap-3 mb-16">
+        {categories.map((cat) => (
+          <button
+            key={cat}
+            onClick={() => setActive(cat)}
+            className={`px-5 py-2 text-sm tracking-wide border transition-all duration-300
+              ${
+                active === cat
+                  ? "bg-purple-700 text-white border-purple-700"
+                  : "bg-white text-gray-700 border-gray-200 hover:border-purple-400"
+              }`}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      {/* FEATURED PROGRAM */}
       <motion.div
-        className="relative z-10 max-w-6xl mx-auto mb-24 
-                   grid md:grid-cols-2 gap-12 items-center
-                   bg-white/70 backdrop-blur-xl rounded-3xl
-                   border border-purple-100 shadow-2xl p-8 md:p-12"
-        initial={{ opacity: 0, y: 50 }}
+        className="relative z-10 max-w-6xl mx-auto mb-14 grid md:grid-cols-[5fr_4fr] bg-white border border-gray-100 shadow-sm hover:shadow-xl transition overflow-hidden"
+        initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
       >
-        {/* Image */}
-        <div className="relative overflow-hidden rounded-2xl">
+        {/* IMAGE */}
+        <div className="relative aspect-[4/3] overflow-hidden group">
           <Image
-            src={recentProgram.mainImageUrl || "/assets/images/digit_35.jpg"}
+            src={recentProgram.mainImageUrl}
             alt={recentProgram.title}
-            width={600}
-            height={400}
-            className="w-full h-full object-cover"
+            fill
+            className="object-cover group-hover:scale-105 transition duration-700"
           />
-          <span className="absolute top-4 left-4 bg-pink-600 text-white text-sm px-4 py-1 rounded-full flex items-center gap-2">
-            <Sparkles className="w-4 h-4" /> Recent Program
-          </span>
+
+          <div className="absolute top-6 left-6 bg-purple-700 text-white text-xs px-3 py-1 tracking-widest uppercase flex items-center gap-2">
+            <Sparkles className="w-4 h-4" />
+            Featured
+          </div>
         </div>
 
-        {/* Content */}
-        <div>
-          <div className="flex items-center gap-2 text-purple-700 mb-3">
-            <CalendarDays className="w-5 h-5" />
-            <span className="text-sm font-medium">
-              {recentProgram.publishedAt ? new Date(recentProgram.publishedAt).toLocaleDateString() : "Recent"}
-            </span>
+        {/* CONTENT */}
+        <div className="flex flex-col justify-center p-10">
+          <div className="flex items-center gap-2 text-xs text-gray-500 uppercase tracking-widest mb-3">
+            <CalendarDays className="w-4 h-4" />
+            {recentProgram.publishedAt
+              ? new Date(recentProgram.publishedAt).toLocaleDateString()
+              : "Recent"}
           </div>
 
-          <h3 className="text-3xl font-bold text-purple-800 mb-4">
+          <h3 className="text-3xl font-semibold text-gray-900 mb-4 leading-snug">
             {recentProgram.title}
           </h3>
 
-          <p className="text-gray-700 leading-relaxed">
+          <p className="text-gray-600 leading-relaxed mb-6">
             {recentProgram.summary}
           </p>
+
+          {/* READ MORE */}
+          <Link
+            href={`/programs/${recentProgram.slug?.current}`}
+            className="inline-flex items-center gap-2 text-purple-700 font-medium hover:gap-3 transition"
+          >
+            Read More
+            <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
       </motion.div>
 
-      {/* ================= OTHER PROGRAM CARDS ================= */}
-      <div className="relative z-10 grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
+      {/* GRID */}
+      <div className="relative z-10 grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
         {otherPrograms.map((program, i) => (
           <motion.div
             key={i}
-            className="group bg-white/70 backdrop-blur-md 
-                       border border-purple-100 rounded-3xl 
-                       shadow-lg overflow-hidden transition-all
-                       hover:shadow-2xl hover:-translate-y-2"
-            initial={{ opacity: 0, y: 40 }}
+            className="bg-white border border-gray-100 overflow-hidden hover:shadow-lg transition group"
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: i * 0.15 }}
+            transition={{ delay: i * 0.1 }}
           >
-            {/* Image */}
-            <div className="overflow-hidden">
+            {/* IMAGE */}
+            <div className="relative aspect-[16/10] overflow-hidden">
               <Image
                 src={program.mainImageUrl}
                 alt={program.title}
-                width={500}
-                height={300}
-                className="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-105"
+                fill
+                className="object-cover group-hover:scale-105 transition duration-700"
               />
             </div>
 
-            {/* Content */}
+            {/* CONTENT */}
             <div className="p-6">
-              <h3 className="text-xl font-bold text-purple-800 mb-3 group-hover:text-pink-600 transition line-clamp-2">
+              <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">
                 {program.title}
               </h3>
 
-              <p className="text-gray-700 text-sm leading-relaxed line-clamp-3">
+              <p className="text-sm text-gray-600 line-clamp-3 mb-4">
                 {program.summary}
               </p>
+
+              <Link
+                href={`/programs/${program.slug?.current}`}
+                className="text-sm text-purple-700 font-medium inline-flex items-center gap-2 hover:gap-3 transition"
+              >
+                Read More <ArrowRight className="w-4 h-4" />
+              </Link>
             </div>
           </motion.div>
         ))}

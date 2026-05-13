@@ -1,81 +1,100 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { FaFilePdf } from "react-icons/fa";
 
-export default function GlossaryDownloadSection() {
+export default function GlossarySection() {
   return (
     <section
-      className="relative py-20 px-6 bg-gradient-to-br from-purple-50 via-white to-pink-50 overflow-hidden font-sans"
-      aria-labelledby="glossary-heading"
+      id="glossary"
+      aria-labelledby="glossary-h2"
+      className="relative py-28 bg-white overflow-hidden"
     >
-      {/* Soft background aura */}
-      <div className="absolute -top-32 -left-32 w-80 h-80 bg-purple-200/40 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 right-0 w-80 h-80 bg-pink-200/30 rounded-full blur-3xl"></div>
+      {/* background aura */}
+      <div className="absolute top-[-120px] left-[-120px] w-[320px] h-[320px] bg-purple-200/40 rounded-full blur-3xl" />
+      <div className="absolute bottom-[-100px] right-[-100px] w-[400px] h-[400px] bg-pink-200/30 rounded-full blur-3xl" />
 
-      <div className="relative z-10 max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-        
-        {/* LEFT: Glossary Image */}
-        <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="flex justify-center"
-        >
-          <div className="relative w-full h-[450px] rounded-3xl shadow-2xl overflow-hidden border-4 border-purple-200">
-            <Image
-              src="/assets/images/glossary.jpg" 
-              alt="SRHR Glossary cover preview"
-              fill
-              className="object-cover"
-            />
-          </div>
-        </motion.div>
+      <div className="container mx-auto px-6">
+        <div className="grid lg:grid-cols-[5fr_7fr] gap-16 items-center">
 
-        {/* RIGHT: Text + Button */}
-        <motion.div
-          initial={{ opacity: 0, x: 40 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center md:text-left"
-        >
-          <h2
-            id="glossary-heading"
-            className="text-4xl md:text-5xl font-extrabold text-purple-600 leading-tight mb-6 tracking-tight"
+          {/* IMAGE */}
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="relative"
           >
-            SRHR Glossary  
-            <span className="text-purple-500 block">
-              for Deaf Women and Girls Access to Health Information
-            </span>
-          </h2>
+            <div className="relative aspect-[3/4] w-full overflow-hidden shadow-[16px_16px_0_#f3f4f6] clip-path-[polygon(0_0,calc(100%-20px)_0,100%_20px,100%_100%,0_100%)]">
+              <Image
+                src="/assets/images/outreach8.jpg"
+                alt="SRHR Glossary cover"
+                fill
+                className="object-cover"
+              />
+            </div>
 
-          <p className="text-lg text-gray-700 leading-relaxed mb-8">
-            Understand Sexual and Reproductive Health and Rights (SRHR) through
-            clear, accessible definitions — created specially for the Deaf
-            community.  
-            <span className="font-semibold text-purple-800">
+            {/* badge */}
+            <div className="absolute top-6 right-[-20px] bg-yellow-400 text-gray-900 text-[11px] font-bold tracking-widest uppercase px-4 py-2">
+              Free Resource
+            </div>
+          </motion.div>
+
+          {/* CONTENT */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <div className="text-sm font-semibold tracking-[0.2em] uppercase text-purple-600 mb-3">
+              SRHR Glossary
+            </div>
+
+            <h2
+              id="glossary-h2"
+              className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight"
+            >
+              Health Information{" "}
+              <em className="italic text-purple-600">in Plain Language</em>
+            </h2>
+
+            <p className="text-gray-600 leading-[1.85] mb-6">
+              Understand Sexual and Reproductive Health and Rights (SRHR) through
+              clear, accessible definitions — created specially for the Deaf community.
               Knowledge is power, and every Deaf woman deserves access to it.
-            </span>
-          </p>
+            </p>
 
-          <motion.a
-            href="/assets/files/SRHR.pdf"
-            download="SRHR-Glossary.pdf"
-            className="inline-flex items-center gap-3 bg-purple-700 text-white font-bold text-lg px-8 py-4 rounded-full shadow-lg hover:bg-purple-800 hover:shadow-xl transition-all duration-300 focus-visible:ring-2 focus-visible:ring-purple-500 focus:outline-none"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.97 }}
-          >
-            <FaFilePdf className="text-2xl" aria-hidden="true" />
-            Download SRHR Glossary (PDF)
-          </motion.a>
+            {/* TAGS */}
+            <div className="flex flex-wrap gap-2 mb-8">
+              {[
+                "Free Resource",
+                "Deaf-Inclusive",
+                "Accessible",
+                "Easy to Understand",
+              ].map((tag) => (
+                <span
+                  key={tag}
+                  className="text-[11px] font-semibold tracking-widest uppercase px-3 py-1 border border-gray-300 text-gray-600"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
 
-          <p className="text-sm text-gray-600 mt-4">
-            Free resource • Accessible • Deaf-inclusive • Easy to understand
-          </p>
-        </motion.div>
+            {/* BUTTON */}
+            <a
+              href="/assets/files/SRHR.pdf"
+              download
+              className="inline-flex items-center gap-3 bg-gray-900 text-white text-sm font-semibold uppercase tracking-widest px-8 py-4 transition hover:bg-purple-700 clip-[polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,0_100%)]"
+            >
+              <FaFilePdf className="text-lg" />
+              Download SRHR Glossary (PDF)
+            </a>
+          </motion.div>
+
+        </div>
       </div>
     </section>
   );

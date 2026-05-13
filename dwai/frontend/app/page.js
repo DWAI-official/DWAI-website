@@ -8,26 +8,30 @@ import ProjectCard from "../components/ProjectCard";
 import GallerySection from "../components/GallerySection";
 import PartnersSection from "../components/PartnersSection";
 // import TestimonialSection from "../components/TestimonialSection";
-import DonationSection from "../components/DonationSection";
+import DonationSection from "../components/sections/DonationSection";
 // import CTA from "../components/CTA";
 export default function Home() {
   return (
-    <main className="overflow-hidden">
+    <main className="overflow-hiddpen">
       <Hero />
       <AboutSection />
       <FeatureSection
-        heading="Our Mission"
-        text="To empower Deaf Women and girls to access sexual and reproductive health and rights (SRHR) services, for the promotion of an inclusive society."
-        bgImage={"/assets/images/outreach6.jpg"}
-      />
+  label="Our Mission"
+  title="Accessible SRHR for Every Deaf Woman"
+  text="To empower Deaf women and girls to access sexual and reproductive health and rights (SRHR) services, for the promotion of an inclusive society — without communication barriers or exclusion."
+  image="/assets/images/outreach6.jpg"
+/>
       <FeatureSection
-        heading="Our Vision"
-        text="A society where SRHR information and services are accessible to Deaf Women and girls without barriers or exclusion."
-        bgImage={"/assets/images/outreach7.jpg"}
-        reverse
-      />
-      <GlossaryPDF />
+      label="Our Vision"
+      title="A Society Without Barriers or Exclusion"
+      text="A Nigeria where SRHR information and services are fully accessible to Deaf women and girls — where sign language, deaf culture, and equal participation are embraced at every level of society."
+      image="/assets/images/digit_35.jpg"
+      reverse={true}
+      alt={true}
+/>
       <ImpactSection />
+      <GlossaryPDF />
+      
       <ProjectCard />
       <GallerySection />
       <PartnersSection />
@@ -37,7 +41,7 @@ export default function Home() {
         description="Your support can transform lives. Partner with us to empower Deaf women and girls in Nigeria."
         buttonText="Donate Now"
       /> */}
-      <DonationSection />
+      {/* <DonationSection /> */}
     </main>
   );
 }

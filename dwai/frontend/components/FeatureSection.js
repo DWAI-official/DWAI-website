@@ -1,70 +1,81 @@
 "use client";
-import { motion } from "framer-motion";
+
 import Image from "next/image";
-import React from "react";
+import { motion } from "framer-motion";
 
 export default function FeatureSection({
-  heading,
+  title,
   text,
-  bgImage,
+  image,
+  label,
   reverse = false,
-  accentColor = "from-purple-50 to-pink-50",
+  alt = false,
 }) {
   return (
     <section
-      className={`py-20 px-6 md:px-12 lg:px-20 bg-gradient-to-r ${accentColor} relative overflow-hidden`}
-      aria-labelledby={`${heading.toLowerCase().replace(/\s/g, "-")}-heading`}
+      className={`py-24 ${alt ? "bg-[#F4F0FA]" : "bg-white"}`}
+      aria-labelledby={`${label}-heading`}
     >
-      {/* Decorative floating circles for a soft vibe */}
-      <div className="absolute top-0 left-0 w-24 h-24 bg-purple-300/30 rounded-full blur-3xl animate-pulse" aria-hidden="true"></div>
-      <div className="absolute bottom-0 right-0 w-32 h-32 bg-pink-300/30 rounded-full blur-3xl animate-pulse" aria-hidden="true"></div>
-
       <div
-        className={`max-w-7xl mx-auto grid md:grid-cols-2 gap-10 items-center ${
-          reverse ? "md:flex-row-reverse" : ""
+        className={`mx-auto grid max-w-7xl grid-cols-1 items-center gap-16 px-6 md:grid-cols-2 lg:px-16 ${
+          reverse ? "md:[direction:rtl]" : ""
         }`}
       >
-        {/* Text Section */}
+
+        {/* TEXT SIDE */}
         <motion.div
-          initial={{ opacity: 0, x: reverse ? 100 : -100 }}
+          initial={{ opacity: 0, x: reverse ? 80 : -80 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7 }}
-          className="relative z-10"
+          viewport={{ once: true }}
+          className={reverse ? "[direction:ltr]" : ""}
         >
+          {/* LABEL */}
+          <p className="mb-4 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#C2185B]">
+            <span className="h-px w-5 bg-[#C2185B]" />
+            {label}
+          </p>
+
+          {/* TITLE */}
           <h2
-            id={`${heading.toLowerCase().replace(/\s/g, "-")}-heading`}
-            className="text-4xl md:text-5xl font-extrabold text-purple-900 mb-4 leading-tight tracking-tight"
+            id={`${label}-heading`}
+            className="mb-5 text-[clamp(2rem,3vw,3rem)] font-serif font-medium leading-tight text-[#1A1527]"
           >
-            {heading}
+            {title}
           </h2>
-          <p className="text-gray-700 text-lg leading-relaxed mb-6">
+
+          {/* TEXT */}
+          <p className="mb-8 leading-[1.85] text-[#6B6478]">
             {text}
           </p>
 
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.97 }}
-            className="bg-purple-700 text-white px-6 py-3 rounded-full font-semibold hover:bg-purple-800 focus-visible:ring-2 focus-visible:ring-purple-500 focus:outline-none transition"
+          {/* BUTTON */}
+          <button
+            className="border border-[#5B2D8E] px-6 py-3 text-sm font-semibold uppercase tracking-[0.06em] text-[#5B2D8E] transition hover:bg-[#5B2D8E] hover:text-white"
           >
             Learn More
-          </motion.button>
+          </button>
         </motion.div>
 
-        {/* Image Section */}
+        {/* IMAGE SIDE */}
         <motion.div
-          initial={{ opacity: 0, x: reverse ? -100 : 100 }}
+          initial={{ opacity: 0, x: reverse ? -80 : 80 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7 }}
-          className="relative w-full h-80 md:h-[400px] rounded-2xl overflow-hidden shadow-xl"
+          viewport={{ once: true }}
+          className="relative"
         >
-          <Image
-            src={bgImage}
-            alt={`${heading} visual illustration`}
-            fill
-            className="object-cover hover:scale-105 transition-transform duration-700"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+          <div className="relative aspect-[16/11] w-full overflow-hidden">
+            <Image
+              src={image}
+              alt={label}
+              fill
+              className="object-cover transition-transform duration-700 hover:scale-105"
+            />
+
+            {/* OVERLAY */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#1A1527]/50 to-transparent" />
+          </div>
         </motion.div>
       </div>
     </section>
