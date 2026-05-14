@@ -45,7 +45,7 @@ export default function ProgramsSection() {
       </div>
 
       {/* FILTERS */}
-      <div className="relative z-10 flex flex-wrap justify-center gap-3 mb-16">
+      {/* <div className="relative z-10 flex flex-wrap justify-center gap-3 mb-16">
         {categories.map((cat) => (
           <button
             key={cat}
@@ -60,7 +60,7 @@ export default function ProgramsSection() {
             {cat}
           </button>
         ))}
-      </div>
+      </div> */}
 
       {/* FEATURED PROGRAM */}
       <motion.div

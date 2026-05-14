@@ -26,8 +26,6 @@ export default function CountUpNumber({ value, duration = 500, suffix = "" }) {
       }
     };
 
-    // Reset current to 0 when value changes to re-trigger animation
-    setCurrent(0);
     raf = requestAnimationFrame(step);
     return () => cancelAnimationFrame(raf);
   }, [value, duration]);

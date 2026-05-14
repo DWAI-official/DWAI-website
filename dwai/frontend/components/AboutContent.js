@@ -297,7 +297,7 @@ export default function AboutContent({ team = [] }) {
             </h2>
 
             <p className="text-gray-600 text-lg">
-              The dedicated individuals driving DWAI's mission forward.
+              The dedicated individuals driving DWAI&apos; mission forward.
             </p>
           </div>
 

@@ -96,7 +96,7 @@ export default function StatsSection() {
 
         {/* FOOTNOTE */}
         <p className="mt-14 text-center font-self font-medium text-sm italic text-white/50">
-          Together, we're not just making numbers — we're building opportunities,
+          Together, we&apos;re not just making numbers — we&apos;re building opportunities,
           changing lives, and amplifying Deaf voices across Nigeria.
         </p>
       </div>

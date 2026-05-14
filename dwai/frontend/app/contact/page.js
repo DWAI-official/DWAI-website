@@ -71,7 +71,7 @@ export default function Contact() {
                 </h1>
 
                 <p className="mt-8 text-lg text-gray-300 leading-relaxed max-w-2xl">
-                  Whether you're a Deaf woman seeking support, a partner who
+                  Whether you&apos;re a Deaf woman seeking support, a partner who
                   believes in accessibility, or an organisation passionate about
                   inclusion — we would love to connect with you.
                 </p>

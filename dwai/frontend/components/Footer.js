@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { MdFacebook } from "react-icons/md";
 import { CiInstagram, CiLinkedin } from "react-icons/ci";
 import { FaXTwitter } from "react-icons/fa6";
@@ -21,7 +22,7 @@ export default function Footer() {
           {/* BRAND */}
           <div>
             <div className="flex items-center gap-3 mb-5">
-              <img
+              <Image
                 src="/assets/images/dwai_logo2.png"
                 alt="DWAI Logo"
                 className="w-20 h-20 rounded-full object-cover"
@@ -49,7 +50,7 @@ export default function Footer() {
                 { icon: <FaXTwitter />, href: "#", label: "X (Twitter)" },
                 { icon: <CiLinkedin />, href: "https://www.linkedin.com/in/deaf-women-aloud-initiative-2781132b2", label: "LinkedIn" },
               ].map((social, i) => (
-                <a
+                <Link
                   key={i}
                   href={social.href}
                   target="_blank"
@@ -58,7 +59,7 @@ export default function Footer() {
                   className="w-9 h-9 flex items-center justify-center border border-white/10 rounded-md text-white/60 hover:bg-purple-600 hover:text-white hover:border-purple-600 transition text-lg"
                 >
                   {social.icon}
-                </a>
+                </Link>
               ))}
             </div>
           </div>
