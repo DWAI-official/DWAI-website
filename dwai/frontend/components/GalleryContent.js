@@ -158,7 +158,7 @@ export default function GalleryContent({ galleries = [] }) {
           <button
             key={f.key}
             onClick={() => setFilter(f.key)}
-            className={`px-6 py-3 rounded-full flex items-center gap-2 transition border ${
+            className={`px-3 py-3 rounded-full flex items-center gap-2 transition border ${
               filter === f.key
                 ? "bg-purple-700 text-white shadow-lg scale-105"
                 : "bg-gray-200 dark:bg-gray-700 hover:bg-gray-300"

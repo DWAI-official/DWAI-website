@@ -1,5 +1,7 @@
 "use client";
 
+import CountUpNumber from "./CountUpNumber";
+
 export default function StatsSection() {
   return (
     <section
@@ -40,9 +42,7 @@ export default function StatsSection() {
               </svg>
             </div>
 
-            <div className="text-5xl font-semibold text-white">
-              10<span className="text-pink-400 font-serif font-medium leading-tight">+</span>
-            </div>
+            <CountUpNumber value={10} suffix="+" />
             <div className="mt-2 text-[0.78rem] uppercase tracking-[0.14em] text-white/60">
               States Reached
             </div>
@@ -59,9 +59,7 @@ export default function StatsSection() {
               </svg>
             </div>
 
-            <div className="text-5xl font-semibold text-white">
-              2,000<span className="text-pink-400 font-serif font-medium leading-tight">+</span>
-            </div>
+            <CountUpNumber value={2000} suffix="+" />
             <div className="mt-2 text-[0.78rem] uppercase tracking-[0.14em] text-white/60">
               Deaf Women Trained
             </div>
@@ -75,9 +73,7 @@ export default function StatsSection() {
               </svg>
             </div>
 
-            <div className="text-5xl font-semibold text-white">
-              20<span className="text-pink-400 font-serif font-medium leading-tight">+</span>
-            </div>
+            <CountUpNumber value={20} suffix="+" />
             <div className="mt-2 text-[0.78rem] uppercase tracking-[0.14em] text-white/60">
               Community Projects
             </div>
@@ -91,9 +87,7 @@ export default function StatsSection() {
               </svg>
             </div>
 
-            <div className="text-5xl font-semibold text-white">
-              6<span className="text-pink-400 font-serif font-medium leading-tight">+</span>
-            </div>
+            <CountUpNumber value={6} suffix="+" />
             <div className="mt-2 text-[0.78rem] uppercase tracking-[0.14em] text-white/60">
               Partnerships Formed
             </div>
