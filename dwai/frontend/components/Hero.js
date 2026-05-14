@@ -62,12 +62,12 @@ export default function Hero() {
             Learn About Our Work
           </Link>
 
-          <Link
+          {/* <Link
             href="/donate"
             className="inline-flex items-center border border-[#5B2D8E] px-8 py-4 text-[0.85rem] font-semibold uppercase tracking-[0.06em] text-[#5B2D8E] transition hover:bg-[#5B2D8E] hover:text-white"
           >
             Support DWAI
-          </Link>
+          </Link> */}
         </div>
 
         {/* TRUST ITEMS */}
@@ -120,7 +120,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
-            className="absolute -bottom-8 -left-8 max-w-[240px] bg-[#5B2D8E] p-5 text-white"
+            className="absolute -bottom-20 -left-8 max-w-[240px] bg-[#5B2D8E] p-4 text-white"
             style={{
               clipPath:
                 "polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%)",
@@ -136,7 +136,7 @@ export default function Hero() {
           </motion.div>
 
           {/* GOLD DOT */}
-          <div className="absolute -right-6 top-6 h-20 w-20 rounded-full border-2 border-pink-400 opacity-50" />
+          <div className="absolute -right-1 top-6 h-20 w-20 rounded-full border-2 border-pink-400 opacity-50" />
         </div>
       </motion.div>
     </section>

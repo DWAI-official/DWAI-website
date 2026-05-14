@@ -102,13 +102,13 @@ export default function ProgramsSection() {
           </p>
 
           {/* READ MORE */}
-          <Link
+          {/* <Link
             href={`/programs/${recentProgram.slug?.current}`}
             className="inline-flex items-center gap-2 text-purple-700 font-medium hover:gap-3 transition"
           >
             Read More
             <ArrowRight className="w-4 h-4" />
-          </Link>
+          </Link> */}
         </div>
       </motion.div>
 
@@ -143,12 +143,12 @@ export default function ProgramsSection() {
                 {program.summary}
               </p>
 
-              <Link
+              {/* <Link
                 href={`/programs/${program.slug?.current}`}
                 className="text-sm text-purple-700 font-medium inline-flex items-center gap-2 hover:gap-3 transition"
               >
                 Read More <ArrowRight className="w-4 h-4" />
-              </Link>
+              </Link> */}
             </div>
           </motion.div>
         ))}
