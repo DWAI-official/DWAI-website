@@ -18,7 +18,7 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="fixed left-0 top-0 z-50 w-full border-b border-[rgba(91,45,142,0.12)] bg-[rgba(250,248,255,0.92)] backdrop-blur-xl">
+    <nav className="fixed left-0 top-0 z-50 w-full h-[80px] border-b border-[rgba(91,45,142,0.12)] bg-[rgba(250,248,255,0.92)] backdrop-blur-xl">
       
       {/* CONTAINER */}
       <div className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-6 lg:px-8">

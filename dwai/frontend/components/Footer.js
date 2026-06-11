@@ -8,13 +8,13 @@ import { FaXTwitter } from "react-icons/fa6";
 
 export default function Footer() {
   return (
-    <footer className="relative bg-[#0f0f14] text-white/70 overflow-hidden">
+    <footer className="relative bg-white text-white/70 overflow-hidden">
 
       {/* Soft glow background */}
       <div className="absolute -top-32 -right-32 w-[400px] h-[400px] bg-purple-600/20 blur-[120px] rounded-full" />
       <div className="absolute bottom-0 left-0 w-[450px] h-[450px] bg-pink-600/10 blur-[120px] rounded-full" />
 
-      <div className="relative max-w-7xl mx-auto px-6 py-20">
+      <div className="relative max-w-7xl mx-auto px-6 py-10">
 
         {/* MAIN GRID */}
         <div className="grid md:grid-cols-4 gap-12">
@@ -25,6 +25,8 @@ export default function Footer() {
               <Image
                 src="/assets/images/dwai_logo2.png"
                 alt="DWAI Logo"
+                width={80}
+                height={80}
                 className="w-20 h-20 rounded-full object-cover"
               />
               <div>
@@ -37,7 +39,7 @@ export default function Footer() {
               </div>
             </div>
 
-            <p className="text-sm leading-relaxed text-white/50 max-w-xs">
+            <p className="text-sm leading-relaxed text-black/50 max-w-xs">
               A non-government organisation amplifying the voices of Deaf women and girls in Nigeria —
               advancing inclusion, dignity, and reproductive rights.
             </p>
@@ -56,7 +58,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.label}
-                  className="w-9 h-9 flex items-center justify-center border border-white/10 rounded-md text-white/60 hover:bg-purple-600 hover:text-white hover:border-purple-600 transition text-lg"
+                  className="w-9 h-9 flex items-center justify-center border border-black/10 rounded-md text-black/60 hover:bg-purple-600 hover:text-black hover:border-purple-600 transition text-lg"
                 >
                   {social.icon}
                 </Link>
@@ -66,7 +68,7 @@ export default function Footer() {
 
           {/* QUICK LINKS */}
           <div>
-            <h4 className="text-xs uppercase tracking-[0.25em] text-white/30 mb-5">
+            <h4 className="text-xs uppercase tracking-[0.25em] text-black/90 mb-5">
               Quick Links
             </h4>
 
@@ -81,7 +83,7 @@ export default function Footer() {
                 <li key={label}>
                   <Link
                     href={href}
-                    className="hover:text-white transition"
+                    className="text-black/60 hover:text-purple-600 transition"
                   >
                     {label}
                   </Link>
@@ -92,23 +94,23 @@ export default function Footer() {
 
           {/* RESOURCES */}
           <div>
-            <h4 className="text-xs uppercase tracking-[0.25em] text-white/30 mb-5">
+            <h4 className="text-xs uppercase tracking-[0.25em] text-black/90 mb-5">
               Resources
             </h4>
 
             <ul className="space-y-3 text-sm">
               <li>
-                <Link href="/assets/files/SRHR.pdf" className="hover:text-white transition">
+                <Link href="/assets/files/SRHR.pdf" className="text-black/60 hover:text-purple-600 transition">
                   SRHR Glossary
                 </Link>
               </li>
               {/* <li>
-                <Link href="/programs" className="hover:text-white transition">
+                <Link href="/programs" className="hover:text-purple-600 transition">
                   Our Programs
                 </Link>
               </li> */}
               {/* <li>
-                <Link href="/impact" className="hover:text-white transition">
+                <Link href="/impact" className="hover:text-purple-600 transition">
                   Impact Report
                 </Link>
               </li> */}
@@ -117,11 +119,11 @@ export default function Footer() {
 
           {/* CONTACT */}
           <div>
-            <h4 className="text-xs uppercase tracking-[0.25em] text-white/30 mb-5">
+            <h4 className="text-xs uppercase tracking-[0.25em] text-black/90 mb-5">
               Contact Us
             </h4>
 
-            <div className="space-y-4 text-sm text-white/60">
+            <div className="space-y-4 text-sm text-black/60">
 
               <div className="flex gap-3">
                 <span className="text-purple-400">📍</span>
@@ -135,7 +137,7 @@ export default function Footer() {
                 <span className="text-purple-400">✉️</span>
                 <a
                   href="mailto:deafwomenaloudinitiative@gmail.com"
-                  className="hover:text-white transition"
+                  className="hover:text-purple-600 transition"
                 >
                   deafwomenaloudinitiative@gmail.com
                 </a>
@@ -155,7 +157,7 @@ export default function Footer() {
         </div>
 
         {/* DIVIDER */}
-        <div className="border-t border-white/10 mt-16 pt-6 flex flex-col md:flex-row justify-between gap-4 text-xs text-white/40">
+        <div className="border-t border-black/10 mt-16 pt-6 flex flex-col md:flex-row justify-between gap-4 text-xs text-black/40">
 
           <p>
             © 2026 Deaf Women Aloud Initiative. All rights reserved · CAC Registered
@@ -165,7 +167,7 @@ export default function Footer() {
             Designed for accessibility & inclusion · Built by{" "}
             <a
               href="https://acclusivo.vercel.app"
-              className="text-white/60 hover:text-white transition"
+              className="text-black/60 hover:text-purple-600 transition"
             >
               Victor Oricha
             </a>
