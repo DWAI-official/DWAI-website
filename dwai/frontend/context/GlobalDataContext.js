@@ -3,14 +3,14 @@
 
 import { createContext, useContext, useMemo } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { client } from "../lib/sanity";
+import { sanityFetch } from "../lib/sanity";
 import { globalDataQuery } from "../lib/queries";
 
 const GlobalDataContext = createContext(null);
 
 // Export fetcher for Server Prefetching in layout.js
 export const fetchGlobalData = async () => {
-  return client.fetch(globalDataQuery);
+  return sanityFetch({ query: globalDataQuery });
 };
 
 export const GlobalDataProvider = ({ children }) => {
@@ -20,6 +20,7 @@ export const GlobalDataProvider = ({ children }) => {
     staleTime: 1000 * 60 * 60, // 1 hour - Global data rarely changes
     refetchOnWindowFocus: false,
     refetchOnMount: false, // Rely on hydration from server
+    retry: 1,
   });
 
   // Memoize context value to prevent unnecessary re-renders of consumers

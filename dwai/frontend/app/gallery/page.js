@@ -1,5 +1,5 @@
 import { sanityFetch } from "../../lib/sanity";
-import { allGalleriesQuery } from "../../lib/queries";
+import { paginatedGalleriesQuery } from "../../lib/queries";
 import GalleryContent from "../../components/GalleryContent";
 
 export const metadata = {
@@ -8,8 +8,10 @@ export const metadata = {
 };
 
 export default async function GalleryPage() {
-  // Fetch all gallery documents from Sanity
-  const galleries = await sanityFetch({ query: allGalleriesQuery });
+  const galleries = await sanityFetch({
+    query: paginatedGalleriesQuery,
+    params: { start: 0, end: 3 },
+  }).catch(() => []);
   
-  return <GalleryContent galleries={galleries} />;
+  return <GalleryContent galleries={galleries.slice(0, 2)} initialHasMore={galleries.length > 2} />;
 }

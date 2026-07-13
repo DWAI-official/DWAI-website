@@ -1,4 +1,4 @@
-import { groq } from 'next-sanity';
+import { defineQuery, groq } from 'next-sanity';
 
 export const homepageQuery = groq`
   *[_type == "homepage"][0]{
@@ -44,11 +44,11 @@ export const teamsQuery = groq`
   }`
 
 export const programsQuery = groq`
-  *[_type == "program"]{
+  *[_type == "program"] | order(coalesce(publishedAt, _createdAt) desc, _id asc){
     _id,
     title,
     "slug": slug.current,
-    publishedAt,
+    "publishedAt": coalesce(publishedAt, _createdAt),
     summary,
     "mainImageUrl": mainImage.asset->url,
     body
@@ -56,12 +56,14 @@ export const programsQuery = groq`
 `;
 
 export const allGalleriesQuery = groq`
-  *[_type == "gallery"]{
+  *[_type == "gallery"] | order(coalesce(publishedAt, _createdAt) desc, _id asc){
     _id,
     title,
+    "publishedAt": coalesce(publishedAt, _createdAt),
     "items": images[]{
       _type,
       _key,
+      "publishedAt": coalesce(publishedAt, ^.publishedAt, ^._createdAt),
       _type == "image" => {
         "url": asset->url,
         alt
@@ -81,6 +83,7 @@ export const homepageGalleryQuery = groq`
     "items": items[]{
       _type,
       _key,
+      "publishedAt": coalesce(publishedAt, ^._updatedAt),
       _type == "image" => {
         "url": asset->url,
         alt,
@@ -112,6 +115,7 @@ export const globalDataQuery = groq`{
     "items": items[]{
       _type,
       _key,
+      "publishedAt": coalesce(publishedAt, ^._updatedAt),
       _type == "image" => {
         "url": asset->url,
         alt,
@@ -130,13 +134,75 @@ export const globalDataQuery = groq`{
     "image": image.asset->url,
     bio
   },
-  "programs": *[_type == "program"]{
+  "programs": *[_type == "program"] | order(coalesce(publishedAt, _createdAt) desc, _id asc)[0...4]{
     _id,
     title,
     "slug": slug.current,
-    publishedAt,
+    "publishedAt": coalesce(publishedAt, _createdAt),
     summary,
     "mainImageUrl": mainImage.asset->url,
     body
-  }
+  },
+  "programCount": count(*[_type == "program"])
 }`;
+
+export const paginatedProgramsQuery = groq`
+  *[_type == "program" && defined(slug.current)] | order(coalesce(publishedAt, _createdAt) desc, _id asc)[$start...$end]{
+    _id, title, "slug": slug.current, "publishedAt": coalesce(publishedAt, _createdAt), summary,
+    "mainImageUrl": mainImage.asset->url
+  }
+`;
+
+export const homepageProgramsQuery = defineQuery(/* groq */ `{
+  "programs": *[_type == "program" && defined(slug.current)]
+    | order(coalesce(publishedAt, _createdAt) desc, _id asc)[0...4]{
+      _id,
+      title,
+      "slug": slug.current,
+      "publishedAt": coalesce(publishedAt, _createdAt),
+      summary,
+      "mainImageUrl": mainImage.asset->url
+    },
+  "programCount": count(*[_type == "program" && defined(slug.current)])
+}`);
+
+export const programSlugsQuery = defineQuery(/* groq */ `
+  *[_type == "program" && defined(slug.current)]{ "slug": slug.current }
+`);
+
+export const programDetailQuery = defineQuery(/* groq */ `
+  *[_type == "program" && slug.current == $slug][0]{
+    _id,
+    title,
+    "slug": slug.current,
+    "publishedAt": coalesce(publishedAt, _createdAt),
+    summary,
+    body,
+    "mainImage": {
+      "url": mainImage.asset->url,
+      "alt": coalesce(mainImage.alt, title),
+      "lqip": mainImage.asset->metadata.lqip
+    },
+    "relatedPrograms": *[
+      _type == "program" && _id != ^._id && defined(slug.current)
+    ] | order(coalesce(publishedAt, _createdAt) desc, _id asc)[0...3]{
+      _id,
+      title,
+      "slug": slug.current,
+      summary,
+      "mainImageUrl": mainImage.asset->url
+    }
+  }
+`);
+
+export const paginatedGalleriesQuery = groq`
+  *[_type == "gallery"] | order(coalesce(publishedAt, _createdAt) desc, _id asc)[$start...$end]{
+    _id, title, "publishedAt": coalesce(publishedAt, _createdAt),
+    "items": images[]{
+      _type, _key,
+      "publishedAt": coalesce(publishedAt, ^.publishedAt, ^._createdAt),
+      _type == "image" => {"url": asset->url, alt},
+      _type == "video" => {url, caption}
+    }
+  }
+`;

@@ -9,10 +9,17 @@ import GallerySection from "../components/GallerySection";
 import PartnersSection from "../components/PartnersSection";
 // import TestimonialSection from "../components/TestimonialSection";
 import DonationSection from "../components/sections/DonationSection";
+import { sanityFetch } from "../lib/sanity";
+import { homepageProgramsQuery } from "../lib/queries";
 // import CTA from "../components/CTA";
-export default function Home() {
+export const revalidate = 60;
+
+export default async function Home() {
+  const { programs, programCount } = await sanityFetch({ query: homepageProgramsQuery })
+    .catch(() => ({ programs: [], programCount: 0 }));
+
   return (
-    <main className="overflow-hiddpen">
+    <div className="overflow-hidden">
       <Hero />
       <AboutSection />
       <FeatureSection
@@ -32,7 +39,7 @@ export default function Home() {
       <ImpactSection />
       <GlossaryPDF />
       
-      <ProjectCard />
+      <ProjectCard initialPrograms={programs} programCount={programCount} />
       <GallerySection />
       <PartnersSection />
       {/* <TestimonialSection /> */}
@@ -42,6 +49,6 @@ export default function Home() {
         buttonText="Donate Now"
       /> */}
       {/* <DonationSection /> */}
-    </main>
+    </div>
   );
 }

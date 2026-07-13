@@ -31,12 +31,21 @@ export default defineType({
               name: 'alt',
               type: 'string',
               title: 'Alternative text',
+              description: 'Describe the image for people using screen readers.',
+              validation: Rule => Rule.required(),
             },
             {
               name: 'caption',
               type: 'string',
               title: 'Caption',
-            }
+            },
+            {
+              name: 'publishedAt',
+              type: 'datetime',
+              title: 'Media date',
+              description: 'Controls newest-to-oldest ordering on the homepage.',
+              initialValue: () => new Date().toISOString(),
+            },
           ],
         },
         {
@@ -54,7 +63,14 @@ export default defineType({
               name: 'caption',
               type: 'string',
               title: 'Caption'
-            })
+            }),
+            defineField({
+              name: 'publishedAt',
+              type: 'datetime',
+              title: 'Media date',
+              description: 'Controls newest-to-oldest ordering on the homepage.',
+              initialValue: () => new Date().toISOString(),
+            }),
           ],
           preview: {
             select: {

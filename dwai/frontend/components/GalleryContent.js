@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -11,6 +11,7 @@ import {
   Video,
   GalleryHorizontal,
 } from "lucide-react";
+import LoadMoreButton from "./LoadMoreButton";
 
 /* =========================
    SAMPLE GALLERY DATA (Fallback)
@@ -46,7 +47,7 @@ const FILTERS = [
   { key: "video", label: "Videos", icon: <Video /> },
 ];
 
-export default function GalleryContent({ galleries = [] }) {
+export default function GalleryContent({ galleries = [], initialHasMore = false }) {
   // Transform Sanity data to flat items array
   const sanityItems = galleries.flatMap((g) =>
     (g.items || []).map((item) => ({
@@ -54,34 +55,20 @@ export default function GalleryContent({ galleries = [] }) {
       category: "outreach", // Default category
       url: item.url,
       caption: item.caption || item.alt || g.title,
+      publishedAt: item.publishedAt || g.publishedAt,
     }))
-  );
+  ).sort((a, b) => new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0));
 
   // Use Sanity data if available, otherwise fallback to sample
   const initialItems = sanityItems.length > 0 ? sanityItems : SAMPLE_GALLERY;
 
-  const [items] = useState(initialItems);
+  const [items, setItems] = useState(initialItems);
+  const [galleryCount, setGalleryCount] = useState(galleries.length);
+  const [hasMore, setHasMore] = useState(initialHasMore);
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
+  const [loadError, setLoadError] = useState("");
   const [filter, setFilter] = useState("all");
-  const [visibleCount, setVisibleCount] = useState(8);
   const [lightboxIndex, setLightboxIndex] = useState(null);
-  const observerRef = useRef(null);
-
-  /* Infinite Scroll */
-  useEffect(() => {
-    if (!observerRef.current) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setVisibleCount((v) => v + 6);
-        }
-      },
-      { threshold: 1 }
-    );
-
-    observer.observe(observerRef.current);
-    return () => observer.disconnect();
-  }, []);
 
   /* Filter logic */
   const filtered = items.filter((item) => {
@@ -89,7 +76,33 @@ export default function GalleryContent({ galleries = [] }) {
     return item.type === filter;
   });
 
-  const visibleItems = filtered.slice(0, visibleCount);
+  const loadMore = async () => {
+    setIsLoadingMore(true);
+    setLoadError("");
+    try {
+      const response = await fetch(`/api/content?type=galleries&start=${galleryCount}&limit=2`);
+      if (!response.ok) throw new Error("Request failed");
+      const result = await response.json();
+      const newItems = result.items.flatMap((gallery) =>
+        (gallery.items || []).map((item) => ({
+          type: item._type || "image",
+          category: "outreach",
+          url: item.url,
+          caption: item.caption || item.alt || gallery.title,
+          publishedAt: item.publishedAt || gallery.publishedAt,
+        })),
+      );
+      setItems((current) => [...current, ...newItems].sort(
+        (a, b) => new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0),
+      ));
+      setGalleryCount((count) => count + result.items.length);
+      setHasMore(result.hasMore);
+    } catch {
+      setLoadError("We couldn’t load more stories. Please try again.");
+    } finally {
+      setIsLoadingMore(false);
+    }
+  };
 
   const nextItem = () =>
     setLightboxIndex((i) => (i + 1) % filtered.length);
@@ -99,9 +112,18 @@ export default function GalleryContent({ galleries = [] }) {
   // Helper to extract YouTube ID
   const getYouTubeId = (url) => {
     if (!url) return null;
-    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
-    const match = url.match(regExp);
-    return (match && match[2].length === 11) ? match[2] : null;
+    try {
+      const parsed = new URL(url);
+      if (parsed.hostname === "youtu.be") return parsed.pathname.split("/").filter(Boolean)[0] || null;
+      if (parsed.hostname.includes("youtube.com")) {
+        if (parsed.searchParams.get("v")) return parsed.searchParams.get("v");
+        const [type, id] = parsed.pathname.split("/").filter(Boolean);
+        if (["embed", "shorts", "live"].includes(type)) return id || null;
+      }
+    } catch {
+      return null;
+    }
+    return null;
   };
 
   const getYouTubeThumbnail = (url) => {
@@ -173,15 +195,24 @@ export default function GalleryContent({ galleries = [] }) {
          MASONRY GALLERY
          ========================= */}
       <div className="columns-2 md:columns-3 lg:columns-4 gap-6 px-6 md:px-12 max-w-7xl mx-auto mt-14 space-y-6">
-        {visibleItems.map((item, index) => (
+        {filtered.map((item, index) => (
           <motion.div
-            key={index}
+            key={`${item.url}-${index}`}
+            role="button"
+            tabIndex={0}
+            aria-label={`Open ${item.type}: ${item.caption}`}
             whileHover={{ scale: 1.04 }}
             transition={{ type: "spring", stiffness: 200 }}
             className="relative overflow-hidden rounded-3xl cursor-pointer 
                        bg-white/70 dark:bg-gray-800/60 
                        backdrop-blur-xl shadow-xl border border-white/30 group"
             onClick={() => setLightboxIndex(filtered.indexOf(item))}
+            onKeyDown={(event) => {
+              if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                setLightboxIndex(filtered.indexOf(item));
+              }
+            }}
           >
             {item.type === "image" ? (
               <Image
@@ -191,7 +222,7 @@ export default function GalleryContent({ galleries = [] }) {
                 height={500}
                 className="w-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
-            ) : (
+            ) : getYouTubeThumbnail(item.url) ? (
               <Image
                 src={getYouTubeThumbnail(item.url)}
                 alt={item.caption}
@@ -199,6 +230,8 @@ export default function GalleryContent({ galleries = [] }) {
                 height={500}
                 className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
               />
+            ) : (
+              <div className="h-64 w-full bg-gradient-to-br from-purple-800 via-fuchsia-800 to-pink-700" aria-hidden="true" />
             )}
 
             {/* Video Icon */}
@@ -211,7 +244,11 @@ export default function GalleryContent({ galleries = [] }) {
         ))}
       </div>
 
-      <div ref={observerRef} className="h-20"></div>
+      <div className="mt-14 flex flex-col items-center gap-3 px-6" aria-live="polite">
+        {hasMore && <LoadMoreButton onClick={loadMore} loading={isLoadingMore} label="Load more stories" />}
+        {loadError && <p className="text-sm font-medium text-red-700" role="alert">{loadError}</p>}
+        {!hasMore && galleryCount > galleries.length && <p className="text-sm text-gray-600 dark:text-gray-300">All stories are displayed.</p>}
+      </div>
 
       {/* =========================
          LIGHTBOX VIEWER
@@ -228,6 +265,7 @@ export default function GalleryContent({ galleries = [] }) {
               <button
                 onClick={() => setLightboxIndex(null)}
                 className="absolute -top-14 right-0 bg-white p-2 rounded-full shadow hover:bg-gray-200 transition"
+                aria-label="Close media viewer"
               >
                 <X className="text-black" />
               </button>
@@ -245,6 +283,7 @@ export default function GalleryContent({ galleries = [] }) {
                   src={getEmbedUrl(filtered[lightboxIndex].url)}
                   className="w-full h-[60vh] md:h-[70vh] rounded-xl"
                   allowFullScreen
+                  title={filtered[lightboxIndex].caption || "Gallery video"}
                 />
               )}
 
@@ -255,6 +294,7 @@ export default function GalleryContent({ galleries = [] }) {
               <button
                 onClick={prevItem}
                 className="absolute left-0 top-1/2 -translate-y-1/2 bg-white/40 hover:bg-white/60 p-3 rounded-full transition"
+                aria-label="Previous gallery item"
               >
                 <ChevronLeft className="text-white" />
               </button>
@@ -262,6 +302,7 @@ export default function GalleryContent({ galleries = [] }) {
               <button
                 onClick={nextItem}
                 className="absolute right-0 top-1/2 -translate-y-1/2 bg-white/40 hover:bg-white/60 p-3 rounded-full transition"
+                aria-label="Next gallery item"
               >
                 <ChevronRight className="text-white" />
               </button>

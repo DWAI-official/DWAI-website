@@ -138,12 +138,12 @@ export default function ServicesPage() {
             transition={{ delay: 0.4 }}
             className="mt-8 flex justify-center gap-4"
           >
-            <a
-              href="/programs"
+            <Link
+              href="/#programs"
               className="inline-flex items-center gap-3 bg-pink-500 px-5 py-3 rounded-full font-semibold focus:outline-none focus:ring-4 focus:ring-pink-300"
             >
               Explore Programs
-            </a>
+            </Link>
             <a
               href="#contact"
               className="inline-flex items-center gap-3 border border-white/30 px-5 py-3 rounded-full text-white/90 hover:bg-white/10 focus:outline-none focus:ring-4 focus:ring-white/20"

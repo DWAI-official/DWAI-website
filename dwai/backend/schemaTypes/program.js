@@ -25,6 +25,9 @@ export default defineType({
       name: 'publishedAt',
       title: 'Published at',
       type: 'datetime',
+      description: 'Controls newest-to-oldest ordering on the website.',
+      initialValue: () => new Date().toISOString(),
+      validation: Rule => Rule.required(),
     }),
     defineField({
       name: 'summary',
@@ -39,6 +42,15 @@ export default defineType({
       options: {
         hotspot: true,
       },
+      fields: [
+        defineField({
+          name: 'alt',
+          title: 'Alternative text',
+          type: 'string',
+          description: 'Describe the image for people using screen readers.',
+          validation: Rule => Rule.required(),
+        }),
+      ],
     }),
     defineField({
       name: 'body',

@@ -22,6 +22,14 @@ export default defineType({
       validation: Rule => Rule.required(),
     }),
     defineField({
+      name: 'publishedAt',
+      title: 'Published at',
+      type: 'datetime',
+      description: 'Controls newest-to-oldest ordering on the gallery page.',
+      initialValue: () => new Date().toISOString(),
+      validation: Rule => Rule.required(),
+    }),
+    defineField({
       name: 'images',
       title: 'Images',
       type: 'array',
@@ -36,6 +44,13 @@ export default defineType({
               title: 'Alternative text',
               description: 'Important for SEO and accessibility.',
               validation: Rule => Rule.required(),
+            },
+            {
+              name: 'publishedAt',
+              type: 'datetime',
+              title: 'Media date',
+              description: 'When this photo was published or taken.',
+              initialValue: () => new Date().toISOString(),
             },
           ],
         },
@@ -54,7 +69,14 @@ export default defineType({
               name: 'caption',
               type: 'string',
               title: 'Caption'
-            })
+            }),
+            defineField({
+              name: 'publishedAt',
+              type: 'datetime',
+              title: 'Media date',
+              description: 'When this video was published or recorded.',
+              initialValue: () => new Date().toISOString(),
+            }),
           ],
           preview: {
             select: {
