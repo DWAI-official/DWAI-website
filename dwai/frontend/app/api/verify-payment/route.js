@@ -1,6 +1,13 @@
 import { NextResponse } from 'next/server';
 import { client } from '../../../lib/sanity';
-import prisma from '../../../lib/prisma';
+
+export const dynamic = 'force-dynamic';
+export const runtime = 'nodejs';
+
+async function getPrisma() {
+  const { default: prisma } = await import('../../../lib/prisma');
+  return prisma;
+}
 
 const writeClient = client.withConfig({
   token:
@@ -49,6 +56,8 @@ export async function POST(request) {
     const donorEmail = data.data.customer?.email;
     const isMonthly = fields.donation_type === 'Monthly Recurring';
     const amountInNaira = data.data.amount / 100;
+    const prisma = await getPrisma();
+
     const existingDonation = await prisma.donation.findUnique({
       where: { paystackRef: data.data.reference },
       select: { id: true },

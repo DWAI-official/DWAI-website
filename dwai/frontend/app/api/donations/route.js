@@ -1,8 +1,17 @@
 import { NextResponse } from 'next/server';
-import prisma from '../../../lib/prisma';
+
+export const dynamic = 'force-dynamic';
+export const runtime = 'nodejs';
+
+async function getPrisma() {
+  const { default: prisma } = await import('../../../lib/prisma');
+  return prisma;
+}
 
 export async function GET() {
   try {
+    const prisma = await getPrisma();
+
     // Aggregate totals from the Donation table
     const stats = await prisma.donation.aggregate({
       _count: {
@@ -101,6 +110,8 @@ export async function POST(request) {
         { status: 400 }
       );
     }
+
+    const prisma = await getPrisma();
 
     // 2. Use Prisma to update the database
     const result = await prisma.user.upsert({
