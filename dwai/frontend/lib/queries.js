@@ -34,14 +34,15 @@ export const galleryQuery = groq`
   }
 `;
 
-export const teamsQuery = groq`
-  *[_type == "teamMember"]{
+export const teamsQuery = defineQuery(/* groq */ `
+  *[_type == "teamMember"] | order(name asc, _id asc){
     _id,
     name,
     role,
     "image": image.asset->url,
     bio
-  }`
+  }
+`);
 
 export const programsQuery = groq`
   *[_type == "program"] | order(coalesce(publishedAt, _createdAt) desc, _id asc){

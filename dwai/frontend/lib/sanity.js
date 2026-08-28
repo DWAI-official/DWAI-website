@@ -31,12 +31,22 @@ const isTransientError = (error) => {
  * Fetch published Sanity content with bounded retries for temporary network
  * failures. GROQ/authentication errors are surfaced immediately.
  */
-export async function sanityFetch({ query, params = {}, retries = 2 }) {
+export async function sanityFetch({
+  query,
+  params = {},
+  retries = 2,
+  revalidate,
+  useCdn = true,
+}) {
   let lastError;
 
   for (let attempt = 0; attempt <= retries; attempt += 1) {
     try {
-      return await client.fetch(query, params);
+      return await client.withConfig({ useCdn }).fetch(
+        query,
+        params,
+        revalidate === undefined ? {} : { next: { revalidate } },
+      );
     } catch (error) {
       lastError = error;
       if (!isTransientError(error) || attempt === retries) break;
